@@ -1,0 +1,48 @@
+.hero2  {
+    max-width: 1120px;
+    height: 30vh;
+    display: flex;
+    flex-direction: row;
+    gap: 6rem;
+    padding: 0rem 2rem;
+    overflow: clip;
+    align-items: center;
+}
+
+.imagens-equipe {
+    max-width: 45%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.imagens-equipe > figure{
+    width: calc(33.33% - 20px);
+    margin-bottom: 10px;
+    text-align: center;
+    background: #241A1C;
+    padding: 10px 10px;
+}
+
+.imagens-equipe > figure > img {
+    width: auto;
+    height: 12vh;
+    border-radius: 5rem;
+    display: block;
+    margin: 0 auto;
+    
+}
+
+.imagens-equipe > figure > span {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.funcao {
+    color: #C7BAB3;
+    font-size: 2rem;
+    text-align: center;
+}

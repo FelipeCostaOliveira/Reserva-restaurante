@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Teko:wght@300..700&display=swap');
+/* Resetar o css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* resetar tags */
+a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+a:hover {
+    color: blue;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* fonte padrão */
+html {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+}
+
+.teko-semibold {
+    font-family: "Teko", sans-serif;
+    font-weight: 600;
+}
+
+.inter-regular {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+}
+
+.inter-semibold {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+}
+
+.inter-semibold {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+}
+.inter-bold {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+}
+
+.epilogue-medium {
+    font-family: "Epilogue", sans-serif;
+    font-weight: 500;
+}
+
+.montserrat-bold {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+.montserrat-extrabold {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+}
