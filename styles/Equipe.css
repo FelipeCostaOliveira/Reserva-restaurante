@@ -10,25 +10,28 @@
 }
 
 .imagens-equipe {
-    max-width: 45%;
+    max-width: 70%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    
 }
 
 .imagens-equipe > figure{
     width: calc(33.33% - 20px);
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     text-align: center;
     background: #241A1C;
-    padding: 10px 10px;
+    padding: 30px 0px;
+    margin: 10px;
 }
 
 .imagens-equipe > figure > img {
     width: auto;
-    height: 12vh;
+    height: 50%;
     border-radius: 5rem;
+    justify-content: space-between;
     display: block;
     margin: 0 auto;
     
@@ -45,4 +48,8 @@
     color: #C7BAB3;
     font-size: 2rem;
     text-align: center;
+}
+
+.espaco {
+    margin-right: 0%;
 }

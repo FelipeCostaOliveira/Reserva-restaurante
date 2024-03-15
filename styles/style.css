@@ -102,8 +102,10 @@ footer {
 }
 
 .hero-imagens-container {
-    max-width: 45%;
+    max-width: 50%;
+    height: auto;
     column-count: 4;
+
 }
 
 .hero-imagens-container > figure > img {
