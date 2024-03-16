@@ -1,6 +1,6 @@
 .hero2  {
     max-width: 1120px;
-    height: 30vh;
+    height: 20vh;
     display: flex;
     flex-direction: row;
     gap: 6rem;
@@ -50,6 +50,3 @@
     text-align: center;
 }
 
-.espaco {
-    margin-right: 0%;
-}

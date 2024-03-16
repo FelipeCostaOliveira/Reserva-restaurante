@@ -6,7 +6,7 @@ body {
 }
 
 nav {
-    max-width: 1120px;
+    max-width: 1240px;
     margin: auto;
     padding: 1.5rem 10rem;
 
@@ -22,7 +22,7 @@ main {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 hr {
@@ -45,6 +45,42 @@ footer {
     background: #23181A;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    border: none;
+}
+
+form [type="submit"] {
+    background: #A45A49;
+    width: 60%;
+    margin: auto;
+    margin-top: 10px;
+    font-weight: bold;    
+}
+
+form [type="submit"]:hover {
+    cursor: pointer;    
+    background: #4e1002;
+    
+}
+
+input {
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 2rem;
+    border: none;
+    font-size: 1rem;
+}
+
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+}
+
 .logo {
     font-size: 2rem;
     text-transform: uppercase;
@@ -54,10 +90,14 @@ footer {
     display: flex;
     gap: 1.5rem;
     color: #FFF2E7;
+    
 }
 
-.github {
+.possui-conta {
     color: #FFF2E7; 
+    border: 2px solid #C7BAB3; 
+    padding: 5px;
+    border-radius: 10px;  
 }
 
 .principal {
@@ -66,14 +106,13 @@ footer {
 
 .hero  {
     max-width: 1120px;
-    height: 60vh;
+    height: 65vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 6rem;
     padding: 0rem 2rem;
     margin: auto;
-    overflow: clip;
     align-items: center;
 }
 
@@ -104,7 +143,7 @@ footer {
 .hero-imagens-container {
     max-width: 50%;
     height: auto;
-    column-count: 4;
+    column-count: 3;
 
 }
 
@@ -124,7 +163,7 @@ footer {
     display: flex;
     flex-direction: column;
     max-width: 1120px;
-    padding: 3rem 2rem;
+    padding: 2rem 1rem;
     margin: auto;
 }
 

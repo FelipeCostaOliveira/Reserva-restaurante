@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/media.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing-Page</title>
@@ -10,7 +11,7 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="cabecalho">
             <span class="logo teko-semibold">Landing-Page</span>
             <ul class="menu">
                 <li><a href="">Home</a></li>
@@ -18,19 +19,28 @@
                 <li><a href="">Novidades</a></li>
                 <li><a href="">Melhor Avaliados</a></li>
             </ul>
-            <a href="" class="github inter-semibold">Github</a>
-            
+            <a href="" class="possui-conta inter-semibold">Já possui uma Conta?</a> 
         </nav>
     </header>
     <main>
         <div class="principal">
             <section class="hero">
                 <header class="hero-conteudo">
-                    <span class="destaque marrom epilogue-medium">novidade</span>
-                    <h1 class="montserrat-extrabold">Encontre a receita perfeita</h1>
+                    <span class="destaque marrom epilogue-medium">agende seu horário</span>
+                    <h1 class="montserrat-extrabold">Faça Seu Registro!</h1>
                     <hr>
-                    <h2 class="hero-subtitulo inter-regular">Explore dezenas de variações da bebida favorita entre os devs ao redor mundo!</h2>
+                    <h2 class="hero-subtitulo inter-regular">Registre-se para agendar sua reserva</h2>
+                    <form class="intel-regular" action="">
+                        <label for="email">Email</label>
+                        <input type="email" required placeholder="Digite seu email">
+
+                        <label for="Senha">Senha</label>
+                        <input type="password" required placeholder="Digite sua senha">
+                        
+                        <input type="submit" value="Registrar">
+                    </form>
                 </header>
+                
                 <div class="hero-imagens-container">
                     <figure><img src="assets/main/image1.png" alt="image1"></figure>
                     <figure><img src="assets/main/image2.png" alt="image2"></figure>
@@ -38,20 +48,17 @@
                     <figure><img src="assets/main/image4.png" alt="image4"></figure>
                     <figure><img src="assets/main/image5.png" alt="image5"></figure>
                     <figure><img src="assets/main/image6.png" alt="image6"></figure>
-                    <figure><img src="assets/main/image7.png" alt="image7"></figure>
-                    <figure><img src="assets/main/image8.png" alt="image8"></figure>
-                    <figure><img src="assets/main/image9.png" alt="image9"></figure>
                     <figure><img src="assets/main/image10.png" alt="image10"></figure>
                     <figure><img src="assets/main/image11.png" alt="image11"></figure>
-                    <figure><img src="assets/main/image12.png" alt="image12"></figure> 
-                    
+                    <figure><img src="assets/main/image12.png" alt="image12"></figure>  
                 </div>
+               
             </section>
         </div>
         
-        <section class="botao-container">
-            <button><img src="assets/button.svg" alt="button1"></button>
-        </section>
+            <!-- <section class="botao-container">
+                <button><img src="assets/button.svg" alt="button1"></button>
+            </section> -->
         <section class="receitas">
             <header class="receitas-cabecalho">
                 <span class="destaque marrom">Receitas</span>

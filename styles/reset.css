@@ -14,6 +14,7 @@ a {
 
 a:hover {
     color: #A45A49;
+    transition: 0.3s all;
 }
 
 ul {
