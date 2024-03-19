@@ -9,13 +9,8 @@
 /* resetar tags */
 a {
     text-decoration: none;
-    color: aliceblue;
 }
 
-a:hover {
-    color: #A45A49;
-    transition: 0.3s all;
-}
 
 ul {
     list-style: none;

@@ -7,8 +7,6 @@ app.secret_key = 'felipe'
 def index():
     return render_template('index.html')
 
-@app.route("/adm")
-
 @app.route('/Equipe')
 def equipe():
     return render_template('Equipe.html')
@@ -35,7 +33,7 @@ def home():
                     
             if contador >= len(usuarios):
                 flash('Usuário Inválido')
-                return render_template("index.html")
+                return redirect("/login")
 
 @app.route('/cadastrarUsuario', methods=['POST'])
 def cadastrarUsuario():

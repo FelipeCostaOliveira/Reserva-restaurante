@@ -1,3 +1,5 @@
+@import url('../styles/style.css');
+@import url('../styles/reset.css');
 .hero-section {
     max-width: 1120px;
     height: 20vh;

@@ -1,4 +1,5 @@
-
+@import url('../styles/reset.css');
+@import url('../styles/media.css');
 /* estilizar */
 body {
     background: #1F1517 ;
@@ -9,11 +10,19 @@ nav {
     max-width: 1240px;
     margin: auto;
     padding: 1.5rem 10rem;
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+nav a {
+    color: aliceblue;
+    transition: .3s all;
+}
+
+nav a:hover {
+    color: #A45A49;
 }
 
 main {
