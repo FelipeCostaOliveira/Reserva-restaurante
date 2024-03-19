@@ -1,56 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/media.css">
+    <link rel="stylesheet" href="static/styles/style.css">
+    <link rel="stylesheet" href="static/styles/reset.css">
+    <link rel="stylesheet" href="static/styles/media.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing-Page</title>
     <meta name="description" content="Descrição">
 </head>
+
 <body>
     <header>
         <nav class="cabecalho">
             <span class="logo teko-semibold">Landing-Page</span>
             <ul class="menu">
                 <li><a href="">Home</a></li>
-                <li><a href="Equipe.html">Quem Somos?</a></li>
+                <li><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
                 <li><a href="">Novidades</a></li>
                 <li><a href="">Melhor Avaliados</a></li>
             </ul>
-            <a href="" class="possui-conta inter-semibold">Já possui uma Conta?</a> 
+            <a href="{{url_for("login")}}" class="possui-conta inter-semibold">Já possui uma Conta?</a> 
         </nav>
     </header>
     <main>
-        <div class="principal">
+        <div class="principal-container">
             <section class="hero">
                 <header class="hero-conteudo">
                     <span class="destaque marrom epilogue-medium">agende seu horário</span>
                     <h1 class="montserrat-extrabold">Faça Seu Registro!</h1>
                     <hr>
                     <h2 class="hero-subtitulo inter-regular">Registre-se para agendar sua reserva</h2>
-                    <form class="intel-regular" action="">
+                    <form class="intel-regular" action="/cadastrarUsuario" method="POST">
                         <label for="email">Email</label>
-                        <input type="email" required placeholder="Digite seu email">
+                        <input type="email" name="email" required placeholder="Digite seu email">
 
                         <label for="Senha">Senha</label>
-                        <input type="password" required placeholder="Digite sua senha">
+                        <input type="password" name="senha" required placeholder="Digite sua senha">
                         
-                        <input type="submit" value="Registrar">
+                        <input type="submit" class="registrar-btn" value="Registrar" >
+                        {% set mensagem = get_flashed_messages()%}
+                        {% if mensagem %}
+                        <div class="alert">
+                            {{mensagem[0]}}
+                        </div>
+                        {% endif %}
                     </form>
+                    
                 </header>
                 
                 <div class="hero-imagens-container">
-                    <figure><img src="assets/main/image1.png" alt="image1"></figure>
-                    <figure><img src="assets/main/image2.png" alt="image2"></figure>
-                    <figure><img src="assets/main/image3.png" alt="image3"></figure>
-                    <figure><img src="assets/main/image4.png" alt="image4"></figure>
-                    <figure><img src="assets/main/image5.png" alt="image5"></figure>
-                    <figure><img src="assets/main/image6.png" alt="image6"></figure>
-                    <figure><img src="assets/main/image10.png" alt="image10"></figure>
-                    <figure><img src="assets/main/image11.png" alt="image11"></figure>
-                    <figure><img src="assets/main/image12.png" alt="image12"></figure>  
+                    <figure><img src="static/assets/main/image1.png" alt="image1"></figure>
+                    <figure><img src="static/assets/main/image2.png" alt="image2"></figure>
+                    <figure><img src="static/assets/main/image3.png" alt="image3"></figure>
+                    <figure><img src="static/assets/main/image4.png" alt="image4"></figure>
+                    <figure><img src="static/assets/main/image5.png" alt="image5"></figure>
+                    <figure><img src="static/assets/main/image6.png" alt="image6"></figure>
+                    <figure><img src="static/assets/main/image10.png" alt="image10"></figure>
+                    <figure><img src="static/assets/main/image11.png" alt="image11"></figure>
+                    <figure><img src="static/assets/main/image12.png" alt="image12"></figure>  
                 </div>
                
             </section>

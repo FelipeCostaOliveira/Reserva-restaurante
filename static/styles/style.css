@@ -54,7 +54,7 @@ form {
     border: none;
 }
 
-form [type="submit"] {
+.registrar-btn {
     background: #A45A49;
     width: 60%;
     margin: auto;
@@ -62,7 +62,7 @@ form [type="submit"] {
     font-weight: bold;    
 }
 
-form [type="submit"]:hover {
+.registrar-btn:hover {
     cursor: pointer;    
     background: #4e1002;
     
@@ -100,7 +100,7 @@ input {
     border-radius: 10px;  
 }
 
-.principal {
+.principal-container {
     background: #181012;
 }
 
@@ -122,19 +122,6 @@ input {
     gap: 1rem;
 }
 
-.destaque {
-    font-size: 1rem;
-    text-transform: uppercase;
-}
-
-.marrom {
-    color: #A45A49;
-}
-
-.amarelo {
-    color: #E7A80E;
-}
-
 .hero-subtitulo {
     color: #C7BAB3;
     font-size: 1.5rem;
@@ -150,6 +137,19 @@ input {
 .hero-imagens-container > figure > img {
     width: 100%;
     border-radius: 0.5rem;
+}
+
+.destaque {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.marrom {
+    color: #A45A49;
+}
+
+.amarelo {
+    color: #E7A80E;
 }
 
 .botao-container {
@@ -248,8 +248,6 @@ input {
     font-size: 2rem;
 }
 
-
-
 .copy {
     color: #FFF2E7;
     font-size: 1rem;
@@ -258,4 +256,10 @@ input {
 .footer-autor {
     color: #6e6e6e;
     font-size: 1rem;
+}
+
+.alert {
+    color: red;
+    font-weight: bold;
+    margin: auto;
 }
