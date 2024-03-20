@@ -7,17 +7,15 @@ app = Flask(__name__)
 app.secret_key = 'felipe'
 
 
-
+# Criar Banco de Dados
+DBname = 'usuarios'
 connection = database.create_server_connection("localhost", "root", "root")     
-query_database = "create database teste"
-DBname = 'teste'
+query_database = f"create database {DBname}"
 database.create_database(connection, query_database, DBname)
-conexao  = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    database=DBname,
-    password='root'
-)
+# Criar Tabela
+# NameTabela = 'usuario'
+new_connection = database.create_new_server_connection("localhost", "root", DBname, "root")
+database.create_table(new_connection, 'usuario')
 
 @app.route('/')
 def index():
