@@ -75,17 +75,25 @@ def cadastrarUsuario():
         dados = email, senha
         cursor.execute("select * from usuario")
         usuariosBD = cursor.fetchall()
-        for usuario in usuariosBD:
-            contador += 1
-            if usuario[1] == email:
-                flash('Usuário já cadastrado')
-                return redirect('/')
-            if contador >= len(usuariosBD):
+        
+        if  len(usuariosBD) < 1:
                 query = "insert into usuario values (default, %s, %s);"
                 cursor.execute(query, dados)
                 connectBD.commit()
                 return render_template('home.html')
-        
+        else:
+            for usuario in usuariosBD:
+                contador += 1
+                if usuario[1] == email:
+                    flash('Usuário já cadastrado')
+                    return redirect('/')
+    
+                if contador >= len(usuariosBD):
+                    query = "insert into usuario values (default, %s, %s);"
+                    cursor.execute(query, dados)
+                    connectBD.commit()
+                    return render_template('home.html')
+
     if connectBD.is_connected():
         cursor.close()
         connectBD.close()
