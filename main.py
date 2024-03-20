@@ -1,8 +1,23 @@
 from flask import Flask, render_template, request, flash, redirect
 import json
 import mysql.connector
+import database
+
 app = Flask(__name__)
 app.secret_key = 'felipe'
+
+
+
+connection = database.create_server_connection("localhost", "root", "root")     
+query_database = "create database teste"
+DBname = 'teste'
+database.create_database(connection, query_database, DBname)
+conexao  = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    database=DBname,
+    password='root'
+)
 
 @app.route('/')
 def index():
