@@ -9,12 +9,12 @@ app.secret_key = 'felipe'
 
 # Criar Banco de Dados
 DBname = 'usuarios'
-connection = database.create_server_connection("localhost", "root", "root")     
+connection = database.create_server_connection("localhost", "root", "")     
 query_database = f"create database {DBname}"
 database.create_database(connection, query_database, DBname)
 # Criar Tabela
 # NameTabela = 'usuario'
-new_connection = database.create_new_server_connection("localhost", "root", DBname, "root")
+new_connection = database.create_new_server_connection("localhost", "root", DBname, "")
 database.create_table(new_connection, 'usuario')
 
 @app.route('/')
@@ -39,7 +39,7 @@ def home():
         host='localhost',
         database='usuarios',
         user='root',
-        password='root'
+        password=''
     )
     contador = 0
     if connectBD.is_connected():
@@ -67,7 +67,7 @@ def cadastrarUsuario():
         host='localhost',
         database='usuarios',
         user='root',
-        password='root'
+        password=''
     )
     contador = 0
     if connectBD.is_connected():
