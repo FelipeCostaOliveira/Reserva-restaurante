@@ -8,13 +8,19 @@ app.secret_key = 'felipe'
 
 
 # Criar Banco de Dados
+DBhost = 'localhost' 
 DBname = 'usuarios'
-connection = database.create_server_connection("localhost", "root", "")     
+DBuser = 'root'
+DBpassword = 'root'
+
+
+
+connection = database.create_server_connection(DBhost, DBuser, DBpassword)     
 query_database = f"create database {DBname}"
 database.create_database(connection, query_database, DBname)
 # Criar Tabela
 # NameTabela = 'usuario'
-new_connection = database.create_new_server_connection("localhost", "root", DBname, "")
+new_connection = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
 database.create_table(new_connection, 'usuario')
 
 @app.route('/')
@@ -36,10 +42,10 @@ def home():
     email = request.form.get("email")
     senha = request.form.get("senha")
     connectBD = mysql.connector.connect(
-        host='localhost',
+        host=DBhost,
         database='usuarios',
-        user='root',
-        password=''
+        user=DBuser,
+        password=DBpassword
     )
     contador = 0
     if connectBD.is_connected():
@@ -64,10 +70,10 @@ def cadastrarUsuario():
     email = request.form.get('email')
     senha = request.form.get('senha')   
     connectBD = mysql.connector.connect(
-        host='localhost',
+        host=DBhost,
         database='usuarios',
-        user='root',
-        password=''
+        user=DBuser,
+        password=DBpassword
     )
     contador = 0
     if connectBD.is_connected():

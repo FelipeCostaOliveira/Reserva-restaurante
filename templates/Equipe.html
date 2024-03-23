@@ -3,61 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/styles/Equipe.css">
+    <link rel="stylesheet" href="static/styles/output.css">
     <title>Equipe - Reserva</title>
 </head>
-<body>
+<body class="bg-[#1F1517] text-white">
     <header>
-        <nav>
-            <span class="logo teko-semibold">Landing-Page</span>
-            <ul class="menu">
-                <li><a href="{{url_for("index")}}">Home</a></li>
-                <li><a href="">Quem Somos?</a></li>
-                <li><a href="">Novidades</a></li>
-                <li><a href="">Melhor Avaliados</a></li>
+        <nav class="text-white ml-10 container flex flex-row space-x-10 items-center justify-between px-20 py-4">
+            <span class="font-teko-semibold text-3xl">LANDING-PAGE</span>
+            <ul class="flex flex-row space-x-10">
+                <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("index")}}">Home</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="">Novidades</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="">Melhor Avaliados</a></li>
             </ul>
-            <a href="{{url_for("login")}}" class="possui-conta inter-semibold">Já possui uma Conta?</a> 
-            
+            <a href="{{url_for("login")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg">Já possui uma Conta?</a> 
         </nav>
     </header>
-    <main>
-        <section class="hero-section">
+    <main class="flex flex-col">
+        <section class="max-w-6xl h-1/5 flex flex-row gap-24 py-0 px-8 overflow-clip items-center">
             <header>
-                <span class="destaque marrom epilogue-medium">EQUIPE</span>
-                <h1 class="montserrat-extrabold">Confira os autores do projeto:</h1>
-                <h2>Dê uma olhada em quem compõem nossa aquipe!</h2>
+                <span class="text-[#A45A49] text-base uppercase marrom font-epilogue">Equipe</span>
+                <h1 class="text-4xl font-montserrat font-bold">Confira os autores do projeto:</h1>
+                <h2>Dê uma olhada nos membros de nossa aquipe!</h2>
             </header>
         </section>
         <section>
-            <div class="imagens-equipe">
-                <figure>
-                    <img src="static/assets/equipe/Abner.svg" alt="">
-                    <span class="montserrat-bold">Abner de Oliveira</span>
-                    <span class="funcao inter-regular">A definir</span>
+            <div class="max-w-6xl m-auto flex flex-wrap justify-center">
+                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3">
+                    <img class="w-auto h-1/2 rounded-full justify-between block m-auto" src="static/assets/equipe/Abner.svg" alt="">
+                    <span class="block mt-3 text-xl font-montserrat font-bold">Abner de Oliveira</span>
+                    <span class="block mt-3 text-base text-[#C7BAB3] text-center font-inter font-normal">A definir</span>
                 </figure>
-                <figure>
-                    <img src="static/assets/equipe/Deny.svg" alt="">
-                    <span class="montserrat-bold">Deny Martins</span>
-                    <span class="funcao inter-regular">A definir</span>
+                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3">
+                    <img class="w-auto h-1/2 rounded-full justify-between block m-auto" src="static/assets/equipe/Deny.svg" alt="">
+                    <span class="block mt-3 text-xl font-montserrat font-bold">Deny Martins</span>
+                    <span class="block mt-3 text-base text-[#C7BAB3] text-center font-inter font-normal">A definir</span>
                 </figure>
-                <figure>
-                    <img src="static/assets/equipe/Felipe.svg" alt="">
-                    <span class="montserrat-bold">Felipe Costa</span>
-                    <span class="funcao inter-regular">Desenvolvedor Fullstack</span>
+                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3">
+                    <img class="w-auto h-1/2 rounded-full justify-between block m-auto" src="static/assets/equipe/Felipe.svg" alt="">
+                    <span class="block mt-3 text-xl font-montserrat font-bold">Felipe Costa</span>
+                    <span class="block mt-3 text-base text-[#C7BAB3] text-center font-inter font-normal">Desenvolvedor Fullstack</span>
                 </figure>
-                <figure>
-                    <img src="static/assets/equipe/Renan.svg" alt="">
-                    <span class="montserrat-bold">Renan Neponuceno</span>
-                    <span class="funcao inter-regular">A definir</span>
+                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3">
+                    <img class="w-auto h-1/2 rounded-full justify-between block m-auto" src="static/assets/equipe/Renan.svg" alt="">
+                    <span class="block mt-3 text-xl font-montserrat font-bold">Renan Neponuceno</span>
+                    <span class="block mt-3 text-base text-[#C7BAB3] text-center font-inter font-normal">A definir</span>
                 </figure>
-                <figure>
-                    <img src="static/assets/equipe/Stefano.svg" alt="">
-                    <span class="montserrat-bold">Stefano Mendonça</span>
-                    <span class="funcao inter-regular">A definir</span>
+                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3">
+                    <img class="w-auto h-1/2 rounded-full justify-between block m-auto" src="static/assets/equipe/Stefano.svg" alt="">
+                    <span class="block mt-3 text-xl font-montserrat font-bold">Stefano Mendonça</span>
+                    <span class="block mt-3 text-base text-[#C7BAB3] text-center font-inter font-normal">A definir</span>
                 </figure>
             </div>
-            
         </section>
     </main>
+    <footer class="p-16 flex flex-col items-center gap-2 bg-[#23181A]">
+        <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
+        <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>
+    </footer>
 </body>
 </html>

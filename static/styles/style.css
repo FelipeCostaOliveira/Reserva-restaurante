@@ -1,12 +1,12 @@
 @import url('../styles/reset.css');
 @import url('../styles/media.css');
 /* estilizar */
-/* body {
+body {
     background: #1F1517 ;
     color: #FFFFFF;
-} */
+}
 
-/* nav {
+nav {
     max-width: 1240px;
     margin: auto;
     padding: 1.5rem 10rem;
@@ -23,9 +23,9 @@ nav a {
 
 nav a:hover {
     color: #A45A49;
-} */
+} 
 
-main {
+ main {
     display: flex;
     flex-direction: column;
 }
@@ -36,13 +36,6 @@ h1 {
 
 hr {
     border-color: #A45A49;
-}
-
-button {
-    border: none;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    background: #A45A49;
 }
 
 footer {
@@ -95,23 +88,24 @@ input {
     text-transform: uppercase;
 }
 
-/* .menu {
+.menu {
     display: flex;
     gap: 1.5rem;
     color: #FFF2E7;
     
-} */
+}
 
-/* .possui-conta {
+.possui-conta {
     color: #FFF2E7; 
     border: 2px solid #C7BAB3; 
     padding: 5px;
     border-radius: 10px;  
-} */
+}
 
 .principal-container {
     background: #181012;
 }
+
 
 .hero  {
     max-width: 1120px;
@@ -136,12 +130,12 @@ input {
     font-size: 1.5rem;
 }
 
-/* .hero-imagens-container {
+.hero-imagens-container {
     max-width: 50%;
     height: auto;
     column-count: 3;
 
-} */
+}
 
 .hero-imagens-container > figure > img {
     width: 100%;
