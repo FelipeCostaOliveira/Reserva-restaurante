@@ -10,16 +10,32 @@
 
 <body>
     <header>
+       <div>
         <nav class="cabecalho">
             <span class="logo teko-semibold">Landing-Page</span>
             <ul class="menu">
-                <li><a href="">Home</a></li>
-                <li><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="Equipe.html">Quem Somos?</a></li>
                 <li><a href="">Novidades</a></li>
                 <li><a href="">Melhor Avaliados</a></li>
             </ul>
-            <a href="{{url_for("login")}}" class="possui-conta inter-semibold">Já possui uma Conta?</a> 
+            <a href="login.html" class="possui-conta inter-semibold">Já possui uma Conta?</a> 
         </nav>
+
+        <nav class="cabecalho-">
+            <span class="logo teko-semibold">Landing-Page</span>
+            <input type="checkbox" id="checkbox" class="checkbox"/>
+            <label for="checkbox" class="label-menu-">Menu <span class="hamburguer"></span></label>
+            <ul class="menu-">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="Equipe.html">Quem Somos?</a></li>
+                <li><a href="">Novidades</a></li>
+                <li><a href="">Melhor Avaliados</a></li>
+            </ul>
+            <a href="login.html" class="possui-conta inter-semibold">Já possui uma Conta?</a> 
+        </nav>
+       
+       </div> 
     </header>
     <main>
         <div class="principal-container">
@@ -37,16 +53,16 @@
                         <input type="password" name="senha" required placeholder="Digite sua senha">
                         
                         <input type="submit" class="registrar-btn" value="Registrar" >
-                        {% set mensagem = get_flashed_messages()%}
-                        {% if mensagem %}
+                        <!-- {% set mensagem = get_flashed_messages()%}
+                        {% if mensagem %} -->
                         <div class="alert">
-                            {{mensagem[0]}}
+                            <!-- {{mensagem[0]}} -->
                         </div>
-                        {% endif %}
+                        <!-- {% endif %} -->
                     </form>
                     
                 </header>
-                
+            
                 <div class="hero-imagens-container">
                     <figure><img src="static/assets/main/image1.png" alt="image1"></figure>
                     <figure><img src="static/assets/main/image2.png" alt="image2"></figure>
