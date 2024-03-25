@@ -8,7 +8,7 @@
 </head>
 <body class="bg-[#1F1517] text-white">
     <header>
-        <nav class="text-white ml-10 container flex flex-row space-x-10 items-center justify-between px-20 py-4">
+        <nav class="text-white m-auto container flex flex-row space-x-10 items-center justify-between px-20 py-4">
             <span class="font-teko-semibold text-3xl">LANDING-PAGE</span>
             <ul class="flex flex-row space-x-10">
                 <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("index")}}">Home</a></li>
@@ -19,37 +19,37 @@
             <a href="{{url_for("login")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg">Já possui uma Conta?</a> 
         </nav>
     </header>
-    <main class="flex flex-col">
+    <main class="flex flex-col 2xl:mt-24">
         <section class="max-w-6xl h-1/5 flex flex-row gap-24 py-0 px-8 overflow-clip items-center">
-            <header>
+            <header class="m-auto">
                 <span class="text-[#A45A49] text-base uppercase marrom font-epilogue">Equipe</span>
-                <h1 class="text-4xl font-montserrat font-bold">Confira os autores do projeto:</h1>
-                <h2>Dê uma olhada nos membros de nossa aquipe!</h2>
+                <h1 class="text-4xl font-montserrat font-bold max-sm:text-2xl">Confira os autores do projeto:</h1>
+                <h2 class="max-sm:hidden">Dê uma olhada nos membros de nossa aquipe!</h2>
             </header>
         </section>
         <section>
-            <div class="max-w-6xl m-auto flex flex-wrap justify-center">
-                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3">
+            <div class="max-w-6xl m-auto flex flex-wrap justify-center max-sm:flex-col max-sm:items-center">
+                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3 max-sm:w-3/4">
                     <img class="w-auto h-1/2 rounded-full justify-between block m-auto" src="static/assets/equipe/Abner.svg" alt="">
                     <span class="block mt-3 text-xl font-montserrat font-bold">Abner de Oliveira</span>
                     <span class="block mt-3 text-base text-[#C7BAB3] text-center font-inter font-normal">A definir</span>
                 </figure>
-                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3">
+                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3 max-sm:w-3/4">
                     <img class="w-auto h-1/2 rounded-full justify-between block m-auto" src="static/assets/equipe/Deny.svg" alt="">
                     <span class="block mt-3 text-xl font-montserrat font-bold">Deny Martins</span>
                     <span class="block mt-3 text-base text-[#C7BAB3] text-center font-inter font-normal">A definir</span>
                 </figure>
-                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3">
+                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3 max-sm:w-3/4">
                     <img class="w-auto h-1/2 rounded-full justify-between block m-auto" src="static/assets/equipe/Felipe.svg" alt="">
                     <span class="block mt-3 text-xl font-montserrat font-bold">Felipe Costa</span>
                     <span class="block mt-3 text-base text-[#C7BAB3] text-center font-inter font-normal">Desenvolvedor Fullstack</span>
                 </figure>
-                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3">
+                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3 max-sm:w-3/4">
                     <img class="w-auto h-1/2 rounded-full justify-between block m-auto" src="static/assets/equipe/Renan.svg" alt="">
                     <span class="block mt-3 text-xl font-montserrat font-bold">Renan Neponuceno</span>
                     <span class="block mt-3 text-base text-[#C7BAB3] text-center font-inter font-normal">A definir</span>
                 </figure>
-                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3">
+                <figure class="w-1/4 mb-10 text-center bg-[#241A1C] py-8 px-0 m-3 max-sm:w-3/4">
                     <img class="w-auto h-1/2 rounded-full justify-between block m-auto" src="static/assets/equipe/Stefano.svg" alt="">
                     <span class="block mt-3 text-xl font-montserrat font-bold">Stefano Mendonça</span>
                     <span class="block mt-3 text-base text-[#C7BAB3] text-center font-inter font-normal">A definir</span>
@@ -57,7 +57,7 @@
             </div>
         </section>
     </main>
-    <footer class="p-16 flex flex-col items-center gap-2 bg-[#23181A]">
+    <footer class="fixed bottom-0 w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
         <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
         <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>
     </footer>
