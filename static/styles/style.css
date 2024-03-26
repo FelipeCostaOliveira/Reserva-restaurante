@@ -11,13 +11,9 @@ header {
     padding: 28px 8%;
 }
 
-nav {
+#navbar {
     width: 100%;
-    margin: auto;
-    gap: 48px;
-    padding: 1.5rem 10rem;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -47,6 +43,9 @@ nav {
 }
 
 nav a {
+    display: flex;
+    list-style: none;
+    gap: 48px;
     color: aliceblue;
     transition: .3s all;
 }
@@ -54,6 +53,39 @@ nav a {
 nav a:hover {
     color: #A45A49;
 } 
+
+nav a:active {
+    color: #1d1d1d;
+    border-bottom: 3px solid #ffe100;
+}
+
+#mobile-bnt {
+    display: none;
+}
+
+#mobile-menu {
+    display: none;
+}
+
+@media screen and (max-width: 1170px) {
+    nav a, 
+    nav #bnt-default {
+        display: none;
+    }
+
+    #mobile-bnt {
+        display: block;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    
+    #mobile-menu.active {
+        display: flex;
+        
+    }
+}
 
  main {
     display: flex;

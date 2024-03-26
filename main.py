@@ -11,17 +11,17 @@ app.secret_key = 'felipe'
 DBhost = 'localhost' 
 DBname = 'usuarios'
 DBuser = 'root'
-DBpassword = 'alunoifro'
+DBpassword = ''
 
 
 
-connection = database.create_server_connection(DBhost, DBuser, DBpassword)     
-query_database = f"create database {DBname}"
-database.create_database(connection, query_database, DBname)
+# connection = database.create_server_connection(DBhost, DBuser, DBpassword)     
+# query_database = f"create database {DBname}"
+# database.create_database(connection, query_database, DBname)
 # Criar Tabela
 # NameTabela = 'usuario'
-new_connection = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
-database.create_table(new_connection, 'usuario')
+# new_connection = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
+# database.create_table(new_connection, 'usuario')
 
 @app.route('/')
 def index():
