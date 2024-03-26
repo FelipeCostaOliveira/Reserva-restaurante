@@ -20,7 +20,7 @@
 
             <div class="md:hidden">
                 <button id="menubutton" type="" class="inline-flex hover:bg-[#A45A49] rounded-sm" aria-label="Menu" aria-expanded="false">
-                    <img class=" h-7 w-7" src="static/assets/menu.svg" alt="">
+                    <img id="imagem" class=" h-7 w-7" src="static/assets/menu.svg" alt="">
                 </button>
             </div>
         </nav>
@@ -38,7 +38,7 @@
         </nav>
     </header>
     <main class="flex flex-col 2xl:mt-24">
-        <section class="max-w-6xl h-1/5 flex flex-row gap-24 py-0 px-8 overflow-clip items-center">
+        <section class="max-w-6xl h-1/5 flex flex-row gap-24 py-0 px-8 overflow-clip items-center max-lg:py-20">
             <header class="m-auto">
                 <span class="text-[#A45A49] text-base uppercase marrom font-epilogue">Equipe</span>
                 <h1 class="text-4xl font-montserrat font-bold max-sm:text-2xl">Confira os autores do projeto:</h1>
@@ -75,17 +75,25 @@
             </div>
         </section>
     </main>
-    <footer class="w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
+    <footer class="absolute bottom-0 w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
         <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
         <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>
     </footer>
     <script>
         const btn = document.getElementById("menubutton")
         const menu = document.getElementById("menu")
+        const Minhaimagem = document.getElementById("imagem")
 
         btn.addEventListener("click", () => {
-            menu.classList.toggle("hidden")
-            menu.classList.add("bg-tranparent")
+            if(menu.classList.contains("hidden")){
+                menu.classList.toggle("hidden")
+                menu.classList.add("bg-tranparent")
+                Minhaimagem.src="static/assets/cancel.svg"
+            }else{
+                menu.classList.add("hidden")
+                imagem.src="static/assets/menu.svg"
+            }
+            
         })
     </script>
 </body>

@@ -24,12 +24,12 @@
 
             <div class="md:hidden">
                 <button id="menubutton" type="" class="inline-flex hover:bg-[#A45A49] rounded-sm" aria-label="Menu" aria-expanded="false">
-                    <img class=" h-7 w-7" src="static/assets/menu.svg" alt="">
+                    <img id="imagem" class=" h-7 w-7" src="static/assets/menu.svg" alt="">
                 </button>
             </div>
         </nav>
 
-        <nav id="menu" class="hidden text-white m-auto container flex-col space-x-10  justify-between py-1">
+        <nav id="menu" class="hidden text-white m-auto container flex-col space-x-10 justify-start py-1">
             <span class="font-teko-semibold text-3xl max-md:hidden">LANDING-PAGE</span>
             <ul class="flex flex-col items-center justify-self-start">
                 <li class=" hover:text-[#A45A49] font-bold"><a href="">Home</a></li>
@@ -44,7 +44,7 @@
     </header>
     <main>
         <div class="bg-[#181012]">
-            <section class="container max-w-6xl h-3/4 flex flex-row justify-between gap-24 py-10 px-8 m-auto items-center max-xl:max-w-md max-md:h-4/6 max-md:flex max-md:flex-row max-md:justify-between max-md:gap-1 max-md:py-0 max-md:px-8 max-md:m-auto max-md:items-center">
+            <section class="container max-w-6xl h-3/4 flex flex-row justify-between gap-24 py-10 px-8 m-auto items-center max-xl:max-w-md  max-md:h-full max-md:flex max-md:flex-row max-md:justify-between max-md:gap-1 max-md:py-5 max-md:px-8 max-md:m-auto max-md:items-center">
                 <header class="ml-10 max-md:inline-block max-md:flex-column max-md:text-xs">
                     <span class="text-[#A45A49] text-base font-epilogue">AGENDE SEU HORÁRIO</span>
                     <h1 class="text-white font-montserrat">Faça Seu Registro!</h1>
@@ -155,10 +155,18 @@
     <script>
         const btn = document.getElementById("menubutton")
         const menu = document.getElementById("menu")
+        const Minhaimagem = document.getElementById("imagem")
 
         btn.addEventListener("click", () => {
-            menu.classList.toggle("hidden")
-            menu.classList.add("bg-[#181012]")
+            if(menu.classList.contains("hidden")){
+                menu.classList.toggle("hidden")
+                menu.classList.add("bg-tranparent")
+                Minhaimagem.src="static/assets/cancel.svg"
+            }else{
+                menu.classList.add("hidden")
+                imagem.src="static/assets/menu.svg"
+            }
+            
         })
     </script>
 </body>
