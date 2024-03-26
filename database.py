@@ -1,5 +1,4 @@
 from mysql.connector import Error
-import pandas as pd
 import mysql.connector
 
 def create_server_connection(host_name, user_name, user_password):

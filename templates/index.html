@@ -3,6 +3,8 @@
 <head>
     <link rel="stylesheet" href="static/styles/output.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Teko:wght@300..700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="static/styles/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing-Page</title>
@@ -12,22 +14,41 @@
 
 <body class="bg-[#1F1517] ">
     <header>
-        <nav class="text-white m-auto container flex flex-row space-x-10 items-center justify-between px-20 py-4">
-            <span class="font-teko-semibold text-3xl">LANDING-PAGE</span>
-            <ul class="flex flex-row space-x-10">
-                <li class=" hover:text-[#A45A49] font-bold"><a href="">Home</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="">Novidades</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="">Melhor Avaliados</a></li>
+        <nav id = "navbar" class="text-white m-auto container flex flex-row space-x-10 items-center justify-between px-20 py-4">
+            <i class="fa-solid fa-burger" id = "nav_logo"> food</i>
+            <ul id = "nav_list" class="flex flex-row space-x-10">
+                <li id = "nav-item" class=" hover:text-[#A45A49] font-bold"><a href="">Home</a></li>
+                <li id = "nav-item" class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
+                <li id = "nav-item" class="hover:text-[#A45A49] font-bold"><a href="">Novidades</a></li>
+                <li id = "nav-item" class="hover:text-[#A45A49] font-bold"><a href="">Melhor Avaliados</a></li>
             </ul>
             <a href="{{url_for("login")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg">Já possui uma Conta?</a> 
+            <button id= "bnt-default">
+                AGENDE SEU HORÁRIO
+            </button>
+
+            <button id= "mobile-bnt">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </nav>
+        <div id = "mobile-menu">
+            <ul id = "nav_list" class="flex flex-row space-x-10">
+                <li id = "nav-item" class=" hover:text-[#A45A49] font-bold"><a href="">Home</a></li>
+                <li id = "nav-item" class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
+                <li id = "nav-item" class="hover:text-[#A45A49] font-bold"><a href="">Novidades</a></li>
+                <li id = "nav-item" class="hover:text-[#A45A49] font-bold"><a href="">Melhor Avaliados</a></li>
+            </ul>
+            <a href="{{url_for("login")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg">Já possui uma Conta?</a> 
+            <button id= "bnt-default">
+                AGENDE SEU HORÁRIO
+            </button>
+        </div>
+
     </header>
     <main>
         <div class="bg-[#181012]">
             <section class="container max-w-6xl h-3/4 flex flex-row justify-between gap-24 py-10 px-8 m-auto items-center max-xl:max-w-md max-md:h-4/6 max-md:flex max-md:flex-row max-md:justify-between max-md:gap-1 max-md:py-0 max-md:px-8 max-md:m-auto max-md:items-center">
                 <header class="ml-10 max-md:inline-block max-md:flex-column max-md:text-xs">
-                    <span class="text-[#A45A49] text-base font-epilogue">AGENDE SEU HORÁRIO</span>
                     <h1 class="text-white font-montserrat">Faça Seu Registro!</h1>
                     <hr>
                     <h2 class="text-base text-white font-inter font-thin">Registre-se para agendar sua reserva</h2>

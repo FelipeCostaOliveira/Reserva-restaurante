@@ -6,14 +6,44 @@ body {
     color: #FFFFFF;
 }
 
+header {
+    width: 100%;
+    padding: 28px 8%;
+}
+
 nav {
-    max-width: 1240px;
+    width: 100%;
     margin: auto;
+    gap: 48px;
     padding: 1.5rem 10rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+#nav_logo {
+    font-size: 24px;
+    color: #A45A49;
+}
+
+#bnt-default {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffcb45;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 600;
+    box-shadow: 0px 0px 10px 2px;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+#bnt-default:hover {
+    background-color: #f8d477;
+   
 }
 
 nav a {
