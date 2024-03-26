@@ -8,15 +8,33 @@
 </head>
 <body class="bg-[#1F1517] text-white">
     <header>
-        <nav class="text-white m-auto container flex flex-row space-x-10 items-center justify-between px-20 py-4">
-            <span class="font-teko-semibold text-3xl">LANDING-PAGE</span>
-            <ul class="flex flex-row space-x-10">
+        <nav class="text-white m-auto container flex flex-row space-x-10 items-center justify-between px-20 py-4 max-md:flex-col max-md:text-sm max-md:items-end max-md:-mr-12 max-md:py-1 max-lg:px-0 max-md:px-14 max-lg:space-x-3 max-lg:text-sm">
+            <span class="font-teko-semibold text-3xl max-md:hidden items-center max-lg:hidden">LANDING-PAGE</span>
+            <ul class="flex flex-row space-x-10 max-md:hidden ">
                 <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("index")}}">Home</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="">Novidades</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="">Melhor Avaliados</a></li>
             </ul>
-            <a href="{{url_for("login")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg">Já possui uma Conta?</a> 
+            <a href="{{url_for("login")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg max-md:hidden">Já possui uma Conta?</a> 
+
+            <div class="md:hidden">
+                <button id="menubutton" type="" class="inline-flex hover:bg-[#A45A49] rounded-sm" aria-label="Menu" aria-expanded="false">
+                    <img class=" h-7 w-7" src="static/assets/menu.svg" alt="">
+                </button>
+            </div>
+        </nav>
+
+        <nav id="menu" class="hidden text-white m-auto container flex-col space-x-10  justify-between py-1">
+            <span class="font-teko-semibold text-3xl max-md:hidden">LANDING-PAGE</span>
+            <ul class="flex flex-col items-center ">
+                <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("index")}}">Home</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="">Novidades</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="">Melhor Avaliados</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for("login")}}">Log in</a></li>
+            </ul>
+            
         </nav>
     </header>
     <main class="flex flex-col 2xl:mt-24">
@@ -57,9 +75,18 @@
             </div>
         </section>
     </main>
-    <footer class="fixed bottom-0 w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
+    <footer class="w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
         <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
         <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>
     </footer>
+    <script>
+        const btn = document.getElementById("menubutton")
+        const menu = document.getElementById("menu")
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden")
+            menu.classList.add("bg-tranparent")
+        })
+    </script>
 </body>
 </html>
