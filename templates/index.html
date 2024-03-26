@@ -12,16 +12,22 @@
 
 <body class="bg-[#1F1517] ">
     <header>
-        <nav class="text-white m-auto container flex flex-row space-x-10 items-center justify-between px-20 py-4">
-            <span class="font-teko-semibold text-3xl">LANDING-PAGE</span>
-            <ul class="flex flex-row space-x-10">
+        <nav class="text-white m-auto container flex flex-row space-x-10 items-center justify-between px-20 py-4 max-xl:flex-col max-xl:text-sm max-xl:items-end -mr-7">
+            <span class="font-teko-semibold text-3xl max-xl:hidden">LANDING-PAGE</span>
+            <ul class="flex flex-row space-x-10 max-xl:hidden">
                 <li class=" hover:text-[#A45A49] font-bold"><a href="">Home</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="">Novidades</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="">Melhor Avaliados</a></li>
             </ul>
-            <a href="{{url_for("login")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg">Já possui uma Conta?</a> 
+            <a href="{{url_for("login")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg max-xl:hidden">Já possui uma Conta?</a> 
+            <div class="xl:hidden">
+                <button id="menubutton" type="" class="inline-flex hover:bg-red-300" aria-label="Menu" aria-expanded="false">
+                    <img class=" h-20 w-20" src="static/assets/menu.svg" alt="">
+                </button>
+            </div>
         </nav>
+        
     </header>
     <main>
         <div class="bg-[#181012]">
@@ -133,5 +139,13 @@
         <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
         <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>
     </footer>
+    <script>
+        const btn = document.getElementById("menubutton")
+        const menu = document.getElementById("menu")
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden")
+        })
+    </script>
 </body>
 </html>
