@@ -11,7 +11,7 @@ app.secret_key = 'felipe'
 DBhost = 'localhost' 
 DBname = 'usuarios'
 DBuser = 'root'
-DBpassword = ''
+DBpassword = 'alunoifro'
 
 
 
@@ -40,7 +40,7 @@ def login():
 @app.route('/home', methods=["POST"])
 def home():
     email = request.form.get("email")
-    senha = request.form.get("senha")
+    senha = request.form.get("password")
     connectBD = mysql.connector.connect(
         host=DBhost,
         database='usuarios',
@@ -68,7 +68,7 @@ def home():
 def cadastrarUsuario():
     user = []
     email = request.form.get('email')
-    senha = request.form.get('senha')   
+    senha = request.form.get('password')   
     connectBD = mysql.connector.connect(
         host=DBhost,
         database='usuarios',
@@ -104,19 +104,7 @@ def cadastrarUsuario():
         cursor.close()
         connectBD.close()
     
-    # user = [
-    #     {
-    #         "email" : email,
-    #         "senha" : senha,
-            
-    #     }
-    # ]
-    # with open('users.json') as usersTemp:
-    #     usuarios = json.load(usersTemp)
-    # usuarioNovo = user + usuarios
-    # with open('users.json', 'w') as gravarTemp:
-    #     json.dump(usuarioNovo, gravarTemp, indent=4)      
-    # return render_template('home.html')  
+
         
 if __name__ in "__main__":
     app.run(debug=True)
