@@ -715,10 +715,6 @@ video {
   align-items: center;
 }
 
-.justify-start {
-  justify-content: flex-start;
-}
-
 .justify-center {
   justify-content: center;
 }
@@ -749,10 +745,6 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
-}
-
-.justify-self-start {
-  justify-self: start;
 }
 
 .overflow-clip {
@@ -806,6 +798,10 @@ video {
 .bg-\[\#A45A49\] {
   --tw-bg-opacity: 1;
   background-color: rgb(164 90 73 / var(--tw-bg-opacity));
+}
+
+.bg-transparent {
+  background-color: transparent;
 }
 
 .p-16 {
@@ -1002,47 +998,6 @@ video {
     display: none;
   }
 
-  .max-lg\:h-36 {
-    height: 9rem;
-  }
-
-  .max-lg\:h-full {
-    height: 100%;
-  }
-
-  .max-lg\:h-96 {
-    height: 24rem;
-  }
-
-  .max-lg\:h-screen {
-    height: 100vh;
-  }
-
-  .max-lg\:h-max {
-    height: -moz-max-content;
-    height: max-content;
-  }
-
-  .max-lg\:h-svh {
-    height: 100svh;
-  }
-
-  .max-lg\:h-\[\] {
-    height: ;
-  }
-
-  .max-lg\:h-\[80vh\] {
-    height: 80vh;
-  }
-
-  .max-lg\:h-\[60vh\] {
-    height: 60vh;
-  }
-
-  .max-lg\:h-\[50vh\] {
-    height: 50vh;
-  }
-
   .max-lg\:space-x-3 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(0.75rem * var(--tw-space-x-reverse));
@@ -1052,11 +1007,6 @@ video {
   .max-lg\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
-  }
-
-  .max-lg\:py-6 {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
   }
 
   .max-lg\:py-20 {
@@ -1093,14 +1043,6 @@ video {
 
   .max-md\:hidden {
     display: none;
-  }
-
-  .max-md\:h-4\/6 {
-    height: 66.666667%;
-  }
-
-  .max-md\:h-5\/6 {
-    height: 83.333333%;
   }
 
   .max-md\:h-full {
@@ -1153,19 +1095,9 @@ video {
     padding-right: 2rem;
   }
 
-  .max-md\:py-0 {
-    padding-top: 0px;
-    padding-bottom: 0px;
-  }
-
   .max-md\:py-1 {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
-  }
-
-  .max-md\:py-10 {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
   }
 
   .max-md\:py-5 {
