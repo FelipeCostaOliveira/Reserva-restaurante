@@ -31,7 +31,7 @@
 
         <nav id="menu" class="hidden text-white m-auto container flex-col space-x-10 py-1">
             <ul class="flex flex-col items-center">
-                <li class="hover:text-[#A45A49] font-bold"><a href="">Home</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for("index")}}">Home</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="">Novidades</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="">Melhor Avaliados</a></li>
@@ -40,10 +40,33 @@
             
         </nav>  
     </header>
-    <main  class="flex flex-col 2xl:mt-24 items-center">
-        <h1 class="font-inter font-bold text-3xl text-white">Modelo Entidade Relacional (MER)</h1>
-        <div class="bg-[#302225] mt-5 p-20">
-            
+    <main  class="flex flex-col 2xl:mt-16 items-center max-lg:mt-20">
+        <h1 class="font-inter font-bold text-3xl text-white mt-4 text-center">Modelo Entidade Relacional (MER)</h1>
+        <div class="border-4 border-[#302225] rounded-lg mt-10 p-10 max-lg:p-4 max-md:border-none max-md:mt-0">
+            <img class="h-[60vh] " src="static/assets/diagrama.svg" alt="">
         </div>
     </main>
+
+    <script>
+        const btn = document.getElementById("menubutton")
+        const menu = document.getElementById("menu")
+        const Minhaimagem = document.getElementById("imagem")
+        btn.addEventListener("click", () => {
+            if(menu.classList.contains("hidden")){
+                menu.classList.toggle("hidden")
+                Minhaimagem.src="static/assets/cancel.svg"
+            }else{
+                menu.classList.add("hidden")
+                imagem.src="static/assets/menu.svg"
+            }
+            
+        })
+
+        document.addEventListener("click", (event)=>{
+            if (!menu.contains(event.target) && !btn.contains(event.target)){
+                menu.classList.add("hidden")
+                imagem.src="static/assets/menu.svg"
+            }
+        })
+    </script>
 </body>
