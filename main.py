@@ -11,7 +11,7 @@ app.secret_key = 'felipe'
 DBhost = 'localhost' 
 DBname = 'usuarios'
 DBuser = 'root'
-DBpassword = ''
+DBpassword = 'root'
 
 
 
@@ -38,6 +38,10 @@ def login():
 @app.route('/modelos')
 def modelos():
     return render_template('modelos.html')
+
+@app.route('/requisitos')
+def requisitos():
+    return render_template('requisitos.html')
 
 # Autenticar Usuário
 @app.route('/home', methods=["POST"])
