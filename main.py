@@ -14,14 +14,14 @@ DBuser = 'root'
 DBpassword = 'root'
 
 
-
-connection = database.create_server_connection(DBhost, DBuser, DBpassword)     
-query_database = f"create database {DBname}"
-database.create_database(connection, query_database, DBname)
+# CRIAR TABELA DE BANCO DE DADOS
+# connection = database.create_server_connection(DBhost, DBuser, DBpassword)     
+# query_database = f"create database {DBname}"
+# database.create_database(connection, query_database, DBname)
 # Criar Tabela
 # NameTabela = 'usuario'
-new_connection = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
-database.create_table(new_connection, 'usuario')
+# new_connection = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
+# database.create_table(new_connection, 'usuario')
 
 @app.route('/')
 def index():
