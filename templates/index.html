@@ -117,29 +117,6 @@
         <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
         <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>
     </footer>
-    <script>
-        const btn = document.getElementById("menubutton")
-        const menu = document.getElementById("menu")
-        const Minhaimagem = document.getElementById("imagem")
-
-        btn.addEventListener("click", () => {
-            if(menu.classList.contains("hidden")){
-                menu.classList.toggle("hidden")
-                menu.classList.add("bg-[#181012]")
-                Minhaimagem.src="static/assets/cancel.svg"
-            }else{
-                menu.classList.add("hidden")
-                imagem.src="static/assets/menu.svg"
-            }
-            
-        })
-
-        document.addEventListener("click", (event)=>{
-            if (!menu.contains(event.target) && !btn.contains(event.target)){
-                menu.classList.add("hidden")
-                imagem.src="static/assets/menu.svg"
-            }
-        })
-    </script>
+    <script src="static/scripts/ResponsiveNavbar.js"></script>
 </body>
 </html>

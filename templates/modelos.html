@@ -46,27 +46,5 @@
             <img class="h-[60vh] max-md:w-screen" src="static/assets/diagrama.svg" alt="">
         </div>
     </main>
-
-    <script>
-        const btn = document.getElementById("menubutton")
-        const menu = document.getElementById("menu")
-        const Minhaimagem = document.getElementById("imagem")
-        btn.addEventListener("click", () => {
-            if(menu.classList.contains("hidden")){
-                menu.classList.toggle("hidden")
-                Minhaimagem.src="static/assets/cancel.svg"
-            }else{
-                menu.classList.add("hidden")
-                imagem.src="static/assets/menu.svg"
-            }
-            
-        })
-
-        document.addEventListener("click", (event)=>{
-            if (!menu.contains(event.target) && !btn.contains(event.target)){
-                menu.classList.add("hidden")
-                imagem.src="static/assets/menu.svg"
-            }
-        })
-    </script>
+    <script src="static/scripts/ResponsiveNavbar.js"></script>
 </body>
