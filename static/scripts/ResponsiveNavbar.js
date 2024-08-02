@@ -12,3 +12,19 @@ btn.addEventListener("click", () => {
         Minhaimagem.src = "static/assets/menu.svg";
     }
 });
+
+$(document).ready(function() {
+    // Obtém o caminho da URL atual
+    var currentPath = window.location.pathname;
+    
+    // Itera sobre cada link no menu
+    $('ul li a').each(function() {
+        // Obtém o caminho do href do link
+        var linkPath = $(this).attr('href');
+        
+        // Verifica se o caminho do href corresponde ao caminho atual
+        if (currentPath === linkPath) {
+            $(this).parent().addClass('text-yellow-400');
+        }
+    });
+});
