@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing-Page</title>
     <meta name="description" content="Descrição">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body class="bg-[#1F1517] ">
     <header>
@@ -15,8 +17,8 @@
             <ul class="flex flex-row space-x-10 max-md:hidden ">
                 <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("index")}}">Home</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("modelos")}}">Modelos</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="">Requisitos</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for("modelos")}}">Modelos</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for("requisitos")}}">Requisitos</a></li>
             </ul>
             <a href="{{url_for("login")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg max-md:hidden">Já possui uma Conta?</a> 
             <div class="md:hidden">
@@ -79,5 +81,5 @@
             </div>
         </section>
     </main>
-    <script src="static/scripts/ResponsiveNavbar.js"></script
+    <script src="static/scripts/ResponsiveNavbar.js"></script>
 </body>

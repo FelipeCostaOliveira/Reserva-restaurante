@@ -21,6 +21,7 @@ $(document).ready(function() {
     $('ul li a').each(function() {
         // Obtém o caminho do href do link
         var linkPath = $(this).attr('href');
+        console.log(linkPath);
         
         // Verifica se o caminho do href corresponde ao caminho atual
         if (currentPath === linkPath) {
