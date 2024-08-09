@@ -47,7 +47,7 @@ def requisitos():
 @app.route('/home', methods=["POST"])
 def home():
     email = request.form.get("email")
-    senha = request.form.get("senha")
+    senha = request.form.get("password")
     connectBD = mysql.connector.connect(
         host=DBhost,
         database='usuarios',
