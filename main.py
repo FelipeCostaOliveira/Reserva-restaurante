@@ -60,16 +60,8 @@ def home():
         cursor.execute('select * from usuario;')
         usuariosBD = cursor.fetchall()
         for usuario in usuariosBD:
-            email = request.form.get('email')
-            senha = request.form.get('senha')   
-            
             usuarioEmail = usuario[1]
             usuarioSenha = usuario[2]
-            print(f'usuario {usuario}')
-            print(f'senha {senha}')
-            print (usuarioEmail)
-            print(usuarioSenha)
-
             contador += 1
             
             if usuarioEmail == email and usuarioSenha == senha:
@@ -83,7 +75,7 @@ def home():
 def cadastrarUsuario():
     user = []
     email = request.form.get('email')
-    senha = request.form.get('senha')   
+    senha = request.form.get('password')   
     connectBD = mysql.connector.connect(
         host=DBhost,
         database='usuarios',
