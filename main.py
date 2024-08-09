@@ -11,7 +11,7 @@ app.secret_key = 'felipe'
 DBhost = 'localhost' 
 DBname = 'usuarios'
 DBuser = 'root'
-DBpassword = 'root'
+DBpassword = 'alunoifro'
 
 
 # CRIAR TABELA DE BANCO DE DADOS
@@ -43,11 +43,15 @@ def modelos():
 def requisitos():
     return render_template('requisitos.html')
 
+@app.route('/reserva')
+def reserva():
+    return render_template('ReservaPage.html')
+
 # Autenticar Usuário
 @app.route('/home', methods=["POST"])
 def home():
     email = request.form.get("email")
-    senha = request.form.get("password")
+    senha = request.form.get("senha")
     connectBD = mysql.connector.connect(
         host=DBhost,
         database='usuarios',
