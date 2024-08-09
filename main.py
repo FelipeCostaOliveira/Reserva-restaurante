@@ -11,7 +11,7 @@ app.secret_key = 'felipe'
 DBhost = 'localhost' 
 DBname = 'usuarios'
 DBuser = 'root'
-DBpassword = 'root'
+DBpassword = 'alunoifro'
 
 
 # CRIAR TABELA DE BANCO DE DADOS
@@ -47,7 +47,7 @@ def requisitos():
 @app.route('/home', methods=["POST"])
 def home():
     email = request.form.get("email")
-    senha = request.form.get("password")
+    senha = request.form.get("senha")
     connectBD = mysql.connector.connect(
         host=DBhost,
         database='usuarios',
@@ -60,8 +60,16 @@ def home():
         cursor.execute('select * from usuario;')
         usuariosBD = cursor.fetchall()
         for usuario in usuariosBD:
+            email = request.form.get('email')
+            senha = request.form.get('senha')   
+            
             usuarioEmail = usuario[1]
             usuarioSenha = usuario[2]
+            print(f'usuario {usuario}')
+            print(f'senha {senha}')
+            print (usuarioEmail)
+            print(usuarioSenha)
+
             contador += 1
             
             if usuarioEmail == email and usuarioSenha == senha:
@@ -75,7 +83,7 @@ def home():
 def cadastrarUsuario():
     user = []
     email = request.form.get('email')
-    senha = request.form.get('password')   
+    senha = request.form.get('senha')   
     connectBD = mysql.connector.connect(
         host=DBhost,
         database='usuarios',
