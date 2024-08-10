@@ -47,6 +47,10 @@ def requisitos():
 def reserva():
     return render_template('ReservaPage.html')
 
+@app.route('/RealizarReserva')
+def realizar_reserva():
+    return render_template('RealizarReserva.html')
+
 # Autenticar Usuário
 @app.route('/home', methods=["POST"])
 def home():
