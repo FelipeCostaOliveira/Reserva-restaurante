@@ -47,7 +47,7 @@ def requisitos():
 @app.route('/home', methods=["POST"])
 def home():
     email = request.form.get("email")
-    senha = request.form.get("password")
+    senha = request.form.get("senha")
     connectBD = mysql.connector.connect(
         host=DBhost,
         database='usuarios',
@@ -106,12 +106,12 @@ def cadastrarUsuario():
                     cursor.execute(query, dados)
                     connectBD.commit()
                     return render_template('home.html')
+                    
 
     if connectBD.is_connected():
         cursor.close()
         connectBD.close()
     
 
-        
 if __name__ in "__main__":
     app.run(debug=True)
