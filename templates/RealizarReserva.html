@@ -6,7 +6,6 @@
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 </head>
 <body class="bg-[#181012]">
     <div class="flex flex-col">
@@ -15,38 +14,54 @@
         </div>
         <div class="flex items-center justify-center px-4 sm:px-8 lg:px-12 w-full">
             <div class="flex flex-col w-full max-w-4xl bg-white p-4 rounded-md">
-                <a href="{{url_for("reserva")}}" class="flex justify-end">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="size-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                <a href="{{url_for('reserva')}}" class="flex justify-end">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </a>
-                
-                <div>                                  
-                    <div class="flex flex-col">
+                <div class="flex flex-col w-full">
+                    <div class="flex flex-col mb-4">
                         <h1 class="text-2xl text-gray-900">Faça já sua reserva</h1>
-                        <h2 class="text-gray-400"> Encontre sua reserva ideal </h2>
-                    </div> 
-                    <div>
-                        <h1 class="font-medium">Pessoas</h1>
-                        <div class="bg-gray-200 px-6 py-4 rounded-md text-gray-500">Escolha a quantidade de pessoas</div>
+                        <h2 class="text-gray-400">Encontre sua reserva ideal</h2>
                     </div>
-                    <div>
-                        <h1 class="font-medium">Data</h1>
-                        <div class="bg-gray-200 px-6 py-4 rounded-md text-gray-500">Escolha a data da reserva</div>
+                    <div class="flex flex-col mb-4">
+                        <label for="pessoas" class="font-medium text-gray-700">Pessoas</label>
+                        <input
+                            id="pessoas"
+                            type="number"
+                            name="Pessoas"
+                            class="bg-gray-200 px-4 py-2 rounded-md text-gray-500 w-full"
+                            placeholder="Escolha a quantidade de pessoas"
+                        />
                     </div>
-                    <div>
-                        <h1 class="font-medium">Horário</h1>
-                        <div class="bg-gray-200 px-6 py-4 rounded-md text-gray-500">Escolha o horário de sua reserva</div>
+                    <div class="flex flex-col mb-4">
+                        <label for="data" class="font-medium text-gray-700">Data</label>
+                        <input
+                            id="data"
+                            type="date"
+                            name="Data"
+                            class="bg-gray-200 px-4 py-2 rounded-md text-gray-500 w-full"
+                            placeholder="Escolha a data da reserva"
+                        />
+                    </div>
+                    <div class="flex flex-col mb-4">
+                        <label for="horario" class="font-medium text-gray-700">Horário</label>
+                        <input
+                            id="horario"
+                            type="time"
+                            name="Horario"
+                            class="bg-gray-200 px-4 py-2 rounded-md text-gray-500 w-full"
+                            placeholder="Escolha o horário de sua reserva"
+                        />
                     </div>
                 </div>
                 <a class="flex items-center justify-center cursor-pointer">
-                    <div class="flex mt-6 w-4/5 bg-red-500 rounded-md text-white px-4 py-2 justify-center">
+                    <div class="flex mt-6 w-full bg-red-500 rounded-md text-white px-4 py-2 justify-center">
                         <h1 class="text-xl">Finalizar reserva</h1>
-                    </div> 
+                    </div>
                 </a>
-                
-            </div>  
-        </div>           
+            </div>
+        </div>
     </div>
 </body>
 </html>
