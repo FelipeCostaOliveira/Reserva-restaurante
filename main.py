@@ -110,7 +110,10 @@ def cadastrarUsuario():
     if connectBD.is_connected():
         cursor.close()
         connectBD.close()
-    
+
+@app.route('/novidades')
+def novidades():
+    return render_template('novidades.html') 
 
         
 if __name__ in "__main__":
