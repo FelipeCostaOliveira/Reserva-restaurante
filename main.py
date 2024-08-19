@@ -43,11 +43,19 @@ def modelos():
 def requisitos():
     return render_template('requisitos.html')
 
+@app.route('/reserva')
+def reserva():
+    return render_template('ReservaPage.html')
+
+@app.route('/RealizarReserva')
+def realizar_reserva():
+    return render_template('RealizarReserva.html')
+
 # Autenticar Usuário
 @app.route('/home', methods=["POST"])
 def home():
     email = request.form.get("email")
-    senha = request.form.get("password")
+    senha = request.form.get("senha")
     connectBD = mysql.connector.connect(
         host=DBhost,
         database='usuarios',
