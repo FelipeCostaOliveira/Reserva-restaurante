@@ -11,7 +11,7 @@ app.secret_key = 'felipe'
 DBhost = 'localhost' 
 DBname = 'usuarios'
 DBuser = 'root'
-DBpassword = 'alunoifro'
+DBpassword = ''
 
 
 # CRIAR TABELA DE BANCO DE DADOS
@@ -42,6 +42,14 @@ def modelos():
 @app.route('/requisitos')
 def requisitos():
     return render_template('requisitos.html')
+
+@app.route('/reserva')
+def reserva():
+    return render_template('ReservaPage.html')
+
+@app.route('/RealizarReserva')
+def realizar_reserva():
+    return render_template('RealizarReserva.html')
 
 # Autenticar Usuário
 @app.route('/home', methods=["POST"])
@@ -111,7 +119,10 @@ def cadastrarUsuario():
     if connectBD.is_connected():
         cursor.close()
         connectBD.close()
-    
+
+@app.route('/novidades')
+def novidades():
+    return render_template('novidades.html') 
 
 if __name__ in "__main__":
     app.run(debug=True)
