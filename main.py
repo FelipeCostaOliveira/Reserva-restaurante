@@ -11,7 +11,7 @@ app.secret_key = 'felipe'
 DBhost = 'localhost' 
 DBname = 'usuarios'
 DBuser = 'root'
-DBpassword = 'alunoifro'
+DBpassword = ''
 
 
 # CRIAR TABELA DE BANCO DE DADOS
