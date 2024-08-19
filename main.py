@@ -35,6 +35,10 @@ def equipe():
 def login():
     return render_template('login.html')
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
 @app.route('/modelos')
 def modelos():
     return render_template('modelos.html')
@@ -52,8 +56,8 @@ def realizar_reserva():
     return render_template('RealizarReserva.html')
 
 # Autenticar Usuário
-@app.route('/home', methods=["POST"])
-def home():
+@app.route('/autenticarUsuario', methods=["POST"])
+def autenticarUsuario():
     email = request.form.get("email")
     senha = request.form.get("senha")
     connectBD = mysql.connector.connect(
@@ -73,7 +77,7 @@ def home():
             contador += 1
             
             if usuarioEmail == email and usuarioSenha == senha:
-                return render_template("home.html")
+                return redirect('/home')
                     
             if contador >= len(usuariosBD):
                 flash('Usuário Inválido')
@@ -113,7 +117,7 @@ def cadastrarUsuario():
                     query = "insert into usuario values (default, %s, %s);"
                     cursor.execute(query, dados)
                     connectBD.commit()
-                    return render_template('home.html')
+                    return redirect('/home')
 
     if connectBD.is_connected():
         cursor.close()
