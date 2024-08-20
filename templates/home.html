@@ -132,55 +132,66 @@
             <span class="flex ml-24 mt-16 items-center text-white capitalize text-xl font-bold">
                 restaurantes disponíveis
             </span>
-            <h2 class="grid grid-cols-4 gap-2 m-2 capitalize">
-                <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">bella pizza</p>
-                    <p class="text-xs text-white">pizzaria</p>
-                    <p class="text-xs text-gray-500">3.95 km</p>
-                </div>
-                <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/boiNaBrasa.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">boi na brasa</p>
-                    <p class="text-xs text-white">restaurante</p>
-                    <p class="text-xs text-gray-500">3.87 km</p>
-                </div>
-                <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/bomPrato.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">bom prato</p>
-                    <p class="text-xs text-white">restaurante</p>
-                    <p class="text-xs text-gray-500">7.54 km</p>
-                </div>
-                <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/restauranteDaFamilia.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">restaurante da família</p>
-                    <p class="text-xs text-white">restaurante</p>
-                    <p class="text-xs text-gray-500">1.25 km</p>
-                </div>
-                <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/restauranteIgarape.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">restaurante igarapé</p>
-                    <p class="text-xs text-white">restaurante</p>
-                    <p class="text-xs text-gray-500">2.96 km</p>
-                </div>
-                <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/restauranteMacaxeira.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">restaurante macaxeira</p>
-                    <p class="text-xs text-white">restaurante</p>
-                    <p class="text-xs text-gray-500">4.55 km</p>
-                </div>
-                <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/pescadorRestaurante.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">pescador restaurante</p>
-                    <p class="text-xs text-white">restaurante</p>
-                    <p class="text-xs text-gray-500">5.75 km</p>
-                </div>
-                <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/restauranteNorteSul.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">restaurante norte sul</p>
-                    <p class="text-xs text-white">restaurante</p>
-                    <p class="text-xs text-gray-500">8.01 km</p>
-                </div>
+            <h2 >
+                <form action="/reserva" method="GET" class="grid grid-cols-4 gap-2 m-2 capitalize">
+                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                        <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt="bellaPizza"/>
+                        <p class="text-sm text-yellow-500">bella pizza</p>
+                        <p class="text-xs text-white">pizzaria</p>
+                        <p class="text-xs text-gray-500">3.95 km</p>
+                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                    </div>
+                
+                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                        <img src="static/assets/restaurantes/disponiveis/boiNaBrasa.svg" alt=""/>
+                        <p class="text-sm text-yellow-500">boi na brasa</p>
+                        <p class="text-xs text-white">restaurante</p>
+                        <p class="text-xs text-gray-500">3.87 km</p>
+                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                    </div>
+                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                        <img src="static/assets/restaurantes/disponiveis/bomPrato.svg" alt=""/>
+                        <p class="text-sm text-yellow-500">bom prato</p>
+                        <p class="text-xs text-white">restaurante</p>
+                        <p class="text-xs text-gray-500">7.54 km</p>
+                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                    </div>
+                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                        <img src="static/assets/restaurantes/disponiveis/restauranteDaFamilia.svg" alt=""/>
+                        <p class="text-sm text-yellow-500">restaurante da família</p>
+                        <p class="text-xs text-white">restaurante</p>
+                        <p class="text-xs text-gray-500">1.25 km</p>
+                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                    </div>
+                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                        <img src="static/assets/restaurantes/disponiveis/restauranteIgarape.svg" alt=""/>
+                        <p class="text-sm text-yellow-500">restaurante igarapé</p>
+                        <p class="text-xs text-white">restaurante</p>
+                        <p class="text-xs text-gray-500">2.96 km</p>
+                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                    </div>
+                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                        <img src="static/assets/restaurantes/disponiveis/restauranteMacaxeira.svg" alt=""/>
+                        <p class="text-sm text-yellow-500">restaurante macaxeira</p>
+                        <p class="text-xs text-white">restaurante</p>
+                        <p class="text-xs text-gray-500">4.55 km</p>
+                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                    </div>
+                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                        <img src="static/assets/restaurantes/disponiveis/pescadorRestaurante.svg" alt=""/>
+                        <p class="text-sm text-yellow-500">pescador restaurante</p>
+                        <p class="text-xs text-white">restaurante</p>
+                        <p class="text-xs text-gray-500">5.75 km</p>
+                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                    </div>
+                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                        <img src="static/assets/restaurantes/disponiveis/restauranteNorteSul.svg" alt=""/>
+                        <p class="text-sm text-yellow-500">restaurante norte sul</p>
+                        <p class="text-xs text-white">restaurante</p>
+                        <p class="text-xs text-gray-500">8.01 km</p>
+                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                    </div>
+                <form/>
             </h2>
         </section>
     </main>

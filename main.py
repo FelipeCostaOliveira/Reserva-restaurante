@@ -120,7 +120,7 @@ def cadastrarUsuario():
                 query = "insert into usuario values (default, %s, %s);"
                 cursor.execute(query, dados)
                 connectBD.commit()
-                return redirect('/')
+                return redirect('/home')
         else:
             for usuario in usuariosBD:
                 contador += 1
