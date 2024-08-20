@@ -9,7 +9,7 @@ app.secret_key = 'felipe'
 
 # Criar Banco de Dados
 DBhost = 'localhost' 
-DBname = 'usuarios'
+DBname = 'SistemaReservas'
 DBuser = 'root'
 DBpassword = 'root'
 
@@ -26,7 +26,7 @@ database.create_table(new_connection, NameTabela, query)
 
 # Criar tabela restaurante
 NameTabela2 = 'restaurante'
-query2 = f"CREATE TABLE {NameTabela2} (id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(45) NOT NULL, rua VARCHAR(100) NOT NULL, bairro VARCHAR(100) NOT NULL, numero INT NOT NULL, mesasDisponiveis INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARSET=utf8mb4;"
+query2 = f"CREATE TABLE {NameTabela2} (id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(45) NOT NULL, rua VARCHAR(100) NOT NULL, bairro VARCHAR(100) NOT NULL, numero INT NOT NULL,mesasDisponiveis INT, PRIMARY KEY(id)) DEFAULT CHARSET=utf8mb4;"
 new_connection2 = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
 database.create_table(new_connection2, NameTabela2, query2)
 
@@ -62,6 +62,14 @@ def reserva():
 def realizar_reserva():
     return render_template('RealizarReserva.html')
 
+@app.route('/novidades')
+def novidades():
+    return render_template('novidades.html') 
+
+@app.route('/cadastroRestaurante')
+def cadastroRestaurante():
+    return render_template('cadastroRestaurante.html')
+
 # Autenticar Usuário
 @app.route('/autenticarUsuario', methods=["POST"])
 def autenticarUsuario():
@@ -69,7 +77,7 @@ def autenticarUsuario():
     senha = request.form.get("senha")
     connectBD = mysql.connector.connect(
         host=DBhost,
-        database='usuarios',
+        database= DBname,
         user=DBuser,
         password=DBpassword
     )
@@ -94,10 +102,10 @@ def autenticarUsuario():
 def cadastrarUsuario():
     user = []
     email = request.form.get('email')
-    senha = request.form.get('password')   
+    senha = request.form.get('senha')   
     connectBD = mysql.connector.connect(
         host=DBhost,
-        database='usuarios',
+        database=DBname,
         user=DBuser,
         password=DBpassword
     )
@@ -112,7 +120,7 @@ def cadastrarUsuario():
                 query = "insert into usuario values (default, %s, %s);"
                 cursor.execute(query, dados)
                 connectBD.commit()
-                return redirect('/home')
+                return redirect('/')
         else:
             for usuario in usuariosBD:
                 contador += 1
@@ -130,10 +138,35 @@ def cadastrarUsuario():
         cursor.close()
         connectBD.close()
 
-@app.route('/novidades')
-def novidades():
-    return render_template('novidades.html') 
+@app.route('/cadastrarRestaurante', methods=['POST'])
+def cadastrarRestaurante():
+    nome = request.form.get('nome')
+    rua = request.form.get('rua')
+    bairro = request.form.get('bairro')
+    numero = request.form.get('numero')
+    connectBD = mysql.connector.connect(
+        host=DBhost,
+        database=DBname,
+        user=DBuser,
+        password=DBpassword
+    )
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        cursor.execute("SELECT * FROM restaurante WHERE nome = %s", (nome,))
+        restauranteBD = cursor.fetchone()
+        
+        if restauranteBD:
+            flash('Restaurante já cadastrado')
+            return redirect('/')
+        else:
+            query = "INSERT INTO restaurante (nome, rua, bairro, numero) VALUES (%s, %s, %s, %s);"
+            cursor.execute(query, (nome, rua, bairro, numero))
+            connectBD.commit()
+            return redirect('/home')
 
+    if connectBD.is_connected():
+        cursor.close()
+        connectBD.close()
         
 if __name__ in "__main__":
     app.run(debug=True, port=5001)
