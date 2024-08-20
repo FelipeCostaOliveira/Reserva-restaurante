@@ -17,7 +17,7 @@
             <figure><img src="static/assets/logo.svg" alt="logo"></figure>
             <ul class="flex flex-row space-x-10 max-md:hidden">
                 <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("home")}}">Home</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Novidades</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
             </ul>
 
             <div class="md:hidden">
@@ -29,8 +29,8 @@
 
         <nav id="menu" class="hidden text-white m-auto container flex-col space-x-10 py-1">
             <ul class="flex flex-col items-center">
-                <li class="hover:text-[#A45A49] font-bold"><a href="">home</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Novidades</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("home") }}">home</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
             </ul>
 
         </nav>
@@ -89,17 +89,17 @@
                             </span>
                             <div class="flex text-base space-x-14">
                                 <span class="text-white font-bold">
-                                    A Casa do Porco
+                                    Maní
                                 </span>
                                 <span class="text-gray-500">
                                     Extraordinário - 4/4
                                 </span>
                             </div>
                             <p class="text-base text-gray-400">
-                                Em 2015 os chefs Janaína e Jefferson Rueda alçaram um novo vôo e decidiram unir seus anos de carreira com suas paixões em um só lugar: A Casa do Porco.
+                                Comida brasileira, autoral, orgânica (sempre que possível!) e contemporânea. Pelos chefs Helena Rizzo e Willem Vandeven. Premiada nacional e internacionalmente, servida desde 2006 em uma casinha branca, de aura solar, no Jardim Paulistano, em São Paulo. 
                             </p>
                         </div>
-                        <img class="h-full" src="static/assets/restaurantes/emAlta/restaurante1.svg" alt="restaurante1"/>
+                        <img class="h-full" src="static/assets/restaurantes/emAlta/restaurante2.svg" alt="restaurante2"/>
                     </header>
                 </div>
                 <div class="bg-[#241A1C] w-full p-2">
@@ -113,17 +113,17 @@
                             </span>
                             <div class="flex text-base space-x-14">
                                 <span class="text-white font-bold">
-                                    A Casa do Porco
+                                    Jun Sakamoto
                                 </span>
                                 <span class="text-gray-500">
                                     Extraordinário - 4/4
                                 </span>
                             </div>
                             <p class="text-base text-gray-400">
-                                Em 2015 os chefs Janaína e Jefferson Rueda alçaram um novo vôo e decidiram unir seus anos de carreira com suas paixões em um só lugar: A Casa do Porco.
+                                O renomado chef Jun cria pratos elaborados usando ingredientes únicos em um restaurante japonês bem elegante
                             </p>
                         </div>
-                        <img class="h-full" src="static/assets/restaurantes/emAlta/restaurante1.svg" alt="restaurante1"/>
+                        <img class="h-full" src="static/assets/restaurantes/emAlta/restaurante3.svg" alt="restaurante3"/>
                     </header>
                 </div>
             </h2>
@@ -132,54 +132,54 @@
             <span class="flex ml-24 mt-16 items-center text-white capitalize text-xl font-bold">
                 restaurantes disponíveis
             </span>
-            <h2 class="grid grid-cols-4 gap-2 m-2">
+            <h2 class="grid grid-cols-4 gap-2 m-2 capitalize">
                 <div class="bg-[#241A1C] flex flex-col justify-center p-4">
                     <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">Bella Pizza</p>
-                    <p class="text-xs text-white">Pizzaria</p>
+                    <p class="text-sm text-yellow-500">bella pizza</p>
+                    <p class="text-xs text-white">pizzaria</p>
                     <p class="text-xs text-gray-500">3.95 km</p>
                 </div>
                 <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">Bella Pizza</p>
-                    <p class="text-xs text-white">Pizzaria</p>
-                    <p class="text-xs text-gray-500">3.95 km</p>
+                    <img src="static/assets/restaurantes/disponiveis/boiNaBrasa.svg" alt=""/>
+                    <p class="text-sm text-yellow-500">boi na brasa</p>
+                    <p class="text-xs text-white">restaurante</p>
+                    <p class="text-xs text-gray-500">3.87 km</p>
                 </div>
                 <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">Bella Pizza</p>
-                    <p class="text-xs text-white">Pizzaria</p>
-                    <p class="text-xs text-gray-500">3.95 km</p>
+                    <img src="static/assets/restaurantes/disponiveis/bomPrato.svg" alt=""/>
+                    <p class="text-sm text-yellow-500">bom prato</p>
+                    <p class="text-xs text-white">restaurante</p>
+                    <p class="text-xs text-gray-500">7.54 km</p>
                 </div>
                 <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">Bella Pizza</p>
-                    <p class="text-xs text-white">Pizzaria</p>
-                    <p class="text-xs text-gray-500">3.95 km</p>
+                    <img src="static/assets/restaurantes/disponiveis/restauranteDaFamilia.svg" alt=""/>
+                    <p class="text-sm text-yellow-500">restaurante da família</p>
+                    <p class="text-xs text-white">restaurante</p>
+                    <p class="text-xs text-gray-500">1.25 km</p>
                 </div>
                 <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">Bella Pizza</p>
-                    <p class="text-xs text-white">Pizzaria</p>
-                    <p class="text-xs text-gray-500">3.95 km</p>
+                    <img src="static/assets/restaurantes/disponiveis/restauranteIgarape.svg" alt=""/>
+                    <p class="text-sm text-yellow-500">restaurante igarapé</p>
+                    <p class="text-xs text-white">restaurante</p>
+                    <p class="text-xs text-gray-500">2.96 km</p>
                 </div>
                 <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">Bella Pizza</p>
-                    <p class="text-xs text-white">Pizzaria</p>
-                    <p class="text-xs text-gray-500">3.95 km</p>
+                    <img src="static/assets/restaurantes/disponiveis/restauranteMacaxeira.svg" alt=""/>
+                    <p class="text-sm text-yellow-500">restaurante macaxeira</p>
+                    <p class="text-xs text-white">restaurante</p>
+                    <p class="text-xs text-gray-500">4.55 km</p>
                 </div>
                 <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">Bella Pizza</p>
-                    <p class="text-xs text-white">Pizzaria</p>
-                    <p class="text-xs text-gray-500">3.95 km</p>
+                    <img src="static/assets/restaurantes/disponiveis/pescadorRestaurante.svg" alt=""/>
+                    <p class="text-sm text-yellow-500">pescador restaurante</p>
+                    <p class="text-xs text-white">restaurante</p>
+                    <p class="text-xs text-gray-500">5.75 km</p>
                 </div>
                 <div class="bg-[#241A1C] flex flex-col justify-center p-4">
-                    <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt=""/>
-                    <p class="text-sm text-yellow-500">Bella Pizza</p>
-                    <p class="text-xs text-white">Pizzaria</p>
-                    <p class="text-xs text-gray-500">3.95 km</p>
+                    <img src="static/assets/restaurantes/disponiveis/restauranteNorteSul.svg" alt=""/>
+                    <p class="text-sm text-yellow-500">restaurante norte sul</p>
+                    <p class="text-xs text-white">restaurante</p>
+                    <p class="text-xs text-gray-500">8.01 km</p>
                 </div>
             </h2>
         </section>

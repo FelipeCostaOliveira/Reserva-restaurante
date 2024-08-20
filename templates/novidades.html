@@ -9,6 +9,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body class="bg-[#1F1517] text-white">
+    <header>
+        <nav class=" bg-[#23181A] text-white m-auto flex flex-row space-x-10 items-center justify-start px-64 py-4 max-md:flex-col max-md:text-sm max-md:items-end max-md:-mr-12 max-md:py-1 max-lg:px-0 max-md:px-14 max-lg:space-x-3 max-lg:text-sm">
+            <figure><img src="static/assets/logo.svg" alt="logo"></figure>
+            <ul class="flex flex-row space-x-10 max-md:hidden">
+                <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("home")}}">Home</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
+            </ul>
+
+            <div class="md:hidden">
+                <button id="menubutton" type="" class="inline-flex hover:bg-[#A45A49] rounded-sm" aria-label="Menu" aria-expanded="false">
+                    <img id="imagem" class=" h-7 w-7" src="static/assets/menu.svg" alt="">
+                </button>
+            </div>
+        </nav>
+
+        <nav id="menu" class="hidden text-white m-auto container flex-col space-x-10 py-1">
+            <ul class="flex flex-col items-center">
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("home") }}">home</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
     <main class="flex flex-col 2xl:mt-24">
         <section class="max-w-6xl h-1/5 flex flex-row gap-24 py-0 px-8 overflow-clip items-center max-lg:py-20">
             <header class="m-auto">
@@ -76,7 +100,7 @@
             </div>
         </section>
     </main>
-    <footer class=" w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
+    <footer class="w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
         <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
         <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>
     </footer>

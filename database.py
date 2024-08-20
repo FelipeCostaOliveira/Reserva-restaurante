@@ -43,12 +43,12 @@ def create_new_server_connection(host_name, user_name, database_name, user_passw
 
     return connection
 
-def create_table(connection, NameTabela):
+def create_table(connection, NameTabela, query):
     cursor = connection.cursor()
     try:
         cursor.execute(f"SHOW TABLES LIKE '{NameTabela}'")
         resultado = cursor.fetchone()
-        query = f"CREATE TABLE {NameTabela} (id INT NOT NULL AUTO_INCREMENT, email VARCHAR(45) NOT NULL, senha VARCHAR(45) NOT NULL, PRIMARY KEY (id)) DEFAULT CHARSET=utf8mb4;"
+        query = query
         if not resultado:
             cursor.execute(query)
             print("Database created successfully")
