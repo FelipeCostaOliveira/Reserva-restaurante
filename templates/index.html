@@ -55,7 +55,7 @@
                         <label for="username">Email</label>
                         <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="email" name="email"  placeholder="Digite seu email">
                         <label for="username">Senha</label>
-                        <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="password" name="password" placeholder="Digite sua senha">
+                        <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="password" name="senha" placeholder="Digite sua senha">
                         <input class="text-black mt-2 p-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer" type="submit" class="text-white w-3/5 m-auto mt-2.5 font-bold" value="Registrar" >
                         {% set mensagem = get_flashed_messages()%}
                         {% if mensagem %}
@@ -113,6 +113,9 @@
             </div>
         </section>
     </main>
+    <form action="/cadastroRestaurante">
+        <input class="text-black ml-2 p-2 rounded-3xl border-none text-base bg-[#A45A49]  m-auto font-bold hover:bg-[#4e1002] cursor-pointer" type="submit" value="Cadastre seu restaurante"/>
+    </form>
     <footer class="static bottom-0 w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
         <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
         <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>

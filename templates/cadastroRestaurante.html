@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="static/styles/output.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing-Page</title>
+    <meta name="description" content="Descrição">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body class="bg-[#1F1517] ">
+    <header>
+        <nav class="text-white ml-10 container flex flex-row space-x-10 items-center justify-between px-20 py-4">
+            <a href="{{url_for("index")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg">Voltar</a> 
+        </nav>
+    </header>
+    <main>
+        <div class="bg-[#181012]">
+            <section class="container max-w-6xl h-3/4 flex flex-row justify-between gap-24 py-10 px-8 m-auto items-center">
+                <header class="ml-10">
+                    <span class="text-[#A45A49] text-base font-epilogue capitalize">cadastre seu restaurante</span>
+                    <hr>
+                    <h2 class="text-base text-white font-inter font-thin">Expanda sua empresa </h2>
+                    <form class="text-white flex flex-col font-intel py-5" action="/cadastrarRestaurante" method="POST">
+                        <label for="name">Nome</label>
+                        <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="text" name="nome" required placeholder="Digite o nome">
+                        <span class="mt-6 text-yellow-500 font-bold">Endereço</span>
+                        <label for="rua">Rua</label>
+                        <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="text" name="rua" required placeholder="Digite a rua">
+                        <label for="bairro">Bairro</label>
+                        <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="text" name="bairro" required placeholder="Digite o bairro">
+                        <label for="numero">Número</label>
+                        <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="number" name="numero" required placeholder="Digite o número">
+                        
+                        <input class="text-black mt-2 p-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer" type="submit" class="registrar-btn" value="Entrar" >
+                        {% set mensagem = get_flashed_messages()%}
+                        {% if mensagem %}
+                        <div class="text-red-600 font-bold m-auto">
+                            {{mensagem[0]}}
+                        </div>
+                        {% endif %}
+                    </form>
+                    
+                </header>
+                
+                <div class="columns-3 space-y-1">
+                    <figure><img src="static/assets/main/image1.png" alt="image1"></figure>
+                    <figure><img src="static/assets/main/image2.png" alt="image2"></figure>
+                    <figure><img src="static/assets/main/image3.png" alt="image3"></figure>
+                    <figure><img src="static/assets/main/image4.png" alt="image4"></figure>
+                    <figure><img src="static/assets/main/image5.png" alt="image5"></figure>
+                    <figure><img src="static/assets/main/image6.png" alt="image6"></figure>
+                    <figure><img src="static/assets/main/image10.png" alt="image10"></figure>
+                    <figure><img src="static/assets/main/image11.png" alt="image11"></figure>
+                    <figure><img src="static/assets/main/image12.png" alt="image12"></figure>  
+                </div>
+               
+            </section>
+        </div>
+    </main>
+    <footer class="absolute bottom-0 w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
+        <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
+        <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>
+    </footer>
+</body>
+</html>
