@@ -13,25 +13,30 @@
 </head>
 <body class="bg-[#1F1517]">
     <header>
-        <nav class=" bg-[#23181A] text-white m-auto flex flex-row space-x-10 items-center justify-start px-64 py-4 max-md:flex-col max-md:text-sm max-md:items-end max-md:-mr-12 max-md:py-1 max-lg:px-0 max-md:px-14 max-lg:space-x-3 max-lg:text-sm">
-            <figure><img src="static/assets/logo.svg" alt="logo"></figure>
-            <ul class="flex flex-row space-x-10 max-md:hidden">
+        <nav class=" bg-[#23181A] text-white m-auto flex flex-row space-x-10 items-center justify-between px-64 py-4 max-md:flex-col max-md:text-sm max-md:items-end max-md:-mr-12 max-md:py-1 max-lg:px-0 max-md:px-14 max-lg:space-x-3 max-lg:text-sm">
+            
+            <ul class="flex flex-row items-center space-x-10 max-md:hidden">
+                <figure><img src="static/assets/logo.svg" alt="logo"></figure>
                 <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("home")}}">Home</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
+                
             </ul>
-
+            <a href="{{url_for("logout")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg max-md:hidden">Sair</a> 
             <div class="md:hidden">
                 <button id="menubutton" type="" class="inline-flex hover:bg-[#A45A49] rounded-sm" aria-label="Menu" aria-expanded="false">
                     <img id="imagem" class=" h-7 w-7" src="static/assets/menu.svg" alt="">
                 </button>
             </div>
-        </nav>
 
+        </nav>
+        <!-- navbar p/mobile -->
         <nav id="menu" class="hidden text-white m-auto container flex-col space-x-10 py-1">
             <ul class="flex flex-col items-center">
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("home") }}">home</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("logout") }}">Sair</a></li>
             </ul>
+            
 
         </nav>
 
