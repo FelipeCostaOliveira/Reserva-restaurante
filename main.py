@@ -37,9 +37,9 @@ CREATE TABLE {NameTabela3}
 (id_reserva INT NOT NULL AUTO_INCREMENT,
 id_restaurante INT NOT NULL,
 num_pessoas INT NOT NULL,
-horario DATETIME NOT NULL,
+horario TIME NOT NULL,
 data DATE NOT NULL,
-FOREIGN KEY (id_restaurante) REFERENCES restaurante(id_restaurante),
+FOREIGN KEY (id_restaurante) REFERENCES restaurante(id_restaurante) ON DELETE CASCADE,
 PRIMARY KEY(id_reserva)) 
 DEFAULT CHARSET=utf8mb4;
 """
@@ -199,6 +199,56 @@ def cadastrarRestaurante():
     if connectBD.is_connected():
         cursor.close()
         connectBD.close()
+
+@app.route('/cadastrarReserva', methods=['POST'])
+def cadastrarReserva():
+    restaurante_id = request.form.get('restaurante_id')
+    data = request.form.get('data')
+    hora = request.form.get('horario')
+    hora = f'{hora}:00'
+    numero_pessoas = request.form.get('num_pessoas')
+    
+    connectBD = mysql.connector.connect(
+        host=DBhost,
+        database=DBname,
+        user=DBuser,
+        password=DBpassword
+    )
+    
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        query = """
+        INSERT INTO reserva (id_restaurante, data, horario, num_pessoas)
+        VALUES (%s, %s, %s, %s);
+        """
+        cursor.execute(query, (restaurante_id, data, hora, numero_pessoas))
+        connectBD.commit()
+        flash('Reserva cadastrada com sucesso!')
+        return redirect('/home')
+
+    if connectBD.is_connected():
+        cursor.close()
+        connectBD.close()
+
+@app.route('/formularioReserva')
+def formularioReserva():
+    connectBD = mysql.connector.connect(
+        host=DBhost,
+        database=DBname,
+        user=DBuser,
+        password=DBpassword
+    )
+    
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        cursor.execute("SELECT id_restaurante, nome FROM restaurante;")
+        restaurantes = cursor.fetchall()
+        cursor.close()
+        connectBD.close()
+        print(restaurantes)
+        
+    return render_template('RealizarReserva.html', restaurantes=restaurantes)
+
         
 if __name__ in "__main__":
     app.run(debug=True, port=5001)
