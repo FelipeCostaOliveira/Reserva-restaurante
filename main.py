@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, redirect
+from flask import Flask, render_template, request, flash, redirect, session
 import json
 import mysql.connector
 import database
@@ -11,7 +11,7 @@ app.secret_key = 'felipe'
 DBhost = 'localhost' 
 DBname = 'SistemaReservas'
 DBuser = 'root'
-DBpassword = 'root'
+DBpassword = 'alunoifro'
 
 
 # CRIAR TABELA DE BANCO DE DADOS
@@ -42,8 +42,18 @@ def equipe():
 def login():
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    session.pop('user_email', None)
+    flash('Você foi desconectado com sucesso.')
+    return redirect('/login')
+
 @app.route('/home')
 def home():
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para acessar esta página.')
+        return redirect('/login')
     return render_template('home.html')
 
 @app.route('/modelos')
@@ -87,11 +97,14 @@ def autenticarUsuario():
         cursor.execute('select * from usuario;')
         usuariosBD = cursor.fetchall()
         for usuario in usuariosBD:
+            usuarioId = usuario[0]
             usuarioEmail = usuario[1]
             usuarioSenha = usuario[2]
             contador += 1
             
             if usuarioEmail == email and usuarioSenha == senha:
+                session['user_id'] = usuarioId
+                session['user_email'] = email
                 return redirect('/home')
                     
             if contador >= len(usuariosBD):
@@ -116,7 +129,7 @@ def cadastrarUsuario():
         cursor.execute("select * from usuario")
         usuariosBD = cursor.fetchall()
         
-        if  len(usuariosBD) < 1:
+        if len(usuariosBD) < 1:
                 query = "insert into usuario values (default, %s, %s);"
                 cursor.execute(query, dados)
                 connectBD.commit()
@@ -124,6 +137,7 @@ def cadastrarUsuario():
         else:
             for usuario in usuariosBD:
                 contador += 1
+                usuarioId = usuario[0]
                 if usuario[1] == email:
                     flash('Usuário já cadastrado')
                     return redirect('/')
@@ -132,6 +146,8 @@ def cadastrarUsuario():
                     query = "insert into usuario values (default, %s, %s);"
                     cursor.execute(query, dados)
                     connectBD.commit()
+                    session['user_id'] = usuarioId
+                    session['user_email'] = email
                     return redirect('/home')
 
     if connectBD.is_connected():
