@@ -13,29 +13,32 @@
 </head>
 <body class="bg-[#1F1517]">
     <header>
-        <nav class=" bg-[#23181A] text-white m-auto flex flex-row space-x-10 items-center justify-start px-64 py-4 max-md:flex-col max-md:text-sm max-md:items-end max-md:-mr-12 max-md:py-1 max-lg:px-0 max-md:px-14 max-lg:space-x-3 max-lg:text-sm">
-            <figure><img src="static/assets/logo.svg" alt="logo"></figure>
-            <ul class="flex flex-row space-x-10 max-md:hidden">
-                <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("home")}}">Home</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
-            </ul>
-
+        <nav class="bg-[#23181A] text-white flex flex-row md:flex-row items-center justify-between px-4 py-4">
+            <div class="flex flex-row items-center">
+                <figure class="mb-4 md:mb-0">
+                    <img src="static/assets/logo.svg" alt="logo" class="h-8">
+                </figure>
+                <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 hidden md:flex ml-8">
+                    <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for('home')}}">Home</a></li>
+                    <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for('novidades') }}">Novidades</a></li>
+                </ul>
+            </div>
+            
             <div class="md:hidden">
-                <button id="menubutton" type="" class="inline-flex hover:bg-[#A45A49] rounded-sm" aria-label="Menu" aria-expanded="false">
-                    <img id="imagem" class=" h-7 w-7" src="static/assets/menu.svg" alt="">
+                <button id="menubutton" class="inline-flex hover:bg-[#A45A49] rounded-sm" aria-label="Menu" aria-expanded="false">
+                    <img id="imagem" class="h-7 w-7" src="static/assets/menu.svg" alt="">
                 </button>
             </div>
         </nav>
 
-        <nav id="menu" class="hidden text-white m-auto container flex-col space-x-10 py-1">
-            <ul class="flex flex-col items-center">
-                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("home") }}">home</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
+        <nav id="menu" class="hidden text-white bg-[#23181A] p-4">
+            <ul class="flex flex-col items-center space-y-2">
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for('novidades') }}">Novidades</a></li>
             </ul>
-
         </nav>
-
     </header>
+
     <main>
         <section class="mt-16 flex justify-center">
             <div class="flex relative justify-center">
@@ -54,77 +57,46 @@
             </span>
 
             <h2 class="grid grid-cols-3 gap-2 mt-16 px-10">
-                <div class="bg-[#241A1C] w-full p-2">
-                    <header class="flex">
-                        <div>
-                            <span class="flex items-center text-yellow-500 uppercase text-xs">
-                                em alta
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 text-orange-600">
-                                  <path fill-rule="evenodd" d="M8.074.945A4.993 4.993 0 0 0 6 5v.032c.004.6.114 1.176.311 1.709.16.428-.204.91-.61.7a5.023 5.023 0 0 1-1.868-1.677c-.202-.304-.648-.363-.848-.058a6 6 0 1 0 8.017-1.901l-.004-.007a4.98 4.98 0 0 1-2.18-2.574c-.116-.31-.477-.472-.744-.28Zm.78 6.178a3.001 3.001 0 1 1-3.473 4.341c-.205-.365.215-.694.62-.59a4.008 4.008 0 0 0 1.873.03c.288-.065.413-.386.321-.666A3.997 3.997 0 0 1 8 8.999c0-.585.126-1.14.351-1.641a.42.42 0 0 1 .503-.235Z" clip-rule="evenodd" />
-                                </svg>
-                            </span>
-                            <div class="flex text-base space-x-14">
-                                <span class="text-white font-bold">
-                                    A Casa do Porco
-                                </span>
-                                <span class="text-gray-500">
-                                    Extraordinário - 4/4
-                                </span>
+                <div class="bg-[#241A1C] rounded-md overflow-hidden">
+                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row cursor-pointer">
+                        <div class="p-4 w-full">
+                            <span class="block text-[#A45A49] text-sm">NOVO</span>
+                            <div class="flex flex-col md:flex-row justify-between items-center mt-3">
+                                <span class="text-base text-white font-bold">A Casa do Porco</span>
                             </div>
-                            <p class="text-base text-gray-400">
-                                Em 2015 os chefs Janaína e Jefferson Rueda alçaram um novo vôo e decidiram unir seus anos de carreira com suas paixões em um só lugar: A Casa do Porco.
-                            </p>
+                            <p class="text-xs text-[#756A67] mt-3">Em 2015 os chefs Janaína e Jefferson Rueda alçaram um novo vôo...</p>
+                            <p class="text-xs text-[#756A67] mt-5">Janaína e Jefferson Rueda</p>
                         </div>
-                        <img class="h-full" src="static/assets/restaurantes/emAlta/restaurante1.svg" alt="restaurante1"/>
-                    </header>
+                        <img class="w-full h-48 object-cover" src="static/assets/main/image13.svg" alt="">
+                    </a>
                 </div>
-                <div class="bg-[#241A1C] w-full p-2">
-                    <header class="flex">
-                        <div>
-                            <span class="flex items-center text-yellow-500 uppercase text-xs">
-                                em alta
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 text-orange-600">
-                                  <path fill-rule="evenodd" d="M8.074.945A4.993 4.993 0 0 0 6 5v.032c.004.6.114 1.176.311 1.709.16.428-.204.91-.61.7a5.023 5.023 0 0 1-1.868-1.677c-.202-.304-.648-.363-.848-.058a6 6 0 1 0 8.017-1.901l-.004-.007a4.98 4.98 0 0 1-2.18-2.574c-.116-.31-.477-.472-.744-.28Zm.78 6.178a3.001 3.001 0 1 1-3.473 4.341c-.205-.365.215-.694.62-.59a4.008 4.008 0 0 0 1.873.03c.288-.065.413-.386.321-.666A3.997 3.997 0 0 1 8 8.999c0-.585.126-1.14.351-1.641a.42.42 0 0 1 .503-.235Z" clip-rule="evenodd" />
-                                </svg>
-                            </span>
-                            <div class="flex text-base space-x-14">
-                                <span class="text-white font-bold">
-                                    Maní
-                                </span>
-                                <span class="text-gray-500">
-                                    Extraordinário - 4/4
-                                </span>
+                <div class="bg-[#241A1C] rounded-md overflow-hidden">
+                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row">
+                        <div class="p-4 w-full">
+                            <span class="block text-[#A45A49] text-sm">NOVO</span>
+                            <div class="flex flex-col md:flex-row justify-between items-center mt-3">
+                                <span class="text-base text-white font-bold">Maní</span>
                             </div>
-                            <p class="text-base text-gray-400">
-                                Comida brasileira, autoral, orgânica (sempre que possível!) e contemporânea. Pelos chefs Helena Rizzo e Willem Vandeven. Premiada nacional e internacionalmente, servida desde 2006 em uma casinha branca, de aura solar, no Jardim Paulistano, em São Paulo. 
-                            </p>
+                            <p class="text-xs text-[#756A67] mt-3">Comida brasileira, autoral, orgânica (sempre que possível!)...</p>
+                            <p class="text-xs text-[#756A67] mt-5">Helena Rizzo e Willem Vandeven</p>
                         </div>
-                        <img class="h-full" src="static/assets/restaurantes/emAlta/restaurante2.svg" alt="restaurante2"/>
-                    </header>
+                        <img class="w-full h-48 object-cover" src="static/assets/main/image14.svg" alt="">
+                    </a>
                 </div>
-                <div class="bg-[#241A1C] w-full p-2">
-                    <header class="flex">
-                        <div>
-                            <span class="flex items-center text-yellow-500 uppercase text-xs">
-                                em alta
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 text-orange-600">
-                                  <path fill-rule="evenodd" d="M8.074.945A4.993 4.993 0 0 0 6 5v.032c.004.6.114 1.176.311 1.709.16.428-.204.91-.61.7a5.023 5.023 0 0 1-1.868-1.677c-.202-.304-.648-.363-.848-.058a6 6 0 1 0 8.017-1.901l-.004-.007a4.98 4.98 0 0 1-2.18-2.574c-.116-.31-.477-.472-.744-.28Zm.78 6.178a3.001 3.001 0 1 1-3.473 4.341c-.205-.365.215-.694.62-.59a4.008 4.008 0 0 0 1.873.03c.288-.065.413-.386.321-.666A3.997 3.997 0 0 1 8 8.999c0-.585.126-1.14.351-1.641a.42.42 0 0 1 .503-.235Z" clip-rule="evenodd" />
-                                </svg>
-                            </span>
-                            <div class="flex text-base space-x-14">
-                                <span class="text-white font-bold">
-                                    Jun Sakamoto
-                                </span>
-                                <span class="text-gray-500">
-                                    Extraordinário - 4/4
-                                </span>
+                <div class="bg-[#241A1C] rounded-md overflow-hidden">
+                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row">
+                        <div class="p-4 w-full">
+                            <span class="block text-[#A45A49] text-sm">NOVO</span>
+                            <div class="flex flex-col md:flex-row justify-between items-center mt-3">
+                                <div class="flex flex-row">
+                                    <span class="text-base text-white font-bold">Jun Sakamoto</span> 
+                                </div>
                             </div>
-                            <p class="text-base text-gray-400">
-                                O renomado chef Jun cria pratos elaborados usando ingredientes únicos em um restaurante japonês bem elegante
-                            </p>
+                            <p class="text-xs text-[#756A67] mt-3">O renomado chef Jun Sakamoto cria pratos elaborados...</p>
+                            <p class="text-xs text-[#756A67] mt-5">Jun</p>
                         </div>
-                        <img class="h-full" src="static/assets/restaurantes/emAlta/restaurante3.svg" alt="restaurante3"/>
-                    </header>
+                        <img class="w-full h-48 object-cover" src="static/assets/main/image15.svg" alt="">
+                    </a>
                 </div>
             </h2>
         </section>
