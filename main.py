@@ -74,6 +74,9 @@ def realizar_reserva():
 
 @app.route('/novidades')
 def novidades():
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para acessar esta página.')
+        return redirect('/login')
     return render_template('novidades.html') 
 
 @app.route('/cadastroRestaurante')
