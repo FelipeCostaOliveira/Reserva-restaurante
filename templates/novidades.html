@@ -8,100 +8,101 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body class="bg-[#1F1517] text-white">
+<body class="bg-[#181012] text-white">
     <header>
-        <nav class=" bg-[#23181A] text-white m-auto flex flex-row space-x-10 items-center justify-start px-64 py-4 max-md:flex-col max-md:text-sm max-md:items-end max-md:-mr-12 max-md:py-1 max-lg:px-0 max-md:px-14 max-lg:space-x-3 max-lg:text-sm">
-            <figure><img src="static/assets/logo.svg" alt="logo"></figure>
-            <ul class="flex flex-row space-x-10 max-md:hidden">
+        <nav class=" bg-[#23181A] text-white m-auto flex flex-row space-x-10 items-center justify-between px-64 py-4 max-md:flex-col max-md:text-sm max-md:items-end max-md:-mr-12 max-md:py-1 max-lg:px-0 max-md:px-14 max-lg:space-x-3 max-lg:text-sm">
+            
+            <ul class="flex flex-row items-center space-x-10 max-md:hidden">
+                <figure><img src="static/assets/logo.svg" alt="logo"></figure>
                 <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("home")}}">Home</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
+                
             </ul>
-
+            <a href="{{url_for("logout")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg max-md:hidden">Sair</a> 
             <div class="md:hidden">
                 <button id="menubutton" type="" class="inline-flex hover:bg-[#A45A49] rounded-sm" aria-label="Menu" aria-expanded="false">
                     <img id="imagem" class=" h-7 w-7" src="static/assets/menu.svg" alt="">
                 </button>
             </div>
-        </nav>
 
+        </nav>
+        <!-- navbar p/mobile -->
         <nav id="menu" class="hidden text-white m-auto container flex-col space-x-10 py-1">
             <ul class="flex flex-col items-center">
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("home") }}">home</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("logout") }}">Sair</a></li>
             </ul>
-
         </nav>
-
     </header>
-    <main class="flex flex-col 2xl:mt-24">
-        <section class="max-w-6xl h-1/5 flex flex-row gap-24 py-0 px-8 overflow-clip items-center max-lg:py-20">
-            <header class="m-auto">
-                <span class="text-[#A45A49] text-base uppercase marrom font-epilogue">Melhores avaliações</span>
-                <h1 class="text-4xl font-montserrat font-bold max-sm:text-2xl">Confira as novidadas da semana!</h1>
-                <h2 class="max-sm:hidden">Dê uma olhada nos novos restaurantes!</h2>
+    
+    <main class="flex flex-col items-center py-8">
+        <section class="max-w-6xl w-full px-4 md:px-8">
+            <header class="text-center mb-8">
+                <h1 class="text-4xl font-montserrat font-bold md:text-3xl">Confira as novidades da semana!</h1>
+                <h2 class="hidden md:block">Dê uma olhada nos novos restaurantes!</h2>
             </header>
         </section>
-        <section class="grid grid-cols-2 gap-2">
-            <div class="max-w-6xl m-auto flex flex-wrap justify-center max-sm:flex-col max-sm:items-center">
-                <figure class="flex flex-row w-2/4 mb-10 text-center bg-[#241A1C] m-3 max-sm:w-3/4 rounded-md">
-                    <div class="px-2 py-1">
-                        <span class="block mt-3 text-[#A45A49] text-sm text-justify marrom font-epilogue">NOVO</span>
-                        <div class="flex flex-row justify-between items-center">
-                            <span class="block mt-3 text-base text-[#C7BAB3] text-center font-bold">A Casa do Porco</span>
-                            <span class="block mt-3 text-xs text-[#756A67] text-center font-inter font-normal">Extraordinário · 4/4 </span>
+        
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-8">
+            <div class="bg-[#241A1C] rounded-md overflow-hidden">
+                <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row cursor-pointer">
+                    <div class="p-4 w-full">
+                        <span class="block text-[#A45A49] text-sm">NOVO</span>
+                        <div class="flex flex-col md:flex-row justify-between items-center mt-3">
+                            <span class="text-base text-[#C7BAB3] font-bold">A Casa do Porco</span>
                         </div>
-                        <span class="block mt-3 text-xs text-[#756A67] text-left font-inter font-normal">Em 2015 os chefs Janaína e Jefferson Rueda alçaram um novo vôo e decidiram unir seus anos de carreira com suas paixões em um só lugar: A Casa do Porco.</span>
-                        <span class="block mt-20 text-base text-[#756A67] text-justify font-inter font-normal">Janaína e Jefferson Rueda</span>
+                        <p class="text-xs text-[#756A67] mt-3">Em 2015 os chefs Janaína e Jefferson Rueda alçaram um novo vôo...</p>
+                        <p class="text-xs text-[#756A67] mt-5">Janaína e Jefferson Rueda</p>
                     </div>
-                    <img class="w-auto h-full rounded-r-lg justify-between block m-auto" src="static/assets/main/image13.svg" alt="">
-                </figure>
+                    <img class="w-full h-48 object-cover" src="static/assets/main/image13.svg" alt="">
+                </a>
             </div>
-            <div class="max-w-6xl m-3 flex flex-wrap justify-center max-sm:flex-col max-sm:items-center">
-                <figure class="flex flex-row w-2/4 mb-10 text-center bg-[#241A1C] m-3 max-sm:w-3/4 rounded-md">
-                    <div class="px-2 py-1">
-                        <span class="block mt-3 text-[#A45A49] text-sm text-justify marrom font-epilogue">NOVO</span>
-                        <div class="flex flex-row justify-between items-center">
-                            <span class="block mt-3 text-base text-[#C7BAB3] text-center font-bold">Maní</span>
-                            <span class="block mt-3 text-xs text-[#756A67] text-center font-inter font-normal">Extraordinário · 4/4 </span>
+            <div class="bg-[#241A1C] rounded-md overflow-hidden">
+                <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row">
+                    <div class="p-4 w-full">
+                        <span class="block text-[#A45A49] text-sm">NOVO</span>
+                        <div class="flex flex-col md:flex-row justify-between items-center mt-3">
+                            <span class="text-base text-[#C7BAB3] font-bold">Maní</span>
                         </div>
-                        <span class="block mt-3 text-xs text-[#756A67] text-left font-inter font-normal">Comida brasileira, autoral, orgânica (sempre que possível!) e contemporânea. Pelos chefs Helena Rizzo e Willem Vandeven. </span>
-                        <span class="block mt-24 text-base text-[#756A67] text-justify font-inter font-normal">Helena Rizzo e Willem Vandeven</span>
+                        <p class="text-xs text-[#756A67] mt-3">Comida brasileira, autoral, orgânica (sempre que possível!)...</p>
+                        <p class="text-xs text-[#756A67] mt-5">Helena Rizzo e Willem Vandeven</p>
                     </div>
-                    <img class="w-auto h-full rounded-r-lg justify-between block m-auto" src="static/assets/main/image14.svg" alt="">
-                </figure>
+                    <img class="w-full h-48 object-cover" src="static/assets/main/image14.svg" alt="">
+                </a>
             </div>
-            <div class="max-w-6xl m-auto flex flex-wrap justify-center max-sm:flex-col max-sm:items-center">
-                <figure class="flex flex-row w-2/4 mb-10 text-center bg-[#241A1C] m-3 max-sm:w-3/4 rounded-md">
-                    <div class="px-2 py-1">
-                        <span class="block mt-3 text-[#A45A49] text-sm text-justify marrom font-epilogue">NOVO</span>
-                        <div class="flex flex-row justify-between items-center">
-                            <span class="block mt-3 text-base text-[#C7BAB3] text-center font-bold">Jun Sakamoto</span>
-                            <span class="block mt-3 text-xs text-[#756A67] text-center font-inter font-normal">Extraordinário · 4/4 </span>
+            <div class="bg-[#241A1C] rounded-md overflow-hidden">
+                <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row">
+                    <div class="p-4 w-full">
+                        <span class="block text-[#A45A49] text-sm">NOVO</span>
+                        <div class="flex flex-col md:flex-row justify-between items-center mt-3">
+                            <div class="flex flex-row">
+                                <span class="text-base text-[#C7BAB3] font-bold">Jun Sakamoto</span> 
+                            </div>
                         </div>
-                        <span class="block mt-3 text-xs text-[#756A67] text-left font-inter font-normal">O renomado chef Jun Sakamoto cria pratos elaborados usando ingredientes únicos em um restaurante japonês bem elegante.</span>
-                        <span class="block mt-20 text-base text-[#756A67] text-justify font-inter font-normal">Jun</span>
+                        <p class="text-xs text-[#756A67] mt-3">O renomado chef Jun Sakamoto cria pratos elaborados...</p>
+                        <p class="text-xs text-[#756A67] mt-5">Jun</p>
                     </div>
-                    <img class="w-auto h-full rounded-r-lg justify-between block m-auto" src="static/assets/main/image15.svg" alt="">
-                </figure>
+                    <img class="w-full h-48 object-cover" src="static/assets/main/image15.svg" alt="">
+                </a>
             </div>
-            <div class="max-w-6xl m-auto flex flex-wrap justify-center max-sm:flex-col max-sm:items-center">
-                <figure class="flex flex-row w-2/4 mb-10 text-center bg-[#241A1C] m-3 max-sm:w-3/4 rounded-md">
-                    <div class="px-2 py-1">
-                        <span class="block mt-3 text-[#A45A49] text-sm text-justify marrom font-epilogue">NOVO</span>
-                        <div class="flex flex-row justify-between items-center">
-                            <span class="block mt-3 text-base text-[#C7BAB3] text-center font-bold">A Casa do Porco</span>
-                            <span class="block mt-3 text-xs text-[#756A67] text-center font-inter font-normal">Extraordinário · 4/4 </span>
+            <div class="bg-[#241A1C] rounded-md overflow-hidden">
+                <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row">
+                    <div class="p-4 w-full">
+                        <span class="block text-[#A45A49] text-sm">NOVO</span>
+                        <div class="flex flex-col md:flex-row justify-between items-center mt-3">
+                            <span class="text-base text-[#C7BAB3] font-bold">Churrascaria Boi na Brasa</span>
                         </div>
-                        <span class="block mt-3 text-xs text-[#756A67] text-left font-inter font-normal">Em 2015 os chefs Janaína e Jefferson Rueda alçaram um novo vôo e decidiram unir seus anos de carreira com suas paixões em um só lugar: A Casa do Porco.</span>
-                        <span class="block mt-20 text-base text-[#756A67] text-justify font-inter font-normal">Janaína e Jefferson Rueda</span>
+                        <p class="text-xs text-[#756A67] mt-3">Uma breve descrição do restaurante</p>
+                        <p class="text-xs text-[#756A67] mt-5">Chef</p>
                     </div>
-                    <img class="w-auto h-full rounded-r-lg justify-between block m-auto" src="static/assets/main/image16.svg" alt="">
-                </figure>
+                    <img class="w-full h-48 object-cover" src="static/assets/main/image16.svg" alt="">
+                </a>
             </div>
         </section>
     </main>
-    <footer class="w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
-        <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
+    <footer class="bg-[#23181A] text-white text-center p-8 md:absolute bottom-0 w-full">
+        <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy; Copyright Tríade do café</p>
         <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>
     </footer>
     <script src="static/scripts/ResponsiveNavbar.js"></script>
