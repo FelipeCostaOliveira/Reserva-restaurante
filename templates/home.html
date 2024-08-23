@@ -22,20 +22,23 @@
                     <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for('home')}}">Home</a></li>
                     <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for('novidades') }}">Novidades</a></li>
                 </ul>
+                <a href="{{url_for("logout")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg max-md:hidden">Sair</a>
             </div>
             
+
             <div class="md:hidden">
                 <button id="menubutton" class="inline-flex hover:bg-[#A45A49] rounded-sm" aria-label="Menu" aria-expanded="false">
                     <img id="imagem" class="h-7 w-7" src="static/assets/menu.svg" alt="">
                 </button>
             </div>
-        </nav>
 
         <nav id="menu" class="hidden text-white bg-[#23181A] p-4">
             <ul class="flex flex-col items-center space-y-2">
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for('home') }}">Home</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for('novidades') }}">Novidades</a></li>
+                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("logout") }}">Sair</a></li>
             </ul>
+
         </nav>
     </header>
 
