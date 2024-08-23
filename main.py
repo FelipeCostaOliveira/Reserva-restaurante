@@ -182,6 +182,9 @@ def cadastrarUsuario():
                 query = "insert into usuario values (default, %s, %s);"
                 cursor.execute(query, dados)
                 connectBD.commit()
+                for usuario in usuariosBD:
+                    session['user_id'] = usuario[0]
+                    session['user_email'] = email
                 return redirect('/home')
         else:
             for usuario in usuariosBD:
