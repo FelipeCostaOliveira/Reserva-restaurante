@@ -20,15 +20,31 @@ query_database = f"create database {DBname}"
 database.create_database(connection, query_database, DBname)
 # Criar Tabela usuario
 NameTabela = 'usuario'
-query = f"CREATE TABLE {NameTabela} (id INT NOT NULL AUTO_INCREMENT, email VARCHAR(45) NOT NULL, senha VARCHAR(45) NOT NULL, PRIMARY KEY (id)) DEFAULT CHARSET=utf8mb4;"
+query = f"CREATE TABLE {NameTabela} (id_usuario INT NOT NULL AUTO_INCREMENT, email VARCHAR(45) NOT NULL, senha VARCHAR(45) NOT NULL, PRIMARY KEY (id_usuario)) DEFAULT CHARSET=utf8mb4;"
 new_connection = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
 database.create_table(new_connection, NameTabela, query)
 
 # Criar tabela restaurante
 NameTabela2 = 'restaurante'
-query2 = f"CREATE TABLE {NameTabela2} (id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(45) NOT NULL, rua VARCHAR(100) NOT NULL, bairro VARCHAR(100) NOT NULL, numero INT NOT NULL,mesasDisponiveis INT, PRIMARY KEY(id)) DEFAULT CHARSET=utf8mb4;"
+query2 = f"CREATE TABLE {NameTabela2} (id_restaurante INT NOT NULL AUTO_INCREMENT, nome VARCHAR(45) NOT NULL, rua VARCHAR(100) NOT NULL, bairro VARCHAR(100) NOT NULL, numero INT NOT NULL,mesasDisponiveis INT, PRIMARY KEY(id_restaurante)) DEFAULT CHARSET=utf8mb4;"
 new_connection2 = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
 database.create_table(new_connection2, NameTabela2, query2)
+
+# Criar tabela reserva
+NameTabela3 = 'reserva'
+query3 = f"""
+CREATE TABLE {NameTabela3} 
+(id_reserva INT NOT NULL AUTO_INCREMENT,
+id_restaurante INT NOT NULL,
+num_pessoas INT NOT NULL,
+horario TIME NOT NULL,
+data DATE NOT NULL,
+FOREIGN KEY (id_restaurante) REFERENCES restaurante(id_restaurante) ON DELETE CASCADE,
+PRIMARY KEY(id_reserva)) 
+DEFAULT CHARSET=utf8mb4;
+"""
+new_connection3 = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
+database.create_table(new_connection3, NameTabela3, query3)
 
 @app.route('/')
 def index():
@@ -183,6 +199,56 @@ def cadastrarRestaurante():
     if connectBD.is_connected():
         cursor.close()
         connectBD.close()
+
+@app.route('/cadastrarReserva', methods=['POST'])
+def cadastrarReserva():
+    restaurante_id = request.form.get('restaurante_id')
+    data = request.form.get('data')
+    hora = request.form.get('horario')
+    hora = f'{hora}:00'
+    numero_pessoas = request.form.get('num_pessoas')
+    
+    connectBD = mysql.connector.connect(
+        host=DBhost,
+        database=DBname,
+        user=DBuser,
+        password=DBpassword
+    )
+    
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        query = """
+        INSERT INTO reserva (id_restaurante, data, horario, num_pessoas)
+        VALUES (%s, %s, %s, %s);
+        """
+        cursor.execute(query, (restaurante_id, data, hora, numero_pessoas))
+        connectBD.commit()
+        flash('Reserva cadastrada com sucesso!')
+        return redirect('/home')
+
+    if connectBD.is_connected():
+        cursor.close()
+        connectBD.close()
+
+@app.route('/formularioReserva')
+def formularioReserva():
+    connectBD = mysql.connector.connect(
+        host=DBhost,
+        database=DBname,
+        user=DBuser,
+        password=DBpassword
+    )
+    
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        cursor.execute("SELECT id_restaurante, nome FROM restaurante;")
+        restaurantes = cursor.fetchall()
+        cursor.close()
+        connectBD.close()
+        print(restaurantes)
+        
+    return render_template('RealizarReserva.html', restaurantes=restaurantes)
+
         
 if __name__ in "__main__":
     app.run(debug=True, port=5001)
