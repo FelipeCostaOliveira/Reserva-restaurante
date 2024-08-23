@@ -11,7 +11,7 @@ app.secret_key = 'felipe'
 DBhost = 'localhost' 
 DBname = 'SistemaReservas'
 DBuser = 'root'
-DBpassword = 'alunoifro'
+DBpassword = 'root'
 
 
 # CRIAR TABELA DE BANCO DE DADOS
@@ -20,13 +20,32 @@ query_database = f"create database {DBname}"
 database.create_database(connection, query_database, DBname)
 # Criar Tabela usuario
 NameTabela = 'usuario'
-query = f"CREATE TABLE {NameTabela} (id_usuario INT NOT NULL AUTO_INCREMENT, email VARCHAR(45) NOT NULL, senha VARCHAR(45) NOT NULL, PRIMARY KEY (id_usuario)) DEFAULT CHARSET=utf8mb4;"
+query = f"""
+CREATE TABLE {NameTabela} 
+(id_usuario INT NOT NULL AUTO_INCREMENT,
+email VARCHAR(45) NOT NULL,
+senha VARCHAR(45) NOT NULL,
+PRIMARY KEY (id_usuario)) 
+DEFAULT CHARSET=utf8mb4;
+"""
 new_connection = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
 database.create_table(new_connection, NameTabela, query)
 
 # Criar tabela restaurante
 NameTabela2 = 'restaurante'
-query2 = f"CREATE TABLE {NameTabela2} (id_restaurante INT NOT NULL AUTO_INCREMENT, nome VARCHAR(45) NOT NULL, rua VARCHAR(100) NOT NULL, bairro VARCHAR(100) NOT NULL, numero INT NOT NULL,mesasDisponiveis INT, PRIMARY KEY(id_restaurante)) DEFAULT CHARSET=utf8mb4;"
+query2 = f"""
+CREATE TABLE {NameTabela2}
+(id_restaurante INT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(45) NOT NULL,
+dono VARCHAR(45) NOT NULL,
+descricao VARCHAR(255) NOT NULL,
+rua VARCHAR(100) NOT NULL,
+bairro VARCHAR(100) NOT NULL,
+numero INT NOT NULL,
+mesasDisponiveis INT,
+PRIMARY KEY(id_restaurante))
+DEFAULT CHARSET=utf8mb4;
+"""
 new_connection2 = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
 database.create_table(new_connection2, NameTabela2, query2)
 
@@ -67,10 +86,24 @@ def logout():
 
 @app.route('/home')
 def home():
+    connectBD = mysql.connector.connect(
+        host=DBhost,
+        database=DBname,
+        user=DBuser,
+        password=DBpassword
+    )
+    
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        cursor.execute("SELECT id_restaurante, nome, descricao, dono FROM restaurante;")
+        restaurantes = cursor.fetchall()
+        cursor.close()
+        connectBD.close()
+        print(restaurantes)
     if 'user_id' not in session:
         flash('Você precisa estar logado para acessar esta página.')
         return redirect('/login')
-    return render_template('home.html')
+    return render_template('home.html', restaurantes=restaurantes)
 
 @app.route('/modelos')
 def modelos():
@@ -154,6 +187,7 @@ def cadastrarUsuario():
             for usuario in usuariosBD:
                 contador += 1
                 usuarioId = usuario[0]
+                print(usuarioId)
                 if usuario[1] == email:
                     flash('Usuário já cadastrado')
                     return redirect('/')
@@ -173,9 +207,12 @@ def cadastrarUsuario():
 @app.route('/cadastrarRestaurante', methods=['POST'])
 def cadastrarRestaurante():
     nome = request.form.get('nome')
+    dono = request.form.get('dono')
+    descricao = request.form.get('descricao')
     rua = request.form.get('rua')
     bairro = request.form.get('bairro')
     numero = request.form.get('numero')
+    dados = nome, dono, descricao, rua, bairro, numero
     connectBD = mysql.connector.connect(
         host=DBhost,
         database=DBname,
@@ -185,16 +222,16 @@ def cadastrarRestaurante():
     if connectBD.is_connected():
         cursor = connectBD.cursor()
         cursor.execute("SELECT * FROM restaurante WHERE nome = %s", (nome,))
-        restauranteBD = cursor.fetchone()
-        
-        if restauranteBD:
+        restaurantesBD = cursor.fetchone()
+        if restaurantesBD:
             flash('Restaurante já cadastrado')
             return redirect('/')
         else:
-            query = "INSERT INTO restaurante (nome, rua, bairro, numero) VALUES (%s, %s, %s, %s);"
-            cursor.execute(query, (nome, rua, bairro, numero))
+            query = "INSERT INTO restaurante (nome, dono, descricao, rua, bairro, numero) VALUES (%s, %s, %s, %s, %s, %s);"
+            cursor.execute(query, dados)
             connectBD.commit()
-            return redirect('/home')
+            flash('Restaurante Cadastrado com sucesso. Faça login para fazer uma reserva')
+            return redirect('/login')
 
     if connectBD.is_connected():
         cursor.close()
