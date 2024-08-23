@@ -57,47 +57,22 @@
             </span>
 
             <h2 class="md:grid grid-cols-3 md:space-y-0 space-y-4 gap-2 mt-16 px-10">
-                <div class="bg-[#241A1C] rounded-md overflow-hidden">
-                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row hover:border-2 border-yellow-500">
-                        <div class="p-4 w-full">
-                            <span class="block text-[#A45A49] text-sm">NOVO</span>
-                            <div class="flex flex-col md:flex-row justify-between items-center mt-3">
-                                <span class="text-base text-white font-bold">A Casa do Porco</span>
-                            </div>
-                            <p class="md:text-xs text-base text-[#756A67] mt-3">Em 2015 os chefs Janaína e Jefferson Rueda alçaram um novo vôo...</p>
-                            <p class="md:text-xs text-base text-[#756A67] mt-5">Janaína e Jefferson Rueda</p>
-                        </div>
-                        <img class="w-full h-48 object-cover" src="static/assets/main/image13.svg" alt="">
-                    </a>
-                </div>
-                <div class="bg-[#241A1C] rounded-md overflow-hidden">
-                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row hover:border-2 border-yellow-500">
-                        <div class="p-4 w-full">
-                            <span class="block text-[#A45A49] text-sm">NOVO</span>
-                            <div class="flex flex-col md:flex-row justify-between items-center mt-3">
-                                <span class="text-base text-white font-bold">Maní</span>
-                            </div>
-                            <p class="md:text-xs text-base text-[#756A67] mt-3">Comida brasileira, autoral, orgânica (sempre que possível!)...</p>
-                            <p class="md:text-xs text-base text-[#756A67] mt-5">Helena Rizzo e Willem Vandeven</p>
-                        </div>
-                        <img class="w-full h-48 object-cover" src="static/assets/main/image14.svg" alt="">
-                    </a>
-                </div>
-                <div class="bg-[#241A1C] rounded-md overflow-hidden">
-                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row hover:border-2 border-yellow-500">
-                        <div class="p-4 w-full">
-                            <span class="block text-[#A45A49] text-sm">NOVO</span>
-                            <div class="flex flex-col md:flex-row justify-between items-center mt-3">
-                                <div class="flex flex-row">
-                                    <span class="text-base text-white font-bold">Jun Sakamoto</span> 
+                {% for restaurante in restaurantes[:3] %}
+                    <div class="bg-[#241A1C] rounded-md overflow-hidden">
+                        <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row hover:border-2 border-yellow-500">
+                            
+                            <div class="p-4 w-full">
+                                <span class="block text-[#A45A49] text-sm">NOVO</span>
+                                <div class="flex flex-col md:flex-row justify-between items-center mt-3">
+                                    <span class="text-base text-white font-bold">{{restaurante[1]}}</span>
                                 </div>
+                                <p class="md:text-xs text-base text-[#756A67] mt-3">{{restaurante[2]}}</p>
+                                <p class="md:text-xs text-base text-[#756A67] mt-5">{{restaurante[3]}}</p>
                             </div>
-                            <p class="md:text-xs text-base text-[#756A67] mt-3">O renomado chef Jun Sakamoto cria pratos elaborados...</p>
-                            <p class="md:text-xs text-base text-[#756A67] mt-5">Jun</p>
-                        </div>
-                        <img class="w-full h-48 object-cover" src="static/assets/main/image15.svg" alt="">
-                    </a>
-                </div>
+                            <img class="w-full h-48 object-cover" src="static/assets/main/image13.svg" alt="">
+                        </a>
+                    </div>
+                {%endfor%}
             </h2>
         </section>
         <section>
@@ -106,73 +81,17 @@
             </span>
             <h2 >
                 <form action="/reserva" method="GET" class="grid md:grid-cols-4 grid-cols-2 gap-2 m-2 capitalize">
-                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
-                        <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt="bellaPizza"/>
-                        <p class="text-sm text-yellow-500">bella pizza
-                        </p>
-                        <p class="text-xs text-white">pizzaria
-                        </p>
-                        <p class="text-xs text-gray-500">3.95 km
-                        </p>
-                    </label>
-                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-                    </div>
-                
-                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
-                        <img src="static/assets/restaurantes/disponiveis/boiNaBrasa.svg" alt=""/>
-                        <p class="text-sm text-yellow-500">boi na brasa</p>
-                        <p class="text-xs text-white">restaurante</p>
-                        <p class="text-xs text-gray-500">3.87 km</p>
-                    </label>
-                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
-                        <img src="static/assets/restaurantes/disponiveis/bomPrato.svg" alt=""/>
-                        <p class="text-sm text-yellow-500">bom prato</p>
-                        <p class="text-xs text-white">restaurante</p>
-                        <p class="text-xs text-gray-500">7.54 km</p>
-                    </label>
-                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-                
-                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
-                        <img src="static/assets/restaurantes/disponiveis/restauranteDaFamilia.svg" alt=""/>
-                        <p class="text-sm text-yellow-500">restaurante da família</p>
-                        <p class="text-xs text-white">restaurante</p>
-                        <p class="text-xs text-gray-500">1.25 km</p>
-                    </label>
-                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-
-                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
-                        <img src="static/assets/restaurantes/disponiveis/restauranteIgarape.svg" alt=""/>
-                        <p class="text-sm text-yellow-500">restaurante igarapé</p>
-                        <p class="text-xs text-white">restaurante</p>
-                        <p class="text-xs text-gray-500">2.96 km</p>
-                    </label>
-                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-
-                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
-                        <img src="static/assets/restaurantes/disponiveis/restauranteMacaxeira.svg" alt=""/>
-                        <p class="text-sm text-yellow-500">restaurante macaxeira</p>
-                        <p class="text-xs text-white">restaurante</p>
-                        <p class="text-xs text-gray-500">4.55 km</p>
-                    </label>
-                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-
-                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
-                        <img src="static/assets/restaurantes/disponiveis/pescadorRestaurante.svg" alt=""/>
-                        <p class="text-sm text-yellow-500">pescador restaurante</p>
-                        <p class="text-xs text-white">restaurante</p>
-                        <p class="text-xs text-gray-500">5.75 km</p>
-                    </label>
-                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-
-                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
-                        <img src="static/assets/restaurantes/disponiveis/restauranteNorteSul.svg" alt=""/>
-                        <p class="text-sm text-yellow-500">restaurante norte sul</p>
-                        <p class="text-xs text-white">restaurante</p>
-                        <p class="text-xs text-gray-500">8.01 km</p>
-                    </label>
-                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-
+                    {%for restaurante in restaurantes%}
+                        <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
+                            <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt="bellaPizza"/>
+                            <p class="text-sm text-yellow-500">{{restaurante[1]}}
+                            </p>
+                            </p>
+                            <p class="text-xs text-gray-500">3.95 km
+                            </p>
+                        </label>
+                        <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                    {%endfor%}
                 <form/>
             </h2>
         </section>
