@@ -18,7 +18,7 @@
                 <figure class="mb-4 md:mb-0">
                     <img src="static/assets/logo.svg" alt="logo" class="h-8">
                 </figure>
-                <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 hidden md:flex ml-8">
+                <ul class="flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 hidden md:flex ml-8">
                     <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for('home')}}">Home</a></li>
                     <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for('novidades') }}">Novidades</a></li>
                 </ul>
@@ -56,9 +56,9 @@
                 </svg>
             </span>
 
-            <h2 class="grid grid-cols-3 gap-2 mt-16 px-10">
+            <h2 class="sm:grid grid-cols-3 mx-2 space-y-4 sm:space-y-0 gap-2 mt-16 px-10">
                 <div class="bg-[#241A1C] rounded-md overflow-hidden">
-                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row cursor-pointer">
+                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row hover:border-2 border-yellow-500">
                         <div class="p-4 w-full">
                             <span class="block text-[#A45A49] text-sm">NOVO</span>
                             <div class="flex flex-col md:flex-row justify-between items-center mt-3">
@@ -71,7 +71,7 @@
                     </a>
                 </div>
                 <div class="bg-[#241A1C] rounded-md overflow-hidden">
-                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row">
+                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row hover:border-2 border-yellow-500">
                         <div class="p-4 w-full">
                             <span class="block text-[#A45A49] text-sm">NOVO</span>
                             <div class="flex flex-col md:flex-row justify-between items-center mt-3">
@@ -84,7 +84,7 @@
                     </a>
                 </div>
                 <div class="bg-[#241A1C] rounded-md overflow-hidden">
-                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row">
+                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row hover:border-2 border-yellow-500">
                         <div class="p-4 w-full">
                             <span class="block text-[#A45A49] text-sm">NOVO</span>
                             <div class="flex flex-col md:flex-row justify-between items-center mt-3">
@@ -105,64 +105,74 @@
                 restaurantes disponíveis
             </span>
             <h2 >
-                <form action="/reserva" method="GET" class="grid grid-cols-4 gap-2 m-2 capitalize">
-                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                <form action="/reserva" method="GET" class="grid md:grid-cols-4 grid-cols-2 gap-2 m-2 capitalize">
+                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
                         <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt="bellaPizza"/>
-                        <p class="text-sm text-yellow-500">bella pizza</p>
-                        <p class="text-xs text-white">pizzaria</p>
-                        <p class="text-xs text-gray-500">3.95 km</p>
-                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                        <p class="text-sm text-yellow-500">bella pizza
+                        </p>
+                        <p class="text-xs text-white">pizzaria
+                        </p>
+                        <p class="text-xs text-gray-500">3.95 km
+                        </p>
+                    </label>
+                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
                     </div>
                 
-                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
                         <img src="static/assets/restaurantes/disponiveis/boiNaBrasa.svg" alt=""/>
                         <p class="text-sm text-yellow-500">boi na brasa</p>
                         <p class="text-xs text-white">restaurante</p>
                         <p class="text-xs text-gray-500">3.87 km</p>
-                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-                    </div>
-                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                    </label>
+                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
                         <img src="static/assets/restaurantes/disponiveis/bomPrato.svg" alt=""/>
                         <p class="text-sm text-yellow-500">bom prato</p>
                         <p class="text-xs text-white">restaurante</p>
                         <p class="text-xs text-gray-500">7.54 km</p>
-                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-                    </div>
-                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                    </label>
+                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                
+                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
                         <img src="static/assets/restaurantes/disponiveis/restauranteDaFamilia.svg" alt=""/>
                         <p class="text-sm text-yellow-500">restaurante da família</p>
                         <p class="text-xs text-white">restaurante</p>
                         <p class="text-xs text-gray-500">1.25 km</p>
-                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-                    </div>
-                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                    </label>
+                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+
+                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
                         <img src="static/assets/restaurantes/disponiveis/restauranteIgarape.svg" alt=""/>
                         <p class="text-sm text-yellow-500">restaurante igarapé</p>
                         <p class="text-xs text-white">restaurante</p>
                         <p class="text-xs text-gray-500">2.96 km</p>
-                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-                    </div>
-                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                    </label>
+                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+
+                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
                         <img src="static/assets/restaurantes/disponiveis/restauranteMacaxeira.svg" alt=""/>
                         <p class="text-sm text-yellow-500">restaurante macaxeira</p>
                         <p class="text-xs text-white">restaurante</p>
                         <p class="text-xs text-gray-500">4.55 km</p>
-                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-                    </div>
-                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                    </label>
+                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+
+                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
                         <img src="static/assets/restaurantes/disponiveis/pescadorRestaurante.svg" alt=""/>
                         <p class="text-sm text-yellow-500">pescador restaurante</p>
                         <p class="text-xs text-white">restaurante</p>
                         <p class="text-xs text-gray-500">5.75 km</p>
-                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-                    </div>
-                    <div class="bg-[#241A1C] flex flex-col justify-center p-4">
+                    </label>
+                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+
+                    <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
                         <img src="static/assets/restaurantes/disponiveis/restauranteNorteSul.svg" alt=""/>
                         <p class="text-sm text-yellow-500">restaurante norte sul</p>
                         <p class="text-xs text-white">restaurante</p>
                         <p class="text-xs text-gray-500">8.01 km</p>
-                        <input type="submit" value="Reservar" class="text-black mt-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
-                    </div>
+                    </label>
+                    <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+
                 <form/>
             </h2>
         </section>
