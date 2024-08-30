@@ -132,10 +132,6 @@ def reserva():
     
     return render_template('ReservaPage.html', restaurante=restaurante)
 
-@app.route('/RealizarReserva')
-def realizar_reserva():
-    return render_template('RealizarReserva.html')
-
 @app.route('/novidades')
 def novidades():
     return render_template('novidades.html') 
@@ -255,6 +251,29 @@ def cadastrarRestaurante():
         cursor.close()
         connectBD.close()
 
+@app.route('/formularioReserva', methods=["POST"])
+def formularioReserva():
+    id_restaurante = request.form.get("reservar")
+    connectBD = mysql.connector.connect(
+        host=DBhost,
+        database=DBname,
+        user=DBuser,
+        password=DBpassword
+    )
+    
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        cursor.execute(f"SELECT id_restaurante, nome FROM restaurante where id_restaurante={id_restaurante};")
+        restaurantes = cursor.fetchall()
+        cursor.close()
+        connectBD.close()
+        
+    return render_template('RealizarReserva.html', restaurantes=restaurantes)
+
+@app.route('/RealizarReserva')
+def realizar_reserva():
+    return render_template('RealizarReserva.html')
+
 @app.route('/cadastrarReserva', methods=['POST'])
 def cadastrarReserva():
     restaurante_id = request.form.get('restaurante_id')
@@ -262,7 +281,7 @@ def cadastrarReserva():
     hora = request.form.get('horario')
     hora = f'{hora}:00'
     numero_pessoas = request.form.get('num_pessoas')
-    
+    print(restaurante_id)
     connectBD = mysql.connector.connect(
         host=DBhost,
         database=DBname,
@@ -284,25 +303,6 @@ def cadastrarReserva():
     if connectBD.is_connected():
         cursor.close()
         connectBD.close()
-
-@app.route('/formularioReserva', methods=["POST"])
-def formularioReserva():
-    connectBD = mysql.connector.connect(
-        host=DBhost,
-        database=DBname,
-        user=DBuser,
-        password=DBpassword
-    )
-    
-    if connectBD.is_connected():
-        cursor = connectBD.cursor()
-        cursor.execute("SELECT id_restaurante, nome FROM restaurante;")
-        restaurantes = cursor.fetchall()
-        cursor.close()
-        connectBD.close()
-        print(restaurantes)
-        
-    return render_template('RealizarReserva.html', restaurantes=restaurantes)
 
         
 if __name__ in "__main__":
