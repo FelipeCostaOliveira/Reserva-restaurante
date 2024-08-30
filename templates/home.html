@@ -35,7 +35,6 @@
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("home") }}">home</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("logout") }}">Sair</a></li>
-            </ul>
         </nav>
     </header>
 
@@ -80,9 +79,9 @@
                 restaurantes disponíveis
             </span>
             <h2 >
-                <form action="/reserva" method="GET" class="grid md:grid-cols-4 grid-cols-2 gap-2 m-2 capitalize">
+                <form action="/reserva" method="POST" class="grid md:grid-cols-4 grid-cols-2 gap-2 m-2 capitalize">
                     {%for restaurante in restaurantes%}
-                        <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
+                        <label for="detalhes-{{restaurante[0]}}" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
                             <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt="bellaPizza"/>
                             <p class="text-sm text-yellow-500">{{restaurante[1]}}
                             </p>
@@ -90,7 +89,7 @@
                             <p class="text-xs text-gray-500">3.95 km
                             </p>
                         </label>
-                        <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
+                        <input id="detalhes-{{restaurante[0]}}" name="detalhes" type="submit" value={{restaurante[0]}} class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
                     {%endfor%}
                 <form/>
             </h2>

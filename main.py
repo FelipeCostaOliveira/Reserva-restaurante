@@ -11,7 +11,7 @@ app.secret_key = 'felipe'
 DBhost = 'localhost' 
 DBname = 'SistemaReservas'
 DBuser = 'root'
-DBpassword = 'root'
+DBpassword = ''
 
 
 # CRIAR TABELA DE BANCO DE DADOS
@@ -113,9 +113,24 @@ def modelos():
 def requisitos():
     return render_template('requisitos.html')
 
-@app.route('/reserva')
+@app.route('/reserva', methods=["POST"])
 def reserva():
-    return render_template('ReservaPage.html')
+    id_restaurante = request.form.get("detalhes")
+    connectBD = mysql.connector.connect(
+        host=DBhost,
+        database=DBname,
+        user=DBuser,
+        password=DBpassword
+    )
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        cursor.execute(f"SELECT * FROM restaurante WHERE id_restaurante ={id_restaurante}")
+        restaurante = cursor.fetchone()
+        cursor.close()
+        connectBD.close()
+        print(restaurante)
+    
+    return render_template('ReservaPage.html', restaurante=restaurante)
 
 @app.route('/RealizarReserva')
 def realizar_reserva():
@@ -270,7 +285,7 @@ def cadastrarReserva():
         cursor.close()
         connectBD.close()
 
-@app.route('/formularioReserva')
+@app.route('/formularioReserva', methods=["POST"])
 def formularioReserva():
     connectBD = mysql.connector.connect(
         host=DBhost,

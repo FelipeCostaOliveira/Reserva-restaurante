@@ -19,8 +19,8 @@
                     <div class="flex flex-col md:flex-row mt-4 items-start">
                         <img class="w-24 h-24 object-cover" src="static/assets/ImagemRestaurante.png" alt="Imagem Restaurante">
                         <div class="flex flex-col ml-4 text-white">
-                            <h1 class="text-xl font-bold">Bella Pizza</h1>
-                            <h2 class="text-sm mt-1">Endereço: Avenida Calama, 3988, Embratel, Porto Velho-RO</h2>
+                            <h1 class="text-xl font-bold">{{restaurante[1]}}</h1>
+                            <h2 class="text-sm mt-1">Endereço: {{restaurante[4]}}, {{restaurante[6]}}, {{restaurante[5]}}, Porto Velho-RO</h2>
                         </div>
                     </div>  
                 </div>
@@ -60,17 +60,21 @@
                                 <img class="mt-2 w-full cursor-pointer max-w-xs" src="static/assets/Local.png" alt="Localização">
                             </div>
                         </div>
-                        <a href="{{url_for("formularioReserva")}}" class="mt-4">
-                            <div class="flex border border-orange-400 text-white px-2 py-2 rounded-md cursor-pointer items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-10 h-10 text-orange-500">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
-                                </svg>
-                                <div class="ml-2 text-white text-justify">
-                                    <h1 class="font-bold">Realizar reserva</h1>
-                                    <h2 class="font-normal">Faça sua reserva e evite filas</h2>
-                                </div>
-                            </div>  
-                        </a>
+                        <form action="/formularioReserva" method="POST">
+                            <label for="reservar">
+                                <div class="flex border border-orange-400 text-white px-2 py-2 rounded-md cursor-pointer items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-10 h-10 text-orange-500">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                                    </svg>
+                                    <div class="ml-2 text-white text-justify">
+                                        <h1 class="font-bold">Realizar reserva</h1>
+                                        <h2 class="font-normal">Faça sua reserva e evite filas</h2>
+                                    </div>
+                                </div>  
+                            </label>                                
+                            <input type="submit" id="reservar" class="hidden">
+                        </form>
+                        
                     </div> 
                 </div>      
             </div>   
