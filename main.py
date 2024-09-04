@@ -11,7 +11,7 @@ app.secret_key = 'felipe'
 DBhost = 'localhost' 
 DBname = 'SistemaReservas'
 DBuser = 'root'
-DBpassword = 'root'
+DBpassword = ''
 
 
 # CRIAR TABELA DE BANCO DE DADOS

@@ -13,22 +13,36 @@
 </head>
 <body class="bg-[#1F1517] ">
     <header>
-        <nav class="text-white m-auto container flex flex-row space-x-10 items-center justify-between px-20 py-4 max-md:flex-col max-md:text-sm max-md:items-end max-md:-mr-12 max-md:py-1 max-lg:px-0 max-md:px-14 max-lg:space-x-3 max-lg:text-sm">
-            <span class="font-teko-semibold text-3xl max-md:hidden items-center max-lg:hidden">LANDING-PAGE</span>
-            <ul class="flex flex-row space-x-10 max-md:hidden">
-                <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("index")}}">Home</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("modelos")}}">Modelos</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for("requisitos")}}">Requisitos</a></li>
-            </ul>
-            <a href="{{url_for("login")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg max-md:hidden">Já possui uma Conta?</a> 
+        <nav class="text-white m-auto container flex flex-row space-x-10 items-center justify-between px-8 py-4 max-md:flex-col max-md:items-center max-md:space-y-4 max-md:px-4">
+            <img id="imagem" class="h-12 w-12" src="static/assets/logo.svg" alt="imagem">
 
-            <div class="md:hidden">
-                <button id="menubutton" type="" class="inline-flex hover:bg-[#A45A49] rounded-sm" aria-label="Menu" aria-expanded="false">
-                    <img id="imagem" class=" h-7 w-7" src="static/assets/menu.svg" alt="">
-                </button>
+            <ul class="flex flex-row space-x-10 max-md:hidden">
+                <li class="border-[#E7A80E] border-b-2 font-bold"><a href="{{url_for("index")}}">Home</a></li>
+                <li class="hover:text-[#E7A80E] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
+                <li class="hover:text-[#E7A80E] font-bold"><a href="{{ url_for("modelos")}}">Modelos</a></li>
+                <li class="hover:text-[#E7A80E] font-bold"><a href="{{url_for("requisitos")}}">Requisitos</a></li>
+            </ul>
+            <div class="flex flex-row items-center space-x-6">
+                <form action="/cadastroRestaurante" class="flex items-center space-x-2 text-[#E7A80E] p-2 rounded-md border border-[#E7A80E] text-base bg-transparent font-bold hover:text-white hover:border-white cursor-pointer">
+                    <input class="bg-transparent border-none outline-none" type="submit" value="Cadastre seu restaurante"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                </form>
+
+                <div class="border-l-2 border-white h-12 mx-4"></div>
+
+                <a href="{{url_for("login")}}" class="hover:text-[#A45A49] hover:border-[#A45A49] font-bold border px-4 py-2 rounded-lg max-md:hidden">Já possui uma Conta?</a>
+
+                <div class="md:hidden">
+                    <button id="menubutton" type="button" class="inline-flex hover:bg-[#A45A49] rounded-sm p-2" aria-label="Menu" aria-expanded="false">
+                        <img id="imagem" class="h-7 w-7" src="static/assets/menu.svg" alt="">
+                    </button>
+                </div>
             </div>
+
         </nav>
+
 
         <nav id="menu" class="hidden text-white m-auto container flex-col space-x-10 py-1">
             <ul class="flex flex-col items-center">
@@ -38,9 +52,9 @@
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for("requisitos")}}">Requisitos</a></li>
                 <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for("login")}}">Log in</a></li>
             </ul>
-            
-        </nav>  
-        
+
+        </nav>
+
     </header>
     <main>
         <div class="bg-[#181012]">
@@ -53,10 +67,10 @@
 
                     <form class="text-white flex flex-col font-intel py-5" action="/cadastrarUsuario" method="POST">
                         <label for="username">Email</label>
-                        <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="email" name="email"  placeholder="Digite seu email">
+                        <input class="text-black mt-1 p-2 rounded-md border-none text-base" type="email" name="email"  placeholder="Digite seu email">
                         <label for="username">Senha</label>
-                        <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="password" name="senha" placeholder="Digite sua senha">
-                        <input class="text-black mt-2 p-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer" type="submit" class="text-white w-3/5 m-auto mt-2.5 font-bold" value="Registrar" >
+                        <input class="text-black mt-1 p-2 rounded-md border-none text-base" type="password" name="senha" placeholder="Digite sua senha">
+                        <input class="text-black hover:text-gray-300 mt-2 p-2 rounded-md border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer" type="submit" class="text-white w-3/5 m-auto mt-2.5 font-bold" value="Registrar" >
                         {% set mensagem = get_flashed_messages()%}
                         {% if mensagem %}
                         <div class="text-red-600 font-bold m-auto">
@@ -113,13 +127,12 @@
             </div>
         </section>
     </main>
-    <form action="/cadastroRestaurante">
-        <input class="text-black ml-2 p-2 rounded-3xl border-none text-base bg-[#A45A49]  m-auto font-bold hover:bg-[#4e1002] cursor-pointer" type="submit" value="Cadastre seu restaurante"/>
-    </form>
     <footer class="static bottom-0 w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
         <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
         <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>
     </footer>
     <script src="static/scripts/ResponsiveNavbar.js"></script>
+
+
 </body>
 </html>
