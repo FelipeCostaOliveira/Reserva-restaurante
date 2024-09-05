@@ -11,8 +11,7 @@ app.secret_key = 'felipe'
 DBhost = 'localhost' 
 DBname = 'SistemaReservas'
 DBuser = 'root'
-DBpassword = ''
-
+DBpassword = 'alunoifro'
 
 # CRIAR TABELA DE BANCO DE DADOS
 connection = database.create_server_connection(DBhost, DBuser, DBpassword)     
@@ -65,17 +64,26 @@ DEFAULT CHARSET=utf8mb4;
 new_connection3 = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
 database.create_table(new_connection3, NameTabela3, query3)
 
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('landingPage/index.html')
 
 @app.route('/Equipe')
 def equipe():
-    return render_template('Equipe.html')
+    return render_template('landingPage/Equipe.html')
 
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/modelos')
+def modelos():
+    return render_template('landingPage/modelos.html')
+
+@app.route('/requisitos')
+def requisitos():
+    return render_template('landingPage/requisitos.html')
 
 @app.route('/logout')
 def logout():
@@ -105,13 +113,7 @@ def home():
         return redirect('/login')
     return render_template('home.html', restaurantes=restaurantes)
 
-@app.route('/modelos')
-def modelos():
-    return render_template('modelos.html')
 
-@app.route('/requisitos')
-def requisitos():
-    return render_template('requisitos.html')
 
 @app.route('/reserva', methods=["POST"])
 def reserva():
