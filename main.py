@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, flash, redirect, session
-import json
 import mysql.connector
 import createDataBase
 
 app = Flask(__name__)
 app.secret_key = 'felipe'
+
+createDataBase.criarBD()
 
 @app.route('/')
 def index():
