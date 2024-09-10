@@ -11,17 +11,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
-<body class="bg-[#1F1517]">
+<body class="bg-white">
     <header>
-        <nav class=" bg-[#23181A] text-white m-auto flex flex-row space-x-10 items-center justify-between px-64 py-4 max-md:flex-col max-md:text-sm max-md:items-end max-md:-mr-12 max-md:py-1 max-lg:px-0 max-md:px-14 max-lg:space-x-3 max-lg:text-sm">
+        <nav class=" bg-white text-gray-600 shadow-lg m-auto flex flex-row space-x-10 items-center justify-between px-64 py-4 max-md:flex-col max-md:text-sm max-md:items-end max-md:-mr-12 max-md:py-1 max-lg:px-0 max-md:px-14 max-lg:space-x-3 max-lg:text-sm">
             
             <ul class="flex flex-row items-center space-x-10 max-md:hidden">
                 <figure><img src="static/assets/logo.svg" alt="logo"></figure>
-                <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("home")}}">Home</a></li>
-                <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
+                <li class="font-bold"><a href="{{url_for("home")}}">Home</a></li>
+                <li class="font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
                 
             </ul>
-            <a href="{{url_for("logout")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg max-md:hidden">Sair</a> 
+            <a href="{{url_for("logout")}}" class="hover:text-yellow-600 font-bold  px-2 rounded-md max-md:hidden">Sair</a> 
             <div class="md:hidden">
                 <button id="menubutton" type="" class="inline-flex hover:bg-[#A45A49] rounded-sm" aria-label="Menu" aria-expanded="false">
                     <img id="imagem" class=" h-7 w-7" src="static/assets/menu.svg" alt="">
@@ -42,7 +42,7 @@
     <main>
         <section class="mt-16 flex justify-center">
             <div class="flex relative justify-center">
-                <input type="text" placeholder="Buscar por restaurantes" class="w-96 bg-[#23181A] text-white pl-10 pr-4 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <input type="text" placeholder="Buscar por restaurantes" class="w-96 bg-gray-200 text-gray-800 pl-10 pr-4 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-yellow-500">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-yellow-500">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                 </svg>
@@ -58,37 +58,38 @@
 
             <h2 class="md:grid grid-cols-3 md:space-y-0 space-y-4 gap-2 mt-16 px-10">
                 {% for restaurante in restaurantes[:3] %}
-                    <div class="bg-[#241A1C] rounded-md overflow-hidden">
-                        <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row hover:border-2 border-yellow-500">
-                            
-                            <div class="p-4 w-full">
-                                <span class="block text-[#A45A49] text-sm">NOVO</span>
-                                <div class="flex flex-col md:flex-row justify-between items-center mt-3">
-                                    <span class="text-base text-white font-bold">{{restaurante[1]}}</span>
-                                </div>
-                                <p class="md:text-xs text-base text-[#756A67] mt-3">{{restaurante[2]}}</p>
-                                <p class="md:text-xs text-base text-[#756A67] mt-5">{{restaurante[3]}}</p>
+                <div class="bg-gray-200 shadow-md rounded-md overflow-hidden border hover:border-2 hover:border-red-800">
+                    <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row cursor-pointer">
+                        <div class="p-4 w-full">
+                            <span class="block font-semibold text-red-900 text-sm">NOVO</span>
+                            <div class="flex flex-col md:flex-row justify-between items-center mt-3">
+                                <span class="text-base text-gray-700 font-bold">{{restaurante[1]}}</span>
                             </div>
-                            <img class="w-full h-48 object-cover" src="static/assets/main/image13.svg" alt="">
-                        </a>
-                    </div>
+                            <p class="text-xs text-gray-800 mt-3">{{restaurante[2]}}</p>
+                            <p class="text-xs text-gray-800 mt-5">{{restaurante[3]}}</p>
+                        </div>
+                        <img class="w-full h-48 object-cover" src="static/assets/main/image13.svg" alt="">
+                    </a>
+                </div>
                 {%endfor%}
             </h2>
         </section>
         <section>
-            <span class="flex ml-24 mt-16 items-center text-white capitalize text-xl font-bold">
+            <span class="flex ml-24 mt-16 items-center text-gray-800 capitalize text-xl font-bold">
                 restaurantes disponíveis
             </span>
             <h2 >
                 <form action="/reserva" method="GET" class="grid md:grid-cols-4 grid-cols-2 gap-2 m-2 capitalize">
                     {%for restaurante in restaurantes%}
-                        <label for="detalhes" class="bg-[#241A1C] flex flex-col justify-center p-4 cursor-pointer hover:border-2 border-yellow-500">
-                            <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt="bellaPizza"/>
-                            <p class="text-sm text-yellow-500">{{restaurante[1]}}
-                            </p>
-                            </p>
-                            <p class="text-xs text-gray-500">3.95 km
-                            </p>
+                        <label for="detalhes" class="bg-gray-100 mx-8 flex flex-col justify-center shadow-lg rounded-md cursor-pointer hover:border-2 border-gray-300">
+                            <div class="flex flex-row">
+                                <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt="bellaPizza" class="w-3/5"/>
+                                <div class="flex flex-col ml-2">
+                                    <p class="text-md font-semibold text-gray-700">{{restaurante[1]}}</p>
+                                    <p class="text-xs font-normal text-gray-600 mt-2">Horário: 12:30 até 18:30</p>
+                                    <p class="text-xs font-normal text-gray-600 mt-auto">mesas disponíveis: 5</p>
+                                </div>                              
+                            </div>
                         </label>
                         <input id="detalhes" name="detalhes" type="submit"  class="hidden text-black mt-2 rounded-3xl border-none text-base bg-[#070707] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer"/>
                     {%endfor%}
@@ -96,9 +97,9 @@
             </h2>
         </section>
     </main>
-    <footer class="mt-24 bottom-0 w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
-        <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
-        <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>
+    <footer class="mt-24 bottom-0 w-full p-16 flex flex-col items-center gap-2 bg-white">
+        <p class="text-gray-700 text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
+        <p class="text-gray-800 text-base">Feito por Felipe</p>
     </footer>
     <script src="static/scripts/ResponsiveNavbar.js"></script>
 </body>

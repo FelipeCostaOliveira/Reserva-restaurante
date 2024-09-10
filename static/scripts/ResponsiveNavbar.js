@@ -25,7 +25,7 @@ $(document).ready(function() {
         
         // Verifica se o caminho do href corresponde ao caminho atual
         if (currentPath === linkPath) {
-            $(this).parent().addClass('text-yellow-400');
+            $(this).parent().addClass('text-yellow-600');
         }
     });
 });
