@@ -20,14 +20,10 @@
                     </svg>
                 </a>
                 <form class="flex flex-col" action="/cadastrarReserva" method="post">
-                    <div class="flex flex-col mb-4">
-                        <label for="restaurante_id">Escolha o Restaurante:</label>
-                        <select class="bg-gray-200 px-4 py-2 rounded-md text-gray-500 w-full" id="restaurante_id" name="restaurante_id">
-                            {% for restaurante in restaurantes %}
-                                <option value="{{ restaurante[0] }}">{{ restaurante[1] }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
+                    {% for restaurante in restaurantes%}
+                        <input type="text" class="hidden" name="restaurante_id" value={{ restaurante[0]}}>
+                    {% endfor %}
+                    
                     
                     <div class="flex flex-col mb-4">
                        <label for="num_pessoas" class="font-medium text-gray-700">Pessoas</label>

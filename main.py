@@ -1,81 +1,31 @@
 from flask import Flask, render_template, request, flash, redirect, session
-import json
 import mysql.connector
-import database
+import createDataBase
 
 app = Flask(__name__)
 app.secret_key = 'felipe'
 
-
-# Criar Banco de Dados
-DBhost = 'localhost' 
-DBname = 'SistemaReservas'
-DBuser = 'root'
-DBpassword = 'root'
-
-
-# CRIAR TABELA DE BANCO DE DADOS
-connection = database.create_server_connection(DBhost, DBuser, DBpassword)     
-query_database = f"create database {DBname}"
-database.create_database(connection, query_database, DBname)
-# Criar Tabela usuario
-NameTabela = 'usuario'
-query = f"""
-CREATE TABLE {NameTabela} 
-(id_usuario INT NOT NULL AUTO_INCREMENT,
-email VARCHAR(45) NOT NULL,
-senha VARCHAR(45) NOT NULL,
-PRIMARY KEY (id_usuario)) 
-DEFAULT CHARSET=utf8mb4;
-"""
-new_connection = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
-database.create_table(new_connection, NameTabela, query)
-
-# Criar tabela restaurante
-NameTabela2 = 'restaurante'
-query2 = f"""
-CREATE TABLE {NameTabela2}
-(id_restaurante INT NOT NULL AUTO_INCREMENT,
-nome VARCHAR(45) NOT NULL,
-dono VARCHAR(45) NOT NULL,
-descricao VARCHAR(255) NOT NULL,
-rua VARCHAR(100) NOT NULL,
-bairro VARCHAR(100) NOT NULL,
-numero INT NOT NULL,
-mesasDisponiveis INT,
-PRIMARY KEY(id_restaurante))
-DEFAULT CHARSET=utf8mb4;
-"""
-new_connection2 = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
-database.create_table(new_connection2, NameTabela2, query2)
-
-# Criar tabela reserva
-NameTabela3 = 'reserva'
-query3 = f"""
-CREATE TABLE {NameTabela3} 
-(id_reserva INT NOT NULL AUTO_INCREMENT,
-id_restaurante INT NOT NULL,
-num_pessoas INT NOT NULL,
-horario TIME NOT NULL,
-data DATE NOT NULL,
-FOREIGN KEY (id_restaurante) REFERENCES restaurante(id_restaurante) ON DELETE CASCADE,
-PRIMARY KEY(id_reserva)) 
-DEFAULT CHARSET=utf8mb4;
-"""
-new_connection3 = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
-database.create_table(new_connection3, NameTabela3, query3)
+createDataBase.criarBD()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('landingPage/index.html')
 
 @app.route('/Equipe')
 def equipe():
-    return render_template('Equipe.html')
+    return render_template('landingPage/Equipe.html')
 
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/modelos')
+def modelos():
+    return render_template('landingPage/modelos.html')
+
+@app.route('/requisitos')
+def requisitos():
+    return render_template('landingPage/requisitos.html')
 
 @app.route('/logout')
 def logout():
@@ -87,10 +37,10 @@ def logout():
 @app.route('/home')
 def home():
     connectBD = mysql.connector.connect(
-        host=DBhost,
-        database=DBname,
-        user=DBuser,
-        password=DBpassword
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
     )
     
     if connectBD.is_connected():
@@ -105,21 +55,26 @@ def home():
         return redirect('/login')
     return render_template('home.html', restaurantes=restaurantes)
 
-@app.route('/modelos')
-def modelos():
-    return render_template('modelos.html')
 
-@app.route('/requisitos')
-def requisitos():
-    return render_template('requisitos.html')
 
-@app.route('/reserva')
+@app.route('/reserva', methods=["POST"])
 def reserva():
-    return render_template('ReservaPage.html')
-
-@app.route('/RealizarReserva')
-def realizar_reserva():
-    return render_template('RealizarReserva.html')
+    id_restaurante = request.form.get("detalhes")
+    connectBD = mysql.connector.connect(
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
+    )
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        cursor.execute(f"SELECT * FROM restaurante WHERE id_restaurante ={id_restaurante}")
+        restaurante = cursor.fetchone()
+        cursor.close()
+        connectBD.close()
+        print(restaurante)
+    
+    return render_template('ReservaPage.html', restaurante=restaurante)
 
 @app.route('/novidades')
 def novidades():
@@ -135,10 +90,10 @@ def autenticarUsuario():
     email = request.form.get("email")
     senha = request.form.get("senha")
     connectBD = mysql.connector.connect(
-        host=DBhost,
-        database= DBname,
-        user=DBuser,
-        password=DBpassword
+        host=createDataBase.DBhost,
+        database= createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
     )
     contador = 0
     if connectBD.is_connected():
@@ -166,10 +121,10 @@ def cadastrarUsuario():
     email = request.form.get('email')
     senha = request.form.get('senha')   
     connectBD = mysql.connector.connect(
-        host=DBhost,
-        database=DBname,
-        user=DBuser,
-        password=DBpassword
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
     )
     contador = 0
     if connectBD.is_connected():
@@ -217,10 +172,10 @@ def cadastrarRestaurante():
     numero = request.form.get('numero')
     dados = nome, dono, descricao, rua, bairro, numero
     connectBD = mysql.connector.connect(
-        host=DBhost,
-        database=DBname,
-        user=DBuser,
-        password=DBpassword
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
     )
     if connectBD.is_connected():
         cursor = connectBD.cursor()
@@ -240,6 +195,29 @@ def cadastrarRestaurante():
         cursor.close()
         connectBD.close()
 
+@app.route('/formularioReserva', methods=["POST"])
+def formularioReserva():
+    id_restaurante = request.form.get("reservar")
+    connectBD = mysql.connector.connect(
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
+    )
+    
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        cursor.execute(f"SELECT id_restaurante, nome FROM restaurante where id_restaurante={id_restaurante};")
+        restaurantes = cursor.fetchall()
+        cursor.close()
+        connectBD.close()
+        
+    return render_template('RealizarReserva.html', restaurantes=restaurantes)
+
+@app.route('/RealizarReserva')
+def realizar_reserva():
+    return render_template('RealizarReserva.html')
+
 @app.route('/cadastrarReserva', methods=['POST'])
 def cadastrarReserva():
     restaurante_id = request.form.get('restaurante_id')
@@ -247,12 +225,12 @@ def cadastrarReserva():
     hora = request.form.get('horario')
     hora = f'{hora}:00'
     numero_pessoas = request.form.get('num_pessoas')
-    
+    print(restaurante_id)
     connectBD = mysql.connector.connect(
-        host=DBhost,
-        database=DBname,
-        user=DBuser,
-        password=DBpassword
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
     )
     
     if connectBD.is_connected():
@@ -269,25 +247,6 @@ def cadastrarReserva():
     if connectBD.is_connected():
         cursor.close()
         connectBD.close()
-
-@app.route('/formularioReserva')
-def formularioReserva():
-    connectBD = mysql.connector.connect(
-        host=DBhost,
-        database=DBname,
-        user=DBuser,
-        password=DBpassword
-    )
-    
-    if connectBD.is_connected():
-        cursor = connectBD.cursor()
-        cursor.execute("SELECT id_restaurante, nome FROM restaurante;")
-        restaurantes = cursor.fetchall()
-        cursor.close()
-        connectBD.close()
-        print(restaurantes)
-        
-    return render_template('RealizarReserva.html', restaurantes=restaurantes)
 
         
 if __name__ in "__main__":
