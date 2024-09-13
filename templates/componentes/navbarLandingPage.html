@@ -1,14 +1,15 @@
-<nav class="text-white m-auto container flex flex-row space-x-10 items-center justify-between px-8 py-4 max-md:flex-col max-md:items-center max-md:space-y-4 max-md:px-4">
-    <img id="imagem" class="h-12 w-12" src="static/assets/logo.svg" alt="imagem">
-
-    <ul class="flex flex-row space-x-10 max-md:hidden">
-        <li class="hover:text-[#E7A80E] font-bold"><a href="{{url_for("index")}}">Home</a></li>
-        <li class="hover:text-[#E7A80E] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
-        <li class="hover:text-[#E7A80E] font-bold"><a href="{{ url_for("modelos")}}">Modelos</a></li>
-        <li class="hover:text-[#E7A80E] font-bold"><a href="{{url_for("requisitos")}}">Requisitos</a></li>
+<nav class=" bg-white text-gray-700 shadow-xl m-auto flex flex-row space-x-10 items-center justify-between px-64 py-4 max-md:flex-col max-md:text-sm max-md:items-end max-md:-mr-12 max-md:py-1 max-lg:px-0 max-md:px-14 max-lg:space-x-3 max-lg:text-sm">
+            
+    <ul class="flex flex-row items-center space-x-10 max-md:hidden">
+        <figure><img src="static/assets/logo.svg" alt="logo"></figure>
+        <li class="hover:text-amber-900 font-bold"><a href="{{url_for("index")}}">Home</a></li>
+        <li class="hover:text-amber-900 font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
+        <li class="hover:text-amber-900 font-bold"><a href="{{ url_for("modelos")}}">Modelos</a></li>
+        <li class="hover:text-amber-900 font-bold"><a href="{{url_for("requisitos")}}">Requisitos</a></li>
+        
     </ul>
     <div class="flex flex-row items-center space-x-6">
-        <form action="/cadastroRestaurante" class="flex items-center space-x-2 text-[#E7A80E] p-2 rounded-md border border-[#E7A80E] text-base bg-transparent font-bold hover:text-white hover:border-white cursor-pointer">
+        <form action="/cadastroRestaurante" class="flex items-center space-x-2 text-yellow-600 p-2 rounded-md border border-yellow-600 text-base bg-transparent font-bold hover:text-amber-900 hover:border-amber-900 cursor-pointer">
             <input class="bg-transparent border-none outline-none" type="submit" value="Cadastre seu restaurante"/>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
@@ -17,7 +18,7 @@
 
         <div class="border-l-2 border-white h-12 mx-4"></div>
 
-        <a href="{{url_for("login")}}" class="hover:text-[#A45A49] hover:border-[#A45A49] font-bold border px-4 py-2 rounded-lg max-md:hidden">Já possui uma Conta?</a>
+        <a href="{{url_for("login")}}" class="hover:text-yellow-700 hover:border-yellow-500 font-bold border px-4 py-2 rounded-lg max-md:hidden">Já possui uma Conta?</a>
 
         <div class="md:hidden">
             <button id="menubutton" type="button" class="inline-flex hover:bg-[#A45A49] rounded-sm p-2" aria-label="Menu" aria-expanded="false">
@@ -25,9 +26,7 @@
             </button>
         </div>
     </div>
-
 </nav>
-
 <!-- navbar responsiva -->
 <nav id="menu" class="hidden text-white m-auto container flex-col space-x-10 py-1">
     <ul class="flex flex-col items-center">

@@ -14,7 +14,7 @@ $(document).ready(function() {
 
         // Verifica se o caminho do href corresponde ao caminho atual
         if (currentPath === linkPath) {
-            $(this).parent().addClass('text-yellow-400 border-b-2 border-yellow-400'); // Adiciona a classe ao item do menu correspondente
+            $(this).parent().addClass('text-yellow-600 border-b-2 border-yellow-600'); // Adiciona a classe ao item do menu correspondente
         }
     });
 });
