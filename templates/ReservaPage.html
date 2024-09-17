@@ -7,18 +7,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body class="bg-[#181012]">
-    <div class="flex flex-col">
-        <div>
-            <img class="w-full" src="static/assets/TelaDeFundo.png" alt="Tela de Fundo">
-        </div>
+<body class="bg-white">
+    <header>
+        {% include 'componentes/navbar.html' %}
+    </header>
+    <div class="min-h-screen flex flex-col justify-center items-center w-full">
         <div class="flex items-center justify-center px-4 sm:px-8 lg:px-12 w-full">
             <div class="w-full max-w-4xl bg-gray-200 p-4 rounded-md">
                 <div class="flex flex-col">
                     <img class="w-full" src="static/assets/ImagensReserva.png" alt="Imagem Reserva">
                     <div class="flex flex-col md:flex-row mt-4 items-start">
                         <img class="w-24 h-24 object-cover" src="static/assets/ImagemRestaurante.png" alt="Imagem Restaurante">
-                        <div class="flex flex-col ml-4 text-white">
+                        <div class="flex flex-col ml-4 text-gray-700">
                             <h1 class="text-xl font-bold">{{restaurante[1]}}</h1>
                             <h2 class="text-sm mt-1">Endereço: {{restaurante[4]}}, {{restaurante[6]}}, {{restaurante[5]}}, Porto Velho-RO</h2>
                         </div>
@@ -30,7 +30,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6 text-orange-500">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
                             </svg>
-                            <div class="ml-2 text-white">
+                            <div class="ml-2 text-gray-700">
                                 <h1 class="font-bold text-lg">Sobre</h1>
                                 <h2 class="text-sm">Ótimos coquetéis · Aconchegante · Casual</h2>
                             </div>
@@ -39,7 +39,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6 text-orange-500">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                             </svg>
-                            <div class="ml-2 text-white">
+                            <div class="ml-2 text-gray-700">
                                 <h1 class="font-bold text-lg">Horários de abertura</h1>
                                 <ul class="text-sm list-disc list-inside">
                                     <li>De segunda a sexta: 11:30 - 15:00, 18:30 - 22:30</li>
@@ -54,19 +54,19 @@
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                             </svg>
-                            <div class="ml-2 text-white">
+                            <div class="ml-2 text-gray-700">
                                 <h1 class="font-bold text-lg">Como chegar</h1>
-                                <h2 class="text-sm">Endereço: Avenida Calama, 3988, Embratel, Porto Velho-RO</h2>
+                                <h2 class="text-sm">Endereço: {{restaurante[4]}}, {{restaurante[6]}}, {{restaurante[5]}}, Porto Velho-RO</h2>
                                 <img class="mt-2 w-full cursor-pointer max-w-xs" src="static/assets/Local.png" alt="Localização">
                             </div>
                         </div>
-                        <form action="/formularioReserva" method="POST">
+                        <form action="/formularioReserva" method="POST" class="flex flex-row border border-orange-400 text-white px-2 py-2 rounded-md items-center bg-white w-72 ml-8">
                             <label for="reservar-{{restaurante[0]}}">
-                                <div class="flex border border-orange-400 text-white px-2 py-2 rounded-md cursor-pointer items-center">
+                                <div class="flex flex-row cursor-pointer">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-10 h-10 text-orange-500">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
                                     </svg>
-                                    <div class="ml-2 text-white text-justify">
+                                    <div class="ml-2 text-gray-600 text-justify">
                                         <h1 class="font-bold">Realizar reserva</h1>
                                         <h2 class="font-normal">Faça sua reserva e evite filas</h2>
                                     </div>
