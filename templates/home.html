@@ -57,7 +57,7 @@
             <h2 >
                 <form action="/reserva" method="POST" class="grid md:grid-cols-4 grid-cols-2 gap-2 m-2 capitalize">
                     {%for restaurante in restaurantes%}
-                        <label for="detalhes" class="bg-gray-100 mx-8 flex flex-col justify-center shadow-lg rounded-md cursor-pointer hover:border-2 border-gray-300">
+                        <label for="detalhes-{{restaurante[0]}}" class="bg-gray-100 mx-8 flex flex-col justify-center shadow-lg rounded-md cursor-pointer hover:border-2 border-gray-300">
                             <div class="flex flex-row">
                                 <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt="bellaPizza" class="w-3/5"/>
                                 <div class="flex flex-col ml-2">
