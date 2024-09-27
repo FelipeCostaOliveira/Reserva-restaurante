@@ -8,70 +8,70 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body class="bg-[#181012] text-white">
+<body class="bg-white text-white">
     <header>
         {% include 'componentes/navbar.html' %}
     </header>
     
     <main class="flex flex-col items-center py-8">
         <section class="max-w-6xl w-full px-4 md:px-8">
-            <header class="text-center mb-8">
+            <header class="text-center text-gray-800 mb-8">
                 <h1 class="text-4xl font-montserrat font-bold md:text-3xl">Confira as novidades da semana!</h1>
                 <h2 class="hidden md:block">Dê uma olhada nos novos restaurantes!</h2>
             </header>
         </section>
         
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-8">
-            <div class="bg-[#241A1C] rounded-md overflow-hidden">
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-8 mt-16">
+            <div class="bg-gray-100 shadow-md rounded-md overflow-hidden border hover:border-2 hover:border-red-800">
                 <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row cursor-pointer">
                     <div class="p-4 w-full">
-                        <span class="block text-[#A45A49] text-sm">NOVO</span>
+                        <span class="block font-semibold text-red-900 text-sm">NOVO</span>
                         <div class="flex flex-col md:flex-row justify-between items-center mt-3">
-                            <span class="text-base text-[#C7BAB3] font-bold">A Casa do Porco</span>
+                            <span class="text-base text-gray-700 font-bold">A Casa do Porco</span>
                         </div>
-                        <p class="text-xs text-[#756A67] mt-3">Em 2015 os chefs Janaína e Jefferson Rueda alçaram um novo vôo...</p>
-                        <p class="text-xs text-[#756A67] mt-5">Janaína e Jefferson Rueda</p>
+                        <p class="text-xs text-gray-800 mt-3">Em 2015 os chefs Janaína e Jefferson Rueda alçaram um novo vôo...</p>
+                        <p class="text-xs text-gray-800 mt-5">Janaína e Jefferson Rueda</p>
                     </div>
                     <img class="w-full h-48 object-cover" src="static/assets/main/image13.svg" alt="">
                 </a>
             </div>
-            <div class="bg-[#241A1C] rounded-md overflow-hidden">
+            <div class="bg-gray-100 shadow-md rounded-md overflow-hidden border hover:border-2 hover:border-red-800">
                 <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row">
                     <div class="p-4 w-full">
-                        <span class="block text-[#A45A49] text-sm">NOVO</span>
+                        <span class="block font-semibold text-red-900 text-sm">NOVO</span>
                         <div class="flex flex-col md:flex-row justify-between items-center mt-3">
-                            <span class="text-base text-[#C7BAB3] font-bold">Maní</span>
+                            <span class="text-base text-gray-700 font-bold">Maní</span>
                         </div>
-                        <p class="text-xs text-[#756A67] mt-3">Comida brasileira, autoral, orgânica (sempre que possível!)...</p>
-                        <p class="text-xs text-[#756A67] mt-5">Helena Rizzo e Willem Vandeven</p>
+                        <p class="text-xs text-gray-800 mt-3">Comida brasileira, autoral, orgânica (sempre que possível!)...</p>
+                        <p class="text-xs text-gray-800 mt-5">Helena Rizzo e Willem Vandeven</p>
                     </div>
                     <img class="w-full h-48 object-cover" src="static/assets/main/image14.svg" alt="">
                 </a>
             </div>
-            <div class="bg-[#241A1C] rounded-md overflow-hidden">
+            <div class="bg-gray-100 shadow-md rounded-md overflow-hidden border hover:border-2 hover:border-red-800">
                 <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row">
                     <div class="p-4 w-full">
-                        <span class="block text-[#A45A49] text-sm">NOVO</span>
+                        <span class="block font-semibold text-red-900 text-sm">NOVO</span>
                         <div class="flex flex-col md:flex-row justify-between items-center mt-3">
                             <div class="flex flex-row">
-                                <span class="text-base text-[#C7BAB3] font-bold">Jun Sakamoto</span> 
+                                <span class="text-base text-gray-700 font-bold">Jun Sakamoto</span> 
                             </div>
                         </div>
-                        <p class="text-xs text-[#756A67] mt-3">O renomado chef Jun Sakamoto cria pratos elaborados...</p>
-                        <p class="text-xs text-[#756A67] mt-5">Jun</p>
+                        <p class="text-xs text-gray-800 mt-3">O renomado chef Jun Sakamoto cria pratos elaborados...</p>
+                        <p class="text-xs text-gray-800 mt-5">Jun</p>
                     </div>
                     <img class="w-full h-48 object-cover" src="static/assets/main/image15.svg" alt="">
                 </a>
             </div>
-            <div class="bg-[#241A1C] rounded-md overflow-hidden">
+            <div class="bg-gray-100 shadow-md rounded-md overflow-hidden border hover:border-2 hover:border-red-800">
                 <a href="{{url_for("reserva")}}" class="flex flex-col md:flex-row">
                     <div class="p-4 w-full">
-                        <span class="block text-[#A45A49] text-sm">NOVO</span>
+                        <span class="block font-semibold text-red-900 text-sm">NOVO</span>
                         <div class="flex flex-col md:flex-row justify-between items-center mt-3">
-                            <span class="text-base text-[#C7BAB3] font-bold">Churrascaria Boi na Brasa</span>
+                            <span class="text-base text-gray-700 font-bold">Churrascaria Boi na Brasa</span>
                         </div>
-                        <p class="text-xs text-[#756A67] mt-3">Uma breve descrição do restaurante</p>
-                        <p class="text-xs text-[#756A67] mt-5">Chef</p>
+                        <p class="text-xs text-gray-800 mt-3">Uma breve descrição do restaurante</p>
+                        <p class="text-xs text-gray-800 mt-5">Chef</p>
                     </div>
                     <img class="w-full h-48 object-cover" src="static/assets/main/image16.svg" alt="">
                 </a>

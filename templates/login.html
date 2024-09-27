@@ -10,28 +10,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
-<body class="bg-[#1F1517] ">
+<body class="bg-white">
     <header>
-        <nav class="text-white ml-10 container flex flex-row space-x-10 items-center justify-between px-20 py-4">
-            <a href="{{url_for("index")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg">Não possui uma Conta?</a> 
+        <nav class="text-amber-700 ml-10 container flex flex-row space-x-10 items-center justify-between px-20 py-4">
+            <a href="{{url_for("index")}}" class="hover:text-amber-800 font-semibold border-2 border-amber-700 px-2 rounded-md">Não possui uma Conta?</a> 
         </nav>
     </header>
     <main>
-        <div class="bg-[#181012]">
+        <div class="bg-gray-300">
             <section class="container max-w-6xl h-3/4 flex flex-row justify-between gap-24 py-10 px-8 m-auto items-center">
                 <header class="ml-10">
-                    <span class="text-[#A45A49] text-base font-epilogue">agende seu horário</span>
-                    <h1 class="text-white font-montserrat">Bem vindo de volta!</h1>
+                    <span class="text-amber-700 font-normal">Agende seu horário</span>
+                    <h1 class="text-gray-700 text-2xl font-semibold">Bem vindo de volta!</h1>
                     <hr>
-                    <h2 class="text-base text-white font-inter font-thin">Faça login para agendar sua reserva</h2>
-                    <form class="text-white flex flex-col font-intel py-5" action="/autenticarUsuario" method="POST">
+                    <h2 class="text-base text-gray-700 font-inter font-thin">Faça login para agendar sua reserva</h2>
+                    <form class="text-gray-600 flex flex-col font-intel py-5" action="/autenticarUsuario" method="POST">
                         <label for="email">Email</label>
                         <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="email" name="email" required placeholder="Digite seu email">
 
                         <label for="Senha">Senha</label>
                         <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="password" name="senha" required placeholder="Digite sua senha">
                         
-                        <input class="text-black mt-2 p-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-[#4e1002] cursor-pointer" type="submit" class="registrar-btn" value="Entrar" >
+                        <input class="text-white mt-2 p-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-amber-800 cursor-pointer" type="submit" class="registrar-btn" value="Entrar" >
                         {% set mensagem = get_flashed_messages()%}
                         {% if mensagem %}
                         <div class="flex flex-coltext-red-600 font-bold m-auto">
@@ -57,9 +57,8 @@
             </section>
         </div>
     </main>
-    <footer class="absolute bottom-0 w-full p-16 flex flex-col items-center gap-2 bg-[#23181A]">
-        <p class="text-[#FFF2E7] text-base font-inter-semibold">&copy;Copyright Tríade do café</p>
-        <p class="text-[#6e6e6e] text-base">Feito por Felipe</p>
+    <footer class="absolute bottom-0 w-full p-16 flex flex-col items-center gap-2">
+        {% include 'componentes/rodape.html' %}
     </footer>
 </body>
 </html>
