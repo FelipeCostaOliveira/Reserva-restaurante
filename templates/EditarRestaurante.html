@@ -1,117 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Restaurante</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+
 <body>
-    <div class="flex min-h-screen justify-center items-center flex-col">
-        <div class="flex bg-gray-200 w-3/5 rounded-t-lg ">
+    <div class="flex min-h-screen justify-center items-center flex-col ">
+        <div class="flex bg-gray-200 w-4/5 xl:w-3/5 p-2">
             <h1 class="ml-2 font-bold text-gray-700 text-base">Editar restaurante</h1>
         </div>
-        <div class="flex flex-col bg-gray-100 w-3/5 h-full">
+        <div class="flex flex-col bg-gray-100 w-4/5 xl:w-3/5 p-2">
             <div>
                 <div class="text-gray-700 text-base font-medium mt-4 w-full h-6 border-b border-gray-300 border-dashed">
                     <h1 class="ml-2">Editar visual do restaurante</h1>
                 </div>
-                <div class="flex flex-row ">
-                    <div class="flex flex-col items-center mt-2 ml-10">
-                        <div class="flex items-center justify-center rounded-full w-24 h-24 bg-gray-400">
-                            <div>
-                                Foto
-                            </div>                        
+                <div class="flex flex-col md:flex-row mt-2 items-center justify-between gap-8 px-8">
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center justify-center rounded-full bg-gray-400">
+                            <img class="w-24 h-24 rounded-full object-cover" src="static/assets/main/image13.svg" alt="">
                         </div>
                         <button class="mt-2 text-white bg-orange-400 rounded-md px-4">
                             Alterar foto
                         </button>
                     </div>
-                    <div class="flex flex-col items-center ml-24 mt-2">
+                    <div class="flex flex-col items-center mt-4 md:ml-4">
                         <div class="flex flex-row gap-2">
-                            <div class="flex flex-row items-center justify-center rounded-md w-24 h-24 bg-gray-400">
-                                Foto                      
+                            <div class="flex items-center justify-center rounded-md w-24 h-24 bg-gray-400">
+                                <img class="w-24 h-24 object-cover rounded-md" src="static/assets/main/image13.svg" alt="">
                             </div>
-                            <div class="flex flex-row items-center justify-center rounded-md w-24 h-24 bg-gray-400">
-                                Foto                      
+                            <div class="flex items-center justify-center rounded-md w-24 h-24 bg-gray-400">
+                                <img class="w-24 h-24 rounded-md object-cover" src="static/assets/main/image13.svg" alt="">
                             </div>
-                            <div class="flex flex-row items-center justify-center rounded-md w-24 h-24 bg-gray-400">
-                                Foto                      
+                            <div class="flex items-center justify-center rounded-md w-24 h-24 bg-gray-400">
+                                <img class="w-24 h-24 rounded-md object-cover" src="static/assets/main/image13.svg" alt="">
                             </div>
-                        </div>                    
+                        </div>
                         <button class="mt-2 text-white bg-orange-400 rounded-md px-4">
-                                Alterar foto
-                        </button>                   
+                            Alterar foto
+                        </button>
                     </div>
-                    <div class="flex flex-col">
-                        <div class="flex flex-col ml-24">
-                            <label for="" class="font-medium text-gray-700">Alterar nome</label>
-                            <input
-                                id=""
-                                type=""
-                                name=""
-                                class="bg-white px-24 border border-gray-300 rounded text-gray-500 w-full"
-                                placeholder=""
-                            />
+                    <div class="flex flex-col mt-4 md:ml-4 ">
+                        <div class="flex flex-col">
+                            <label class="font-medium text-gray-700">Alterar nome</label>
+                            <input type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
+                                placeholder="Nome do Restaurante" />
                         </div>
-                        <div class="flex flex-col mb-2 ml-24">
-                            <label for="" class="font-medium text-gray-700">Alterar dono</label>
-                            <input
-                                id=""
-                                type=""
-                                name=""
-                                class="bg-white px-24 border border-gray-300 rounded text-gray-500 w-full"
-                                placeholder=""
-                            />
+                        <div class="flex flex-col mb-2 mt-4">
+                            <label class="font-medium text-gray-700">Alterar dono</label>
+                            <input type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
+                                placeholder="Nome do Dono" />
                         </div>
-                        <div class="flex flex-col mb-2 ml-24">
-                            <label for="" class="font-medium text-gray-700">Alterar descrição</label>
-                            <input
-                                id=""
-                                type=""
-                                name=""
-                                class="bg-white px-2 py-2 border border-gray-300 rounded text-gray-500 w-full"
-                                placeholder=""
-                            />
-                        </div>                
-                    </div>           
+                        <div class="flex flex-col mb-2">
+                            <label class="font-medium text-gray-700">Alterar descrição</label>
+                            <textarea class="bg-white px-2 py-2 border border-gray-300 rounded text-gray-500 w-full"
+                                placeholder="Descrição do Restaurante"></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div>
-                <div>
-                    <div class="text-gray-700 text-base font-medium mt-4 w-full h-6 border-b border-gray-300 border-dashed">
-                        <h1 class="ml-2">Editar visual do restaurante</h1>
+                <div class="flex flex-col">
+                    <div
+                        class="text-gray-700 text-base font-medium mt-4 w-full h-6 border-b border-gray-300 border-dashed">
+                        <h1 class="ml-2">Editar informações do restaurante</h1>
                     </div>
-                    <div class="flex flex-col">
-                       
-                        <div class="flex flex-col">
+                    <div class="flex flex-col sm:flex-row gap-8 justify-between px-8">
+                        <div class="flex flex-col mt-4">
                             <h1 class="text-center">Endereço</h1>
-                            <div class="flex flex-col ml-2">
-                                <label for="" class="text-gray-700">Rua</label>
-                                <input
-                                    id=""
-                                    type=""
-                                    name=""
-                                    class="bg-white px-24 border border-gray-300 rounded text-gray-500 w-10"
-                                    placeholder=""
-                                />
-                            </div>
-                            <div class="flex flex-col mb-2 ml-2">
-                                <label for="" class="text-gray-700">Bairro</label>
-                                <input
-                                    id=""
-                                    type=""
-                                    name=""
-                                    class="bg-white px-24 border border-gray-300 rounded text-gray-500 w-10"
-                                    placeholder=""
-                                />
-                            </div>             
+                            <label class="text-gray-700">Rua</label>
+                            <input type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
+                                placeholder="Nome da Rua" />
+                            <label class="text-gray-700 mt-2">Bairro</label>
+                            <input type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
+                                placeholder="Nome do Bairro" />
+                            <label class="text-gray-700 mt-2">Número</label>
+                            <input type="number" class="bg-white border border-gray-300 rounded text-gray-500 w-1/4"
+                                placeholder="" />
                         </div>
-                    </div>           
+                        <div class="flex flex-col mt-4">
+                            <h1 class="text-center">Contato</h1>
+                            <label class="text-gray-700">Email</label>
+                            <input type="email"
+                                class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
+                                placeholder="example@gmail.com" />
+                            <label class="text-gray-700 mt-2">Bairro</label>
+                            <input type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
+                                placeholder="Nome do Bairro" />
+                        </div>
+                        <div class="flex flex-col mt-4 items-center gap-4">
+                            <div>
+                                <h1 class="text-center">Alterar horários de funcinamento</h1>
+                                <div class="flex flex-row items-center gap-2">
+                                    <input type="time"
+                                        class="bg-white border border-gray-300 rounded text-gray-500 w-3/4"
+                                        placeholder="" />
+                                    <h1>às</h1>
+                                    <input type="time"
+                                        class="bg-white border border-gray-300 rounded text-gray-500 w-3/4"
+                                        placeholder="" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <h1>Grade semanal</h1>
+                                <input type="week" class="bg-white border border-gray-300 rounded text-gray-500 w-3/4"
+                                    placeholder="" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
