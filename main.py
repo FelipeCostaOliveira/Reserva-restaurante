@@ -27,6 +27,10 @@ def modelos():
 def requisitos():
     return render_template('landingPage/requisitos.html')
 
+@app.route('/editarRestaurante')
+def editarRestaurante():
+    return render_template('EditarRestaurante.html')
+
 @app.route('/logout')
 def logout():
     session.pop('user_id', None)
