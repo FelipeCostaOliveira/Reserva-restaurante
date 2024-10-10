@@ -17,7 +17,7 @@ def equipe():
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('landingPage/login.html')
 
 @app.route('/modelos')
 def modelos():
@@ -29,7 +29,7 @@ def requisitos():
 
 @app.route('/editarRestaurante')
 def editarRestaurante():
-    return render_template('EditarRestaurante.html')
+    return render_template('restaurante/EditarRestaurante.html')
 
 @app.route('/logout')
 def logout():
@@ -57,7 +57,7 @@ def home():
     if 'user_id' not in session:
         flash('Você precisa estar logado para acessar esta página.')
         return redirect('/login')
-    return render_template('home.html', restaurantes=restaurantes)
+    return render_template('cliente/home.html', restaurantes=restaurantes)
 
 
 
@@ -86,7 +86,7 @@ def novidades():
 
 @app.route('/cadastroRestaurante')
 def cadastroRestaurante():
-    return render_template('cadastroRestaurante.html')
+    return render_template('restaurante/cadastroRestaurante.html')
 
 # Autenticar Usuário
 @app.route('/autenticarUsuario', methods=["POST"])
