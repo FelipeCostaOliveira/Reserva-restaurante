@@ -21,14 +21,6 @@ def equipe():
 def login():
     return render_template('landingPage/login.html')
 
-@app.route('/modelos')
-def modelos():
-    return render_template('landingPage/modelos.html')
-
-@app.route('/requisitos')
-def requisitos():
-    return render_template('landingPage/requisitos.html')
-
 @app.route('/cadastroRestaurante')
 def cadastroRestaurante():
     return render_template('restaurante/cadastroRestaurante.html')
