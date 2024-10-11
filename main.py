@@ -70,6 +70,7 @@ def editarRestaurante():
 @app.route('/novidades')
 def novidades():
     return render_template('novidades.html')
+
 @app.route('/home')
 def home():
     connectBD = mysql.connector.connect(
@@ -134,6 +135,11 @@ def formularioReserva():
     return render_template('cliente/RealizarReserva.html', restaurantes=restaurantes)
 
     # Tela p/o clinte realizar a reserva
+
+@app.route('/RealizarReserva')
+def realizar_reserva():
+    return render_template('RealizarReserva.html')
+
 @app.route('/cadastrarReserva', methods=['POST'])
 def cadastrarReserva():
     restaurante_id = request.form.get('restaurante_id')
@@ -164,8 +170,56 @@ def cadastrarReserva():
         cursor.close()
         connectBD.close()
 
-
 # Autenticar Usuário
+@app.route('/cadastrarUsuario', methods=['POST'])
+def cadastrarUsuario():
+    user = []
+    email = request.form.get('email')
+    senhaHash = generate_password_hash(request.form.get('senha')).decode('utf-8')  
+    print(senhaHash)
+    senha =  senhaHash
+    connectBD = mysql.connector.connect(
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
+    )
+    contador = 0
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        dados = email, senha
+        cursor.execute("select * from usuario")
+        usuariosBD = cursor.fetchall()
+        
+        if len(usuariosBD) < 1:
+                query = "insert into usuario values (default, %s, %s);"
+                cursor.execute(query, dados)
+                connectBD.commit()
+                
+        else:
+            for usuario in usuariosBD:
+                contador += 1
+                
+                if usuario[1] == email:
+                    flash('Usuário já cadastrado')
+                    return redirect('/')
+    
+                if contador >= len(usuariosBD):
+                    query = "insert into usuario values (default, %s, %s);"
+                    cursor.execute(query, dados)
+                    connectBD.commit()
+                
+        cursor.execute("select * from usuario")
+        usuariosBD = cursor.fetchall()
+        for usuario in usuariosBD:
+            session['user_id'] = usuario[0]
+            session['user_email'] = email       
+            return redirect('home')
+
+    if connectBD.is_connected():
+        cursor.close()
+        connectBD.close()
+
 @app.route('/autenticarUsuario', methods=["POST"])
 def autenticarUsuario():
     email = request.form.get("email")
@@ -196,55 +250,6 @@ def autenticarUsuario():
                 flash('Usuário Inválido')
                 return redirect("/login")
 
-@app.route('/cadastrarUsuario', methods=['POST'])
-def cadastrarUsuario():
-    user = []
-    email = request.form.get('email')
-    senhaHash = generate_password_hash(request.form.get('senha')).decode('utf-8')  
-    print(senhaHash)
-    senha =  senhaHash
-    connectBD = mysql.connector.connect(
-        host=createDataBase.DBhost,
-        database=createDataBase.DBname,
-        user=createDataBase.DBuser,
-        password=createDataBase.DBpassword
-    )
-    contador = 0
-    if connectBD.is_connected():
-        cursor = connectBD.cursor()
-        dados = email, senha
-        cursor.execute("select * from usuario")
-        usuariosBD = cursor.fetchall()
-        
-        if len(usuariosBD) < 1:
-                query = "insert into usuario values (default, %s, %s);"
-                cursor.execute(query, dados)
-                connectBD.commit()
-                for usuario in usuariosBD:
-                    session['user_id'] = usuario[0]
-                    session['user_email'] = email
-                return redirect('/home')
-        else:
-            for usuario in usuariosBD:
-                contador += 1
-                usuarioId = usuario[0]
-                print(usuarioId)
-                if usuario[1] == email:
-                    flash('Usuário já cadastrado')
-                    return redirect('/')
-    
-                if contador >= len(usuariosBD):
-                    query = "insert into usuario values (default, %s, %s);"
-                    cursor.execute(query, dados)
-                    connectBD.commit()
-                    session['user_id'] = usuarioId
-                    session['user_email'] = email
-                    return redirect('/home')
-
-    if connectBD.is_connected():
-        cursor.close()
-        connectBD.close()
-
 @app.route('/logout')
 def logout():
     session.pop('user_id', None)
@@ -252,9 +257,6 @@ def logout():
     flash('Você foi desconectado com sucesso.')
     return redirect('/login')
 
-@app.route('/RealizarReserva')
-def realizar_reserva():
-    return render_template('RealizarReserva.html')
 
 
 if __name__ in "__main__":
