@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, flash, redirect, session
+from flask_bcrypt import generate_password_hash
 import mysql.connector
 import createDataBase
 
@@ -199,7 +200,9 @@ def autenticarUsuario():
 def cadastrarUsuario():
     user = []
     email = request.form.get('email')
-    senha = request.form.get('senha')   
+    senhaHash = generate_password_hash(request.form.get('senha')).decode('utf-8')  
+    print(senhaHash)
+    senha =  senhaHash
     connectBD = mysql.connector.connect(
         host=createDataBase.DBhost,
         database=createDataBase.DBname,
