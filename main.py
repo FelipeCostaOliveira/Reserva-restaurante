@@ -21,6 +21,10 @@ def equipe():
 def login():
     return render_template('landingPage/login.html')
 
+@app.route('/loginDono')
+def loginDono():
+    return render_template('restaurante/LoginDono.html')
+
 @app.route('/modelos')
 def modelos():
     return render_template('landingPage/modelos.html')
@@ -31,7 +35,7 @@ def requisitos():
 
 @app.route('/cadastroRestaurante')
 def cadastroRestaurante():
-    return render_template('restaurante/cadastroRestaurante.html')
+    return render_template('restaurante/CadastrarDono.html')
 
 # Restaurantes
 
