@@ -3,7 +3,11 @@ import database
 DBhost = 'localhost' 
 DBname = 'SistemaReservas'
 DBuser = 'root'
+<<<<<<< HEAD
 DBpassword = 'root'
+=======
+DBpassword = 'alunoifro'
+>>>>>>> origin/master
 
 def criarBD():
     # CRIAR TABELA DE BANCO DE DADOS
@@ -16,7 +20,7 @@ def criarBD():
     CREATE TABLE {NameTabela} 
     (id_usuario INT NOT NULL AUTO_INCREMENT,
     email VARCHAR(45) NOT NULL,
-    senha VARCHAR(45) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
     PRIMARY KEY (id_usuario)) 
     DEFAULT CHARSET=utf8mb4;
     """
