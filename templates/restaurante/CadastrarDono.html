@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="static/styles/output.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing-Page</title>
+    <meta name="description" content="Descrição">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body class="bg-white ">
+    <header>
+        <nav class="text-amber-700 ml-5 container flex flex-row space-x-10 items-center justify-between px-10 py-4">
+            <a href="{{url_for("index")}}" class="hover:text-amber-800 font-bold border-2 border-amber-700 px-2 rounded-md">Voltar</a>
+            <a href="{{url_for("loginDono")}}" class="hover:text-yellow-700 hover:border-yellow-500 font-bold border px-4 py-2 rounded-lg max-md:hidden">Já possui uma Conta?</a>
+        </nav>
+    </header>
+    <main>
+        <div class="bg-gray-100">
+            <section
+                class="container max-w-6xl h-3/4 flex flex-row justify-between gap-24 py-10 px-8 m-auto items-center max-xl:max-w-md  max-md:h-full max-md:flex max-md:flex-row max-md:justify-between max-md:gap-1 max-md:py-5 max-md:px-8 max-md:m-auto max-md:items-center">
+                <header class="ml-10 max-md:inline-block max-md:flex-column max-md:text-xs">
+                    <span class="text-[#A45A49] text-base font-epilogue">CONTROLE SEU RESTAURANTE</span>
+                    <h1 class="text-gray-900 font-semibold">Faça Seu Registro!</h1>
+                    <hr>
+                    <h2 class="text-base text-gray-800 font-inter font-montserrat">Registre-se para incluir seu restaurante ao sitema
+                    </h2>
+
+                    <form class="text-gray-800 flex flex-col py-5" action="/cadastrarUsuario" method="POST">
+                        <label for="username">Email</label>
+                        <input class="text-black mt-1 p-2 rounded-md border-none text-base" type="email" name="email"
+                            placeholder="Digite seu email">
+                        <label for="username">Senha</label>
+                        <input class="text-black mt-1 p-2 rounded-md border-none text-base" type="password" name="senha"
+                            placeholder="Digite sua senha">
+                        <input
+                            class="text-white mt-2 p-2 rounded-md border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-amber-800 cursor-pointer"
+                            type="submit" class="text-white w-3/5 m-auto mt-2.5 font-bold" value="Registrar">
+                        {% set mensagem = get_flashed_messages()%}
+                        {% if mensagem %}
+                        <div class="text-red-600 font-bold m-auto">
+                            {{mensagem[0]}}
+                        </div>
+                        {% endif %}
+                    </form>
+                </header>
+
+                <div class="columns-3 space-y-1 max-lg:hidden">
+                    <figure><img src="static/assets/main/image1.png" alt="image1"></figure>
+                    <figure><img src="static/assets/main/image2.png" alt="image2"></figure>
+                    <figure><img src="static/assets/main/image3.png" alt="image3"></figure>
+                    <figure><img src="static/assets/main/image4.png" alt="image4"></figure>
+                    <figure><img src="static/assets/main/image5.png" alt="image5"></figure>
+                    <figure><img src="static/assets/main/image6.png" alt="image6"></figure>
+                    <figure><img src="static/assets/main/image10.png" alt="image10"></figure>
+                    <figure><img src="static/assets/main/image11.png" alt="image11"></figure>
+                    <figure><img src="static/assets/main/image12.png" alt="image12"></figure>
+                </div>
+            </section>
+        </div>
+        <!-- <div class="flex flex-row items-center justify-between mt-4 ml-6">
+           <div class="flex items-center bg-gray-50 rounded-md w-2/5 border border-gray-100 shadow-lg font-semibold text-gray-700 px-2 py-1">
+                <h1>Em nosso sistema você poderá contar com um apoio online em suas reservas de mesas, além de contar com feedbacks de seus clientes, podendo melhorar seu atendimento e agilizar suas reservas.</h1>
+           </div>
+           <div class="flex items-center bg-gray-50 rounded-md w-2/5 border border-gray-100 shadow-lg font-semibold text-gray-700 px-2 py-1">
+                <h1>Em nosso sistema você poderá contar com um apoio online em suas reservas de mesas, além de contar com feedbacks de seus clientes, podendo melhorar seu atendimento e agilizar suas reservas.</h1>
+           </div>
+            <div class="flex items-center bg-gray-50 rounded-md w-2/5 border border-gray-100 shadow-lg font-semibold text-gray-700 px-2 py-1">
+                <h1>Em nosso sistema você poderá contar com um apoio online em suas reservas de mesas, além de contar com feedbacks de seus clientes, podendo melhorar seu atendimento e agilizar suas reservas.</h1>
+           </div> 
+        </div> -->
+    </main>
+</body>
+
+</html>
