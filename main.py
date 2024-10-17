@@ -74,6 +74,9 @@ def cadastrarRestaurante():
         cursor.close()
         connectBD.close()
 
+@app.route('/registrarRestaurante')
+def registrarRestaurante():
+    return render_template('restaurante/RegistrarRestaurante.html')
 @app.route('/editarRestaurante')
 def editarRestaurante():
     return render_template('restaurante/EditarRestaurante.html')
@@ -197,12 +200,12 @@ def autenticarUsuario():
 @app.route('/cadastrarGerente', methods=['POST'])
 def cadastrarGerente():
     funcoes.cadastrarUsuario("usuario_restaurante")
-    return redirect("/editarRestaurante")
+    return redirect("/registrarRestaurante")
 
 @app.route('/autenticarGerente', methods=['POST'])
 def autenticarGerente():
     funcoes.autenticarUsuario("usuario_restaurante")
-    return redirect("/editarRestaurante")
+    return redirect("/registrarRestaurante")
 
 @app.route('/logout')
 def logout():
