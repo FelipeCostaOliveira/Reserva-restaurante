@@ -3,25 +3,34 @@ import database
 DBhost = 'localhost' 
 DBname = 'SistemaReservas'
 DBuser = 'root'
-<<<<<<< HEAD
-DBpassword = 'root'
-=======
 DBpassword = 'alunoifro'
->>>>>>> origin/master
 
 def criarBD():
     # CRIAR TABELA DE BANCO DE DADOS
     connection = database.create_server_connection(DBhost, DBuser, DBpassword)
     query_database = f"create database {DBname}"
     database.create_database(connection, query_database, DBname)
-    # Criar Tabela usuario
-    NameTabela = 'usuario'
+    # Criar Tabela usuario cliente
+    NameTabela = 'usuario_cliente'
     query = f"""
     CREATE TABLE {NameTabela} 
-    (id_usuario INT NOT NULL AUTO_INCREMENT,
+    (id_usuario_cliente INT NOT NULL AUTO_INCREMENT,
     email VARCHAR(45) NOT NULL,
     senha VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id_usuario)) 
+    PRIMARY KEY (id_usuario_cliente)) 
+    DEFAULT CHARSET=utf8mb4;
+    """
+    new_connection = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
+    database.create_table(new_connection, NameTabela, query)
+
+    # Criar Tabela usuario cliente
+    NameTabela = 'usuario_restaurante'
+    query = f"""
+    CREATE TABLE {NameTabela} 
+    (id_usuario_restaurante INT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(45) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id_usuario_restaurante)) 
     DEFAULT CHARSET=utf8mb4;
     """
     new_connection = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)

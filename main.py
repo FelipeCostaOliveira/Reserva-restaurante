@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, flash, redirect, session
-from flask_bcrypt import generate_password_hash
+from flask_bcrypt import generate_password_hash, check_password_hash
 import mysql.connector
 import createDataBase
+import funcoes
 
 app = Flask(__name__)
 app.secret_key = 'felipe'
@@ -22,7 +23,6 @@ def equipe():
 def login():
     return render_template('landingPage/login.html')
 
-<<<<<<< HEAD
 @app.route('/loginDono')
 def loginDono():
     return render_template('restaurante/LoginDono.html')
@@ -35,8 +35,6 @@ def modelos():
 def requisitos():
     return render_template('landingPage/requisitos.html')
 
-=======
->>>>>>> origin/master
 @app.route('/cadastroRestaurante')
 def cadastroRestaurante():
     return render_template('restaurante/CadastrarDono.html')
@@ -188,82 +186,23 @@ def cadastrarReserva():
 # Autenticar Usuário
 @app.route('/cadastrarUsuario', methods=['POST'])
 def cadastrarUsuario():
-    user = []
-    email = request.form.get('email')
-    senhaHash = generate_password_hash(request.form.get('senha')).decode('utf-8')  
-    print(senhaHash)
-    senha =  senhaHash
-    connectBD = mysql.connector.connect(
-        host=createDataBase.DBhost,
-        database=createDataBase.DBname,
-        user=createDataBase.DBuser,
-        password=createDataBase.DBpassword
-    )
-    contador = 0
-    if connectBD.is_connected():
-        cursor = connectBD.cursor()
-        dados = email, senha
-        cursor.execute("select * from usuario")
-        usuariosBD = cursor.fetchall()
-        
-        if len(usuariosBD) < 1:
-                query = "insert into usuario values (default, %s, %s);"
-                cursor.execute(query, dados)
-                connectBD.commit()
-                
-        else:
-            for usuario in usuariosBD:
-                contador += 1
-                
-                if usuario[1] == email:
-                    flash('Usuário já cadastrado')
-                    return redirect('/')
-    
-                if contador >= len(usuariosBD):
-                    query = "insert into usuario values (default, %s, %s);"
-                    cursor.execute(query, dados)
-                    connectBD.commit()
-                
-        cursor.execute("select * from usuario")
-        usuariosBD = cursor.fetchall()
-        for usuario in usuariosBD:
-            session['user_id'] = usuario[0]
-            session['user_email'] = email       
-            return redirect('home')
-
-    if connectBD.is_connected():
-        cursor.close()
-        connectBD.close()
+    funcoes.cadastrarUsuario("usuario_cliente")
+    return redirect("/home")
 
 @app.route('/autenticarUsuario', methods=["POST"])
 def autenticarUsuario():
-    email = request.form.get("email")
-    senha = request.form.get("senha")
-    connectBD = mysql.connector.connect(
-        host=createDataBase.DBhost,
-        database= createDataBase.DBname,
-        user=createDataBase.DBuser,
-        password=createDataBase.DBpassword
-    )
-    contador = 0
-    if connectBD.is_connected():
-        cursor = connectBD.cursor()
-        cursor.execute('select * from usuario;')
-        usuariosBD = cursor.fetchall()
-        for usuario in usuariosBD:
-            usuarioId = usuario[0]
-            usuarioEmail = usuario[1]
-            usuarioSenha = usuario[2]
-            contador += 1
-            
-            if usuarioEmail == email and usuarioSenha == senha:
-                session['user_id'] = usuarioId
-                session['user_email'] = email
-                return redirect('/home')
-                    
-            if contador >= len(usuariosBD):
-                flash('Usuário Inválido')
-                return redirect("/login")
+    funcoes.autenticarUsuario("usuario_cliente")
+    return redirect("/home")
+
+@app.route('/cadastrarGerente', methods=['POST'])
+def cadastrarGerente():
+    funcoes.cadastrarUsuario("usuario_restaurante")
+    return redirect("/editarRestaurante")
+
+@app.route('/autenticarGerente', methods=['POST'])
+def autenticarGerente():
+    funcoes.autenticarUsuario("usuario_restaurante")
+    return redirect("/editarRestaurante")
 
 @app.route('/logout')
 def logout():
@@ -271,8 +210,6 @@ def logout():
     session.pop('user_email', None)
     flash('Você foi desconectado com sucesso.')
     return redirect('/login')
-
-
 
 if __name__ in "__main__":
     app.run(debug=True, port=5001)
