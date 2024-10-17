@@ -43,6 +43,7 @@ def cadastroRestaurante():
 
 @app.route('/cadastrarRestaurante', methods=['POST'])
 def cadastrarRestaurante():
+    print('iuiuiu')
     nome = request.form.get('nome')
     dono = request.form.get('dono')
     descricao = request.form.get('descricao')
@@ -62,13 +63,13 @@ def cadastrarRestaurante():
         restaurantesBD = cursor.fetchone()
         if restaurantesBD:
             flash('Restaurante já cadastrado')
-            return redirect('/')
+            return redirect('/registrarRestaurante')
         else:
             query = "INSERT INTO restaurante (nome, dono, descricao, rua, bairro, numero) VALUES (%s, %s, %s, %s, %s, %s);"
             cursor.execute(query, dados)
             connectBD.commit()
             flash('Restaurante Cadastrado com sucesso. Faça login para fazer uma reserva')
-            return redirect('/login')
+            return redirect('/editarRestaurante')
 
     if connectBD.is_connected():
         cursor.close()
