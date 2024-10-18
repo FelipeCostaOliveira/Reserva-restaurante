@@ -19,18 +19,17 @@
         <a href="{{url_for("login")}}" class="hover:text-yellow-700 hover:border-yellow-500 font-bold border px-4 py-2 rounded-lg max-md:hidden">Já possui uma Conta?</a>
 
         <div class="md:hidden">
-            <button id="menubutton" type="button" class="inline-flex hover:bg-[#A45A49] rounded-sm p-2" aria-label="Menu" aria-expanded="false">
+            <button id="menubutton" type="button" class="inline-flex rounded-sm p-2" aria-label="Menu" aria-expanded="false">
                 <img id="imagem" class="h-7 w-7" src="static/assets/menu.svg" alt="">
             </button>
         </div>
     </div>
 </nav>
 <!-- navbar responsiva -->
-<nav id="menu" class="hidden text-white m-auto container flex-col space-x-10 py-1">
+<nav id="menu" class="hidden text-gray-600 m-auto container flex-col space-x-10 py-1">
     <ul class="flex flex-col items-center">
         <li class="hover:text-[#A45A49] font-bold"><a href="">Home</a></li>
         <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
-        <li class="hover:text-[#A45A49] font-bold"><a href="">Novidades</a></li>
         <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for("login")}}">Log in</a></li>
     </ul>
 </nav>
