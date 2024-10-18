@@ -86,7 +86,7 @@ def editarRestaurante():
 
 @app.route('/novidades')
 def novidades():
-    return render_template('novidades.html')
+    return render_template('cliente/novidades.html')
 
 @app.route('/home')
 def home():
