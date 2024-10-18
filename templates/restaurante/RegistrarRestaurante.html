@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Restaurante</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="static/scripts/upload.js"></script>
+    <script src="static/scripts/Formatar.js"></script>
+
+    
+</head>
+<header>
+   {% include 'componentes/navbar.html' %}
+</header>
+<body>
+    <form action="/cadastrarRestaurante" method="post" class="flex min-h-screen justify-center items-center flex-col ">
+        <div class="flex flex-row justify-between bg-gray-200 w-4/5 xl:w-3/5 p-2 rounded-t-lg">
+            <h1 class="ml-2 font-bold text-gray-700 text-base">Registre seu restaurante</h1>
+        </div>
+        <div class="flex flex-col bg-gray-100 w-4/5 xl:w-3/5 p-2">
+            <div>
+                <div class="text-gray-700 text-base font-medium mt-4 w-full h-6 border-b border-gray-300 border-dashed">
+                    <h1 class="ml-2">Editar visual do restaurante</h1>
+                </div>
+                <div class="flex flex-col md:flex-row mt-2 items-center justify-between gap-8 px-8">
+                    <div class="flex flex-col items-center">
+                        <label for="upload" class="flex items-center justify-center w-24 h-24 bg-gray-400 rounded-full cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 text-white">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </label>
+                        <input id="upload" type="file" class="hidden" accept="image/*">
+                        <button type="button" class="mt-2 text-white bg-orange-400 rounded-md px-4">
+                            Adicionar foto
+                        </button>
+                    </div>
+
+                    <div class="flex flex-col items-center mt-4 md:ml-4">
+                        <div class="flex flex-row gap-2">
+                            <div class="">
+                                <label for="upload-2" class="flex items-center justify-center rounded-md w-24 h-24 bg-gray-400 cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 text-white">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </label>
+                                <input id="upload-2" type="file" class="hidden" accept="image/*">
+                            </div>
+                            <div class="flex items-center justify-center rounded-md w-24 h-24 bg-gray-400">
+                                <label for="upload-3" class="flex items-center justify-center rounded-md w-24 h-24 bg-gray-400 cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 text-white">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </label>
+                                <input id="upload-3" type="file" class="hidden" accept="image/*">
+                            </div>
+                            <div class="flex items-center justify-center rounded-md w-24 h-24 bg-gray-400">
+                                <label for="upload-4" class="flex items-center justify-center rounded-md w-24 h-24 bg-gray-400 cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 text-white">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </label>
+                                <input id="upload-4" type="file" class="hidden" accept="image/*">
+                            </div>
+                        </div>
+                        <button type="button" class="mt-2 text-white bg-orange-400 rounded-md px-4">
+                            Alterar foto
+                        </button>
+                    </div>
+                    <div class="flex flex-col mt-4 md:ml-4 ">
+                        <div class="flex flex-col">
+                            <label for="nome" class="font-medium text-gray-700">Adicione um nome</label>
+                            <input type="text" name="nome" id="nome" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full" required
+                                placeholder="Nome do Restaurante" />
+                        </div>
+                        <div class="flex flex-col mb-2 mt-4">
+                            <label for="dono" class="font-medium text-gray-700">Adicione o nome do dono</label>
+                            <input type="text" name="dono" id="dono" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full" required
+                                placeholder="Nome do Dono" />
+                        </div>
+                        <div class="flex flex-col mb-2">
+                            <label for="descricao" class="font-medium text-gray-700">Adicione uma descrição</label>
+                            <textarea name="descricao" id="descricao" class="bg-white px-2 py-2 border border-gray-300 rounded text-gray-500 w-full" required
+                                placeholder="Descrição do Restaurante"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="flex flex-col">
+                    <div
+                        class="text-gray-700 text-base font-medium mt-4 w-full h-6 border-b border-gray-300 border-dashed">
+                        <h1 class="ml-2">Editar informações do restaurante</h1>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-8 justify-between px-8">
+                        <div class="flex flex-col mt-4">
+                            <h1 class="text-center">Endereço</h1>
+                            <label for="rua" class="text-gray-700">Rua</label>
+                            <input type="text" name="rua" id="rua" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full" required
+                                placeholder="Nome da Rua" />
+                            <label for="bairro" class="text-gray-700 mt-2">Bairro</label>
+                            <input type="text" name="bairro" id="bairro" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full" required
+                                placeholder="Nome do Bairro" />
+                            <label for="numero" class="text-gray-700 mt-2" >Número</label>
+                            <input type="number" name="numero" id="numero" class="bg-white border border-gray-300 rounded text-gray-500 w-2/4 " required
+                                placeholder="" />
+                        </div>
+                        <div class="flex flex-col mt-4">
+                            <h1 class="text-center">Contato</h1>
+                            <label class="text-gray-700">Email</label>
+                            <input type="email"
+                                class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
+                                placeholder="example@gmail.com" />
+                                <label class="text-gray-700 mt-2">Telefone</label>
+                                <input type="tel" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full" id="tel" 
+                                    placeholder="(69) 9 9999-9999" required/>
+                                <span id="tel-error" class="text-red-500 text-sm"></span>
+                        </div>
+                        <div class="flex flex-col mt-4 items-center gap-4">
+                            <div class="flex flex-col items-center text-center">
+                                <h1 class="text-center">Alterar horários de funcinamento</h1>
+                                <div class="flex flex-col space-y-2">
+                                    <div class="flex flex-row items-center gap-2 mt-4">
+                                        <span>Segunda à sexta</span>
+                                        <input type="time"
+                                            class="bg-white border border-gray-300 rounded text-gray-500 w-18"
+                                            placeholder="" />
+                                        <h1>às</h1>
+                                        <input type="time"
+                                            class="bg-white border border-gray-300 rounded text-gray-500 w-18"
+                                            placeholder="" />
+                                    </div>
+                                    <div class="flex flex-row items-center gap-2 ml-auto">
+                                        <span>Sábado</span>
+                                        <input type="time"
+                                            class="bg-white border border-gray-300 rounded text-gray-500 w-18"
+                                            placeholder="" />
+                                        <h1>às</h1>
+                                        <input type="time"
+                                            class="bg-white border border-gray-300 rounded text-gray-500 w-18"
+                                            placeholder="" />
+                                    </div>
+                                    <div class="flex flex-row items-center gap-2 ml-auto">
+                                        <span>Domingo</span>
+                                        <input type="time"
+                                            class="bg-white border border-gray-300 rounded text-gray-500 w-18"
+                                            placeholder="" />
+                                        <h1>às</h1>
+                                        <input type="time"
+                                            class="bg-white border border-gray-300 rounded text-gray-500 w-18"
+                                            placeholder="" />
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-row justify-end gap-4 bg-gray-200 w-4/5 xl:w-3/5 p-2 rounded-b-lg items-end">
+
+            <button type="submit"
+                class="flex justify-center m-auto font-semibold bg-orange-400 text-white rounded-md border border-orange-400 text-base px-2">Salvar
+            </button>
+        </div>
+    </form>
+</body>
+
+</html>
