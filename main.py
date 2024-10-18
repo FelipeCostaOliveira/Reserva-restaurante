@@ -22,7 +22,6 @@ def equipe():
 def login():
     return render_template('landingPage/login.html')
 
-<<<<<<< HEAD
 @app.route('/loginDono')
 def loginDono():
     return render_template('restaurante/LoginDono.html')
@@ -35,8 +34,6 @@ def modelos():
 def requisitos():
     return render_template('landingPage/requisitos.html')
 
-=======
->>>>>>> origin/master
 @app.route('/cadastroRestaurante')
 def cadastroRestaurante():
     return render_template('restaurante/CadastrarDono.html')
