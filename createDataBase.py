@@ -47,6 +47,8 @@ def criarBD():
     rua VARCHAR(100) NOT NULL,
     bairro VARCHAR(100) NOT NULL,
     numero INT NOT NULL,
+    email VARCHAR(45) NOT NULL,
+    telefone VARCHAR(45) NOT NULL,
     mesasDisponiveis INT,
     PRIMARY KEY(id_restaurante))
     DEFAULT CHARSET=utf8mb4;

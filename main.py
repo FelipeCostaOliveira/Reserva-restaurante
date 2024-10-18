@@ -50,7 +50,9 @@ def cadastrarRestaurante():
     rua = request.form.get('rua')
     bairro = request.form.get('bairro')
     numero = request.form.get('numero')
-    dados = nome, dono, descricao, rua, bairro, numero
+    email = request.form.get('email')
+    telefone = request.form.get('telefone')
+    dados = nome, dono, descricao, rua, bairro, numero, email, telefone
     connectBD = mysql.connector.connect(
         host=createDataBase.DBhost,
         database=createDataBase.DBname,
@@ -65,7 +67,7 @@ def cadastrarRestaurante():
             flash('Restaurante já cadastrado')
             return redirect('/registrarRestaurante')
         else:
-            query = "INSERT INTO restaurante (nome, dono, descricao, rua, bairro, numero) VALUES (%s, %s, %s, %s, %s, %s);"
+            query = "INSERT INTO restaurante (nome, dono, descricao, rua, bairro, numero, email, telefone) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);"
             cursor.execute(query, dados)
             connectBD.commit()
             flash('Restaurante Cadastrado com sucesso. Faça login para fazer uma reserva')
