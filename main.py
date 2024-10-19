@@ -1,16 +1,12 @@
 from flask import Flask, render_template, request, flash, redirect, session
-from flask_bcrypt import generate_password_hash, check_password_hash
 import mysql.connector
 import createDataBase
 import funcoes
 
 app = Flask(__name__)
 app.secret_key = 'felipe'
-
 createDataBase.criarBD()
-
 # LandingPage
-
 @app.route('/')
 def index():
     return render_template('landingPage/index.html')
@@ -41,9 +37,12 @@ def cadastroRestaurante():
 
 # Restaurantes
 
+@app.route('/registrarRestaurante')
+def registrarRestaurante():
+    return render_template('restaurante/RegistrarRestaurante.html')
+
 @app.route('/cadastrarRestaurante', methods=['POST'])
 def cadastrarRestaurante():
-    print('iuiuiu')
     nome = request.form.get('nome')
     dono = request.form.get('dono')
     descricao = request.form.get('descricao')
@@ -52,7 +51,8 @@ def cadastrarRestaurante():
     numero = request.form.get('numero')
     email = request.form.get('email')
     telefone = request.form.get('telefone')
-    dados = nome, dono, descricao, rua, bairro, numero, email, telefone
+    id_usuario_restaurante = session['user_id']
+    dados = nome, dono, descricao, rua, bairro, numero, email, telefone, id_usuario_restaurante
     connectBD = mysql.connector.connect(
         host=createDataBase.DBhost,
         database=createDataBase.DBname,
@@ -62,28 +62,78 @@ def cadastrarRestaurante():
     if connectBD.is_connected():
         cursor = connectBD.cursor()
         cursor.execute("SELECT * FROM restaurante WHERE nome = %s", (nome,))
-        restaurantesBD = cursor.fetchone()
-        if restaurantesBD:
+        restaurante = cursor.fetchone()
+        if restaurante:
             flash('Restaurante já cadastrado')
             return redirect('/registrarRestaurante')
         else:
-            query = "INSERT INTO restaurante (nome, dono, descricao, rua, bairro, numero, email, telefone) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);"
+            query = "INSERT INTO restaurante (nome, dono, descricao, rua, bairro, numero, email, telefone, id_usuario_restaurante) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);"
             cursor.execute(query, dados)
             connectBD.commit()
-            flash('Restaurante Cadastrado com sucesso. Faça login para fazer uma reserva')
             return redirect('/editarRestaurante')
 
     if connectBD.is_connected():
         cursor.close()
         connectBD.close()
 
-@app.route('/registrarRestaurante')
-def registrarRestaurante():
-    return render_template('restaurante/RegistrarRestaurante.html')
 @app.route('/editarRestaurante')
 def editarRestaurante():
-    return render_template('restaurante/EditarRestaurante.html')
-
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para acessar esta página.')
+        return redirect('/loginDono')
+    dono_id = session['user_id']
+    connectBD = mysql.connector.connect(
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
+    )
+    
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        query = "SELECT * FROM restaurante WHERE id_usuario_restaurante = %s"
+        cursor.execute(query, (dono_id,))
+        restaurante = cursor.fetchone()
+        cursor.close()
+        connectBD.close
+    if restaurante:
+        return render_template('restaurante/EditarRestaurante.html', restaurante=restaurante)
+    else: 
+        flash('Nenhum restaurante encontrado para este dono.')
+        return redirect('/loginDono')
+    
+@app.route('/atualizarRestaurante', methods=['POST'])
+def atualizarRestaurante():
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para acessar esta página.')
+        return redirect('/loginDono')
+    dono_id = session['user_id']
+    nome = request.form.get('nome')
+    dono = request.form.get('dono')
+    descricao = request.form.get('descricao')
+    rua = request.form.get('rua')
+    bairro = request.form.get('bairro')
+    numero = request.form.get('numero')
+    email = request.form.get('email')
+    telefone = request.form.get('telefone')
+    connectBD = mysql.connector.connect(
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
+    )
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        query = """
+            UPDATE restaurante
+            SET nome = %s,dono = %s, descricao = %s, rua = %s, bairro = %s, numero = %s, email = %s, telefone = %s WHERE id_usuario_restaurante = %s
+        """
+        cursor.execute(query,(nome, dono, descricao, rua, bairro, numero, email, telefone, dono_id))
+        connectBD.commit()
+        cursor.close()
+        connectBD.close() 
+        flash("Restaurante atualizado")
+        return redirect('/editarRestaurante')
 # Clientes
 
 @app.route('/novidades')
@@ -154,10 +204,6 @@ def formularioReserva():
     return render_template('cliente/RealizarReserva.html', restaurantes=restaurantes)
 
     # Tela p/o clinte realizar a reserva
-
-@app.route('/RealizarReserva')
-def realizar_reserva():
-    return render_template('RealizarReserva.html')
 
 @app.route('/cadastrarReserva', methods=['POST'])
 def cadastrarReserva():

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -12,14 +12,17 @@
 </head>
 
 <body>
-    <div class="flex min-h-screen justify-center items-center flex-col ">
+    <form action="/atualizarRestaurante" method="POST" class="flex min-h-screen justify-center items-center flex-col ">
         <div class="flex flex-row justify-between bg-gray-200 w-4/5 xl:w-3/5 p-2 rounded-t-lg">
             <h1 class="ml-2 font-bold text-gray-700 text-base">Editar restaurante</h1>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                stroke="currentColor" class="size-6 text-red-500 cursor-pointer w-6">
-                <path strokeLinecap="round" strokeLinejoin="round"
-                    d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-            </svg>
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                    stroke="currentColor" class="size-6 text-red-500 cursor-pointer w-6">
+                    <path strokeLinecap="round" strokeLinejoin="round"
+                        d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                </svg>
+            </button>
+            
         </div>
         <div class="flex flex-col bg-gray-100 w-4/5 xl:w-3/5 p-2">
             <div>
@@ -57,19 +60,16 @@
                     </div>
                     <div class="flex flex-col mt-4 md:ml-4 ">
                         <div class="flex flex-col">
-                            <label class="font-medium text-gray-700">Alterar nome</label>
-                            <input type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
-                                placeholder="Nome do Restaurante" />
+                            <label for="nome" class="font-medium text-gray-700">Alterar nome</label>
+                            <input id="nome" name="nome" value="{{restaurante[1]}}" type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"/>
                         </div>
                         <div class="flex flex-col mb-2 mt-4">
-                            <label class="font-medium text-gray-700">Alterar dono</label>
-                            <input type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
-                                placeholder="Nome do Dono" />
+                            <label for="dono" class="font-medium text-gray-700">Alterar dono</label>
+                            <input id="dono" name="dono" type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full" value="{{restaurante[2]}}"/>
                         </div>
                         <div class="flex flex-col mb-2">
-                            <label class="font-medium text-gray-700">Alterar descrição</label>
-                            <textarea class="bg-white px-2 py-2 border border-gray-300 rounded text-gray-500 w-full"
-                                placeholder="Descrição do Restaurante"></textarea>
+                            <label for="descricao" class="font-medium text-gray-700">Alterar descrição</label>
+                            <input name="descricao" id="descricao" class="bg-white px-2 py-2 border border-gray-300 rounded text-gray-500 w-full" value="{{restaurante[3]}}"/>
                         </div>
                     </div>
                 </div>
@@ -83,25 +83,20 @@
                     <div class="flex flex-col sm:flex-row gap-8 justify-between px-8">
                         <div class="flex flex-col mt-4">
                             <h1 class="text-center">Endereço</h1>
-                            <label class="text-gray-700">Rua</label>
-                            <input type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
-                                placeholder="Nome da Rua" />
-                            <label class="text-gray-700 mt-2">Bairro</label>
-                            <input type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
-                                placeholder="Nome do Bairro" />
-                            <label class="text-gray-700 mt-2">Número</label>
-                            <input type="number" class="bg-white border border-gray-300 rounded text-gray-500 w-1/4"
-                                placeholder="" />
+                            <label for="rua" class="text-gray-700">Rua</label>
+                            <input id="rua" name="rua" type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full" value="{{restaurante[4]}}"/>
+                            <label for="bairro" class="text-gray-700 mt-2">Bairro</label>
+                            <input id="bairro" name="bairro" type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full" value="{{restaurante[5]}}"/>
+                            <label for="numero" class="text-gray-700 mt-2">Número</label>
+                            <input id="numero" name="numero" type="number" class="bg-white border border-gray-300 rounded text-gray-500 w-2/4" value="{{restaurante[6]}}"/>
                         </div>
                         <div class="flex flex-col mt-4">
                             <h1 class="text-center">Contato</h1>
-                            <label class="text-gray-700">Email</label>
-                            <input type="email"
-                                class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
-                                placeholder="example@gmail.com" />
-                            <label class="text-gray-700 mt-2">Bairro</label>
-                            <input type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full"
-                                placeholder="Nome do Bairro" />
+                            <label for="email" class="text-gray-700">Email</label>
+                            <input id="email" name="email" type="email"
+                                class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full" value="{{restaurante[7]}}"/>
+                            <label for="telefone" class="text-gray-700 mt-2">Telefone</label>
+                            <input id="telefone" name="telefone" type="text" class="bg-white px-4 border border-gray-300 rounded text-gray-500 w-full" value="{{restaurante[8]}}"/>
                         </div>
                         <div class="flex flex-col mt-4 items-center gap-4">
                             <div class="flex flex-col items-center text-center">
@@ -133,7 +128,7 @@
                 class="ml-2 font-semibold bg-orange-400 text-white rounded-md border border-orange-400 text-base px-2">Salvar
                 tudo</button>
         </div>
-    </div>
+    </form>
 </body>
 
 </html>

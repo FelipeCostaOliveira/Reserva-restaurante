@@ -3,7 +3,7 @@ import database
 DBhost = 'localhost' 
 DBname = 'SistemaReservas'
 DBuser = 'root'
-DBpassword = 'alunoifro'
+DBpassword = 'root'
 
 def criarBD():
     # CRIAR TABELA DE BANCO DE DADOS
@@ -23,7 +23,7 @@ def criarBD():
     new_connection = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
     database.create_table(new_connection, NameTabela, query)
 
-    # Criar Tabela usuario cliente
+    # Criar Tabela usuario restaurante
     NameTabela = 'usuario_restaurante'
     query = f"""
     CREATE TABLE {NameTabela} 
@@ -50,6 +50,8 @@ def criarBD():
     email VARCHAR(45) NOT NULL,
     telefone VARCHAR(45) NOT NULL,
     mesasDisponiveis INT,
+    id_usuario_restaurante INT NOT NULL,
+    FOREIGN KEY (id_usuario_restaurante) REFERENCES usuario_restaurante(id_usuario_restaurante) ON DELETE CASCADE,
     PRIMARY KEY(id_restaurante))
     DEFAULT CHARSET=utf8mb4;
     """
