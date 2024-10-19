@@ -134,6 +134,30 @@ def atualizarRestaurante():
         connectBD.close() 
         flash("Restaurante atualizado")
         return redirect('/editarRestaurante')
+    
+@app.route('/deletarRestaurante', methods=['GET'])
+def deletarRestaurante():
+    restaurante_id = request.args.get('restaurante_id')
+
+    connectBD = mysql.connector.connect(
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
+    )
+
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        cursor.execute("DELETE FROM restaurante WHERE id_restaurante = %s", (restaurante_id,))
+        connectBD.commit()
+        cursor.close()
+        connectBD.close()
+        
+        flash('Restaurante deletado com sucesso!')
+        return redirect('/loginDono')
+
+    flash('Erro ao conectar ao banco de dados.')
+    return redirect('/home')
 # Clientes
 
 @app.route('/novidades')
