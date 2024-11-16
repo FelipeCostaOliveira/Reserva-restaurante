@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserva</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function openInGoogleMaps() {
+
+            const address = "{{restaurante[4]}}, {{restaurante[6]}}, {{restaurante[5]}}, Porto Velho-RO";
+            if (address) {                    
+                // Monta a URL do Google Maps
+                const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+                        
+                // Abre o link em uma nova aba
+                window.open(mapsUrl, '_blank');
+            } else {
+                alert("Por favor, insira um endereço.");
+            }
+        }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body class="bg-white">
@@ -57,7 +72,9 @@
                             <div class="ml-2 text-gray-700">
                                 <h1 class="font-bold text-lg">Como chegar</h1>
                                 <h2 class="text-sm">Endereço: {{restaurante[4]}}, {{restaurante[6]}}, {{restaurante[5]}}, Porto Velho-RO</h2>
-                                <img class="mt-2 w-full cursor-pointer max-w-xs" src="static/assets/Local.png" alt="Localização">
+                                <!-- Chamando a função do maps -->
+                                <h1>Localizar Restaurante no Google Maps</h1>
+                                <button class="mt-2 bg-orange-400 px-2 py-1 rounded-md text-white " onclick="openInGoogleMaps()">Abrir Google Maps</button>
                             </div>
                         </div>
                         <form action="/formularioReserva" method="POST" class="flex flex-row border border-orange-400 text-white px-2 py-2 rounded-md items-center bg-white w-72 ml-8">
