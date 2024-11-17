@@ -18,16 +18,45 @@
 
     <main>
         <section class="mt-16 flex justify-center">
-            <div class="flex relative justify-center">
-                <input type="text" placeholder="Buscar por restaurantes" class="w-96 bg-gray-200 text-gray-800 pl-10 pr-4 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-yellow-500">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                </svg>
+            <div class="flex relative justify-center flex-col">
+                <!-- Barra de pesquisa -->
+                <form action="/pesquisar" method="get">
+                    <div class="flex flex-row items-center gap-2">
+                        <input type="text" name="query" placeholder="Buscar por restaurantes" class="w-96 bg-gray-200 text-gray-800 pl-10 pr-4 py-1 rounded-md border focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <button type="submit" class="border border-gray-200 p-1 rounded-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="size-6 text-orange-500 ">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                            </svg>
+                        </button>
+                    </div> 
+                </form>
             </div>
         </section>
+        <div class="flex flex-col gap-2">
+            <h1 class="ml-2 font-semibold text-gray-600">Resultados para {{ query }}</h1>
+            {% if resultados_pesquisa %}
+                <ul class="flex gap-4">
+                    {% for restaurante in resultados_pesquisa %}
+                        <!-- Renderizar os restaurantes encontrados na pesquisa -->
+                        <label for="detalhes-{{restaurante[0]}}" class="bg-gray-100 mx-8 flex flex-col justify-center shadow-lg rounded-md cursor-pointer hover:border-2 border-gray-300">
+                            <div class="flex flex-row">
+                                <img src="static/assets/restaurantes/disponiveis/bellaPizza.svg" alt="bellaPizza" class="w-3/5"/>
+                                <div class="flex flex-col ml-2">
+                                    <p class="text-md font-semibold text-gray-700">{{restaurante[1]}}</p>
+                                    <p class="text-xs font-normal text-gray-600 mt-2">Horário: 12:30 até 18:30</p>
+                                    <p class="text-xs font-normal text-gray-600 mt-auto">mesas disponíveis: 5</p>
+                                </div>                              
+                            </div>
+                        </label>  
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="ml-2">Nenhum resultado encontrado :(</p>
+            {% endif %}
+        </div>
         <section>
-            <span class="flex ml-24 mt-24 items-center text-yellow-500 uppercase text-xl">
-                em alta
+            <span class="flex flex-col ml-24 mt-24">
+                <h1 class="text-yellow-500 uppercase text-xl">em alta</h1>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-6 text-orange-600">
                   <path fill-rule="evenodd" d="M8.074.945A4.993 4.993 0 0 0 6 5v.032c.004.6.114 1.176.311 1.709.16.428-.204.91-.61.7a5.023 5.023 0 0 1-1.868-1.677c-.202-.304-.648-.363-.848-.058a6 6 0 1 0 8.017-1.901l-.004-.007a4.98 4.98 0 0 1-2.18-2.574c-.116-.31-.477-.472-.744-.28Zm.78 6.178a3.001 3.001 0 1 1-3.473 4.341c-.205-.365.215-.694.62-.59a4.008 4.008 0 0 0 1.873.03c.288-.065.413-.386.321-.666A3.997 3.997 0 0 1 8 8.999c0-.585.126-1.14.351-1.641a.42.42 0 0 1 .503-.235Z" clip-rule="evenodd" />
                 </svg>
