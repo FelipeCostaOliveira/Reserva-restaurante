@@ -33,8 +33,9 @@
             </div>
         </section>
         <div class="flex flex-col gap-2">
-            <h1 class="ml-2 font-semibold text-gray-600">Resultados para {{ query }}</h1>
             {% if resultados_pesquisa %}
+            <h1 class="ml-2 font-semibold text-gray-600">Resultados para {{ query }}</h1>
+
                 <ul class="flex gap-4">
                     {% for restaurante in resultados_pesquisa %}
                         <!-- Renderizar os restaurantes encontrados na pesquisa -->
@@ -50,8 +51,8 @@
                         </label>  
                     {% endfor %}
                 </ul>
-            {% else %}
-                <p class="ml-2">Nenhum resultado encontrado :(</p>
+            {% elif query and not resultados_pesquisa %}
+            <p class="ml-2">Nenhum resultado encontrado para {{query}}</p>  
             {% endif %}
         </div>
         <section>
