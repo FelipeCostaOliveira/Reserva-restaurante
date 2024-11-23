@@ -78,3 +78,4 @@ def autenticarUsuario(nomeTabela):
             if contador >= len(usuariosBD):
                 flash('Usuário Inválido')
                 return redirect("/login")
+            
