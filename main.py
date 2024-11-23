@@ -168,7 +168,24 @@ def deletarRestaurante():
 
 @app.route('/novidades')
 def novidades():
-    return render_template('cliente/novidades.html')
+    connectBD = mysql.connector.connect(
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
+    )
+    
+    if connectBD.is_connected():
+        cursor = connectBD.cursor()
+        cursor.execute("SELECT id_restaurante, nome, descricao, dono FROM restaurante;")
+        restaurantes = cursor.fetchall()
+        cursor.close()
+        connectBD.close()
+        print(restaurantes)
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para acessar esta página.')
+        return redirect('/login')
+    return render_template('cliente/novidades.html', restaurantes=restaurantes)
 
 @app.route('/home')
 def home():
