@@ -22,9 +22,4 @@ $(document).ready(function(){
         telInput.value = formattedTel;
     });
 
-    // Definir o mínimo para o campo de data como o dia atual
-    $(document).ready(function(){
-        const today = new Date().toISOString().split('T')[0];
-        $('#data').attr('min', today);
-    });
 });
