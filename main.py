@@ -35,6 +35,10 @@ def requisitos():
 def cadastroRestaurante():
     return render_template('restaurante/CadastrarDono.html')
 
+@app.route('/reservasCadastradas')
+def reservasCadastradas():
+    return render_template('restaurante/reservasCadastradas.html')
+
 # Barra de pesquisa
 @app.route('/pesquisar', methods=['GET'])
 def pesquisa():
