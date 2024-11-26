@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    // Formatação do telefone
     document.getElementById('tel').addEventListener('input', function(e) {
         var telInput = e.target;
         var telValue = telInput.value.replace(/\D/g, '');  // Remove qualquer caractere não numérico
@@ -19,5 +20,11 @@ $(document).ready(function(){
     
         // Atualiza o valor do campo com a formatação aplicada
         telInput.value = formattedTel;
+    });
+
+    // Definir o mínimo para o campo de data como o dia atual
+    $(document).ready(function(){
+        const today = new Date().toISOString().split('T')[0];
+        $('#data').attr('min', today);
     });
 });
