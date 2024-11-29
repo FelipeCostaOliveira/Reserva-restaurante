@@ -15,36 +15,50 @@
    {% include 'componentes/navbar.html' %}
 </header>
 <body>
-    <form action="/reservasCadastradas" method="post" class="flex min-h-screen flex-col ">
-       <div class="flex flex-col">
-        <div>
-            <div class="mt-20 ml-4 border-dashed border-b border-gray-600">
-                <h1 class="text-2xl text-gray-700 font-medium">Aqui estão as reservas de suas clientes</h1>
-            </div>
-            <form action="/reserva" method="post">
-                
-                {% for reserva in id_restaurante %}
-                <div class="flex flex-row">
-                    <label for="detalhes-{{reserva[0]}}  href="{{url_for("reserva")}}"" class="">
-                        <button class="flex flex-col mt-2 ml-4 border border-gray-100 bg-gray-50 p-2 rounded-md w-1/5 shadow-xl text-xs">
-                            <h1 class="text-orange-500 font-semibold">{{reserva[1]}}</h1>
-                            <h1 class="text-gray-700 font-normal">Número de pessoas: {{reserva[2]}}</h1>
-                            <h1 class="text-gray-700 font-normal">Número da(s) mesa(s): </h1>
-                            <h1 class="text-gray-700 font-normal">Quantidade de mesas:</h1>
-                        </button>
-                    </label>
+    <form action="/reservasCadastradas" method="post" class="flex min-h-screen flex-col">
+        <div class="flex flex-col">
+            <div>
+                <div class="mt-20 ml-4 border-dashed border-b border-gray-600">
+                     <h1 class="text-2xl text-gray-700 font-medium">Aqui estão as reservas de suas clientes</h1>
                 </div>
-                {%endfor%}
-
-            </form>
+                <div class="flex flex-row gap-2">
+                    <div class="mt-2 ml-4 px-2 flex flex-row border border-gray-300 bg-gray-50 rounded-md w-80 justify-between items-center cursor-pointer">
+                        <div class="flex flex-col">
+                            <div class="flex flex-row gap-4 text-orange-500 font-medium">
+                                <h1>Data:</h1>
+                                <h1>Hora:</h1>
+                            </div>
+                            <h1>Numero de pessoas: </h1>
+                            <h1>Quantidade de mesas: </h1>
+                            <h1>Numero da(s) mesa(s):</h1>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="size-6 text-green-500  ">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>  
+                    </div>
+                </div>
+            </div>
+            <div class="mt-20 ml-4 border-dashed border-b border-gray-600">
+                <h1 class="text-2xl text-gray-700 font-medium mt-2">Reservas canceladas</h1>
+            </div>
+            <div class="flex flex-row gap-2">
+                <div class="mt-2 ml-4 px-2 flex flex-row border border-gray-300 bg-gray-50 rounded-md w-80 justify-between items-center cursor-pointer">
+                    <div class="flex flex-col">
+                        <div class="flex flex-row gap-4 text-orange-500 font-medium">
+                            <h1>Data:</h1>
+                            <h1>Hora:</h1>
+                        </div>
+                        <h1>Numero de pessoas: </h1>
+                        <h1>Quantidade de mesas: </h1>
+                        <h1>Numero da(s) mesa(s):</h1>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="size-6 text-red-500">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>                       
+                </div>
+            </div>
         </div>
-        
-
-        <div class="mt-20 ml-4 border-dashed border-b border-gray-600">
-            <h1 class="text-2xl text-gray-700 font-medium mt-2">Reservas canceladas</h1>
-        </div>
-       </div> 
-    </form>
+     </form>
 </body>
 
 </html>
