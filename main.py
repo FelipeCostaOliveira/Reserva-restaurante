@@ -318,6 +318,14 @@ def cadastrarReserva():
         cursor.close()
         connectBD.close()
 
+# Após realizar reserva
+@app.route('/historicoReservas')
+def historicoReserva():
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para acessar esta página.')
+        return redirect('/login')
+    return render_template('cliente/historicoReservas.html')
+
 # Autenticar Usuário
 @app.route('/cadastrarUsuario', methods=['POST'])
 def cadastrarUsuario():
