@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realizar Reserva</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="static/scripts/Formatar.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body class="bg-[#181012]">
+<body class="bg-white">
     <div class="flex flex-col">
         <div>
             <img class="w-full" src="static/assets/TelaDeFundo.png" alt="Tela de Fundo">
@@ -24,7 +25,29 @@
                         <input type="text" class="hidden" name="restaurante_id" value={{ restaurante[0]}}>
                     {% endfor %}
                     
-                    
+                    <div class="flex flex-col mb-4">
+                        <label for="nome_cli" class="font-medium text-gray-700">Nome</label>
+                         <input
+                             id="nome_cli"
+                             type="text"
+                             name="nome_cli"
+                             class="bg-gray-200 px-4 py-2 rounded-md text-gray-500 w-full"
+                             placeholder="Digite seu nome"
+                             required
+                         />
+                     </div>
+                     <div class="flex flex-col mb-4">
+                        <label for="tel_cliente" class="font-medium text-gray-700">Telefone para contato</label>
+                        <input
+                            id="tel" 
+                            type="tel"
+                            name="tel_cliente"   
+                            class="bg-gray-200 px-4 py-2 rounded-md text-gray-500 w-full"
+                            placeholder="(69) 9 9999-9999" 
+                            required
+                        />
+                            <span id="tel-error" class="text-red-500 text-sm"></span>
+                     </div>
                     <div class="flex flex-col mb-4">
                        <label for="num_pessoas" class="font-medium text-gray-700">Pessoas</label>
                         <input
@@ -33,6 +56,7 @@
                             name="num_pessoas"
                             class="bg-gray-200 px-4 py-2 rounded-md text-gray-500 w-full"
                             placeholder="Escolha a quantidade de pessoas"
+                            required
                         />
                     </div>
                     <div class="flex flex-col mb-4">
@@ -43,6 +67,7 @@
                             name="data"
                             class="bg-gray-200 px-4 py-2 rounded-md text-gray-500 w-full"
                             placeholder="Escolha a data da reserva"
+                            required
                         />
                     </div>
                     <div class="flex flex-col mb-4">
@@ -53,6 +78,7 @@
                             name="horario"
                             class="bg-gray-200 px-4 py-2 rounded-md text-gray-500 w-full"
                             placeholder="Escolha o horário de sua reserva"
+                            required
                         />
                     </div>
                     <button class="flex items-center justify-center cursor-pointer" type="submit">
