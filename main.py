@@ -35,6 +35,11 @@ def requisitos():
 def cadastroRestaurante():
     return render_template('restaurante/CadastrarDono.html')
 
+# @app.route('/reservasCadastradas')
+# def reservasCadastradas():
+#     return render_template('restaurante/reservasCadastradas.html')
+
+
 # Barra de pesquisa
 @app.route('/pesquisar', methods=['GET'])
 def pesquisa():
@@ -244,7 +249,7 @@ def home():
     return render_template('cliente/home.html', restaurantes=restaurantes)
 
 
-    # Tela de detalhamento dos restaurantes
+# Tela de detalhamento dos restaurantes
 
 @app.route('/reserva', methods=["GET","POST"])
 def reserva():
@@ -266,7 +271,7 @@ def reserva():
     
     return render_template('cliente/Detalhes.html', restaurante=restaurante)
 
-    # Leva os dados do restaurante p/fazer a reserva
+# Leva os dados do restaurante p/fazer a reserva
 @app.route('/formularioReserva', methods=["POST"])
 def formularioReserva():
     id_restaurante = request.form.get("reservar")
@@ -286,7 +291,7 @@ def formularioReserva():
 
     return render_template('cliente/RealizarReserva.html', restaurantes=restaurantes)
 
-    # Tela p/o clinte realizar a reserva
+# Tela p/o clinte realizar a reserva
 
 @app.route('/cadastrarReserva', methods=['POST'])
 def cadastrarReserva():
@@ -294,6 +299,8 @@ def cadastrarReserva():
     data = request.form.get('data')
     hora = request.form.get('horario')
     hora = f'{hora}:00'
+    nome_cliente = request.form.get("nome_cli")
+    tel_cliente = request.form.get("tel_cliente")
     numero_pessoas = request.form.get('num_pessoas')
     print(restaurante_id)
     connectBD = mysql.connector.connect(
@@ -302,14 +309,16 @@ def cadastrarReserva():
         user=createDataBase.DBuser,
         password=createDataBase.DBpassword
     )
-
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para acessar esta página.')
+        return redirect('/loginDono')
     if connectBD.is_connected():
         cursor = connectBD.cursor()
         query = """
-        INSERT INTO reserva (id_restaurante, data, horario, num_pessoas)
-        VALUES (%s, %s, %s, %s);
+        INSERT INTO reserva (id_restaurante, data, horario, nome_cli, tel_cliente, num_pessoas)
+        VALUES (%s, %s, %s, %s, %s, %s);
         """
-        cursor.execute(query, (restaurante_id, data, hora, numero_pessoas))
+        cursor.execute(query, (restaurante_id, data, hora, nome_cliente, tel_cliente, numero_pessoas))
         connectBD.commit()
         flash('Reserva cadastrada com sucesso!')
         return redirect('/home')
@@ -317,6 +326,36 @@ def cadastrarReserva():
     if connectBD.is_connected():
         cursor.close()
         connectBD.close()
+
+# Exibindo reservas
+@app.route('/reservasCadastradas', methods=['GET', 'POST'])
+def reservasCadastradas():
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para acessar esta página.')
+        return redirect('/loginDono')
+
+    dono_id = session['user_id']
+    connectBD = mysql.connector.connect(
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
+    )
+    reservas = []
+
+    if connectBD.is_connected():
+        cursor = connectBD.cursor(dictionary=True)  # Retorna resultados como dicionários
+        query = """
+        SELECT data, horario, num_pessoas, nome_cli, tel_cliente
+        FROM reserva r
+        INNER JOIN restaurante res ON r.id_restaurante = res.id_restaurante
+        WHERE res.id_usuario_restaurante = %s
+        """
+        cursor.execute(query, (dono_id,))
+        reservas = cursor.fetchall()
+        cursor.close()
+        connectBD.close()
+    return render_template('restaurante/reservasCadastradas.html', reservas=reservas)
 
 # Autenticar Usuário
 @app.route('/cadastrarUsuario', methods=['POST'])

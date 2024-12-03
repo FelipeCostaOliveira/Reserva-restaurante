@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas Cadastradas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="static/scripts/upload.js"></script>
+    <script src="static/scripts/Formatar.js"></script>
+</head>
+<header>
+   {% include 'componentes/navbar.html' %}
+</header>
+
+<body>
+    <div class="flex min-h-screen flex-col">
+        <div class="flex flex-col px-4 sm:px-6 lg:px-8 mt-20">
+            <div class="border-dashed border-b border-gray-600 pb-4">
+                <h1 class="text-2xl text-gray-700 font-medium">Aqui estão as reservas de seus clientes</h1>
+            </div>
+            <div class="flex flex-wrap gap-4 mt-4 xl:justify-start md:justify-center justify-between">
+                {% for reserva in reservas %}
+                <div class="flex flex-row justify-between items-center gap-2 lg:w-80 md:w-2/5 w-full border border-gray-300 bg-gray-50 rounded-md p-4">
+                    <div class="flex flex-col w-full">
+                        <div class="flex flex-row gap-4 text-orange-500 font-medium">
+                            <h1>Data: {{ reserva.data }}</h1>
+                            <h1>Hora: {{ reserva.horario }}</h1>
+                        </div>
+                        <h1>Nome do cliente: {{ reserva.nome_cli }}</h1>
+                        <h1>Telefone do cliente: {{ reserva.tel_cliente }}</h1>
+                        <h1>Número de pessoas: {{ reserva.num_pessoas }}</h1>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-6 h-6 text-green-500">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Substituir pela busca de reservas canceladas, quando estiver pronta. -->
+            <div class="border-dashed border-b border-gray-600 pb-4 mt-4">
+                <h1 class="text-2xl text-gray-700 font-medium">Reservas canceladas</h1>
+            </div>
+            <div class="flex flex-wrap gap-4 mt-4 xl:justify-start md:justify-center justify-between">
+                {% for reserva in reservas %}
+                <div class="flex flex-row justify-between items-center gap-2 lg:w-80 md:w-2/5 w-full border border-gray-300 bg-gray-50 rounded-md p-4">
+                    <div class="flex flex-col w-full">
+                        <div class="flex flex-row gap-4 text-orange-500 font-medium">
+                            <h1>Data: {{ reserva.data }}</h1>
+                            <h1>Hora: {{ reserva.horario }}</h1>
+                        </div>
+                        <h1>Nome do cliente: {{ reserva.nome_cli }}</h1>
+                        <h1>Telefone do cliente: {{ reserva.tel_cliente }}</h1>
+                        <h1>Número de pessoas: {{ reserva.num_pessoas }}</h1>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="size-6 text-red-500">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                      
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

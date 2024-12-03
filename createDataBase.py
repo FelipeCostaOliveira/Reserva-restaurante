@@ -3,7 +3,7 @@ import database
 DBhost = 'localhost' 
 DBname = 'SistemaReservas'
 DBuser = 'root'
-DBpassword = 'root'
+DBpassword = 'alunoifro'
 
 def criarBD():
     # CRIAR TABELA DE BANCO DE DADOS
@@ -64,6 +64,8 @@ def criarBD():
     CREATE TABLE {NameTabela3} 
     (id_reserva INT NOT NULL AUTO_INCREMENT,
     id_restaurante INT NOT NULL,
+    nome_cli VARCHAR(100) NOT NULL,
+    tel_cliente VARCHAR(45) NOT NULL,
     num_pessoas INT NOT NULL,
     horario TIME NOT NULL,
     data DATE NOT NULL,
