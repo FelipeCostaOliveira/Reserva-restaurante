@@ -21,17 +21,17 @@
             <section class="container max-w-6xl h-3/4 flex flex-row justify-between gap-24 py-10 px-8 m-auto items-center">
                 <header class="ml-10">
                     <span class="text-amber-700 font-normal">Agende seu horário</span>
-                    <h1 class="text-gray-700 text-2xl font-semibold">Bem vindo de volta!</h1>
+                    <h1 class="text-gray-700 text-2xl font-semibold">Faça seu registro!</h1>
                     <hr>
-                    <h2 class="text-base text-gray-700 font-inter font-thin">Faça login para agendar sua reserva</h2>
-                    <form class="text-gray-600 flex flex-col font-intel py-5" action="/autenticarUsuario" method="POST">
+                    <h2 class="text-sm text-gray-700 font-inter font-thin">Registre-se e faça suas reservas</h2>
+                    <form class="text-gray-600 flex flex-col font-intel py-5" action="/cadastrarUsuario" method="POST">
                         <label for="email">Email</label>
                         <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="email" name="email" required placeholder="Digite seu email">
 
                         <label for="Senha">Senha</label>
                         <input class="text-black mt-1 p-2 rounded-3xl border-none text-base" type="password" name="senha" required placeholder="Digite sua senha">
                         
-                        <input class="text-white mt-2 p-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-amber-800 cursor-pointer" type="submit" class="registrar-btn" value="Entrar" >
+                        <input class="text-white mt-2 p-2 rounded-3xl border-none text-base bg-[#A45A49] w-3/5 m-auto font-bold hover:bg-amber-800 cursor-pointer" type="submit" class="registrar-btn" value="Registrar" >
                         {% set mensagem = get_flashed_messages()%}
                         {% if mensagem %}
                         <div class="flex flex-coltext-red-600 font-bold m-auto">

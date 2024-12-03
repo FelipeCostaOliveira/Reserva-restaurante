@@ -33,7 +33,7 @@ def requisitos():
 
 @app.route('/cadastroRestaurante')
 def cadastroRestaurante():
-    return render_template('restaurante/CadastrarDono.html')
+    return render_template('restaurante/LoginDono.html')
 
 # @app.route('/reservasCadastradas')
 # def reservasCadastradas():
