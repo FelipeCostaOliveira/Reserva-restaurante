@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    // Formatação do telefone
     document.getElementById('tel').addEventListener('input', function(e) {
         var telInput = e.target;
         var telValue = telInput.value.replace(/\D/g, '');  // Remove qualquer caractere não numérico
@@ -20,4 +21,5 @@ $(document).ready(function(){
         // Atualiza o valor do campo com a formatação aplicada
         telInput.value = formattedTel;
     });
+
 });

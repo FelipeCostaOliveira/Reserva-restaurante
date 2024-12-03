@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="static/scripts/upload.js"></script>
-    <script src="static/scripts/Formatar.js"></script>
+    <script src="static/scripts/FormatarTelefone.js"></script>
 </head>
 <header>
    {% include 'componentes/navbar.html' %}
@@ -24,6 +24,12 @@
                 <div class="text-gray-700 text-base font-medium mt-4 w-full h-6 border-b border-gray-300 border-dashed">
                     <h1 class="ml-2">Editar visual do restaurante</h1>
                 </div>
+                {% set mensagem = get_flashed_messages()%}
+                {% if mensagem %}
+                <div class="text-red-600 font-bold m-auto">
+                    {{mensagem[0]}}
+                </div>
+                {% endif %}
                 <div class="flex flex-col md:flex-row mt-2 items-center justify-between gap-8 px-8">
                     <div class="flex flex-col items-center">
                         <label for="upload" class="flex items-center justify-center w-24 h-24 bg-gray-400 rounded-full cursor-pointer">
@@ -36,7 +42,7 @@
                             Adicionar foto
                         </button>
                     </div>
-
+ 
                     <div class="flex flex-col items-center mt-4 md:ml-4">
                         <div class="flex flex-row gap-2">
                             <div class="">

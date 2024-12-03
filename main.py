@@ -251,8 +251,9 @@ def home():
 
 # Tela de detalhamento dos restaurantes
 
-@app.route('/reserva', methods=["POST"])
+@app.route('/reserva', methods=["GET","POST"])
 def reserva():
+    
     id_restaurante = request.form.get("detalhes")
     connectBD = mysql.connector.connect(
         host=createDataBase.DBhost,
@@ -384,5 +385,12 @@ def logout():
     flash('Você foi desconectado com sucesso.')
     return redirect('/login')
 
+@app.route('/voltar', methods=['POST'])
+def voltar():
+    referer = request.headers.get('Referer')
+    if referer:
+        return redirect(referer)
+
+    return redirect('/')
 if __name__ in "__main__":
     app.run(debug=True, port=5001)
