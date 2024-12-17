@@ -2,8 +2,8 @@
             
     <ul class="flex flex-row items-center space-x-10 max-md:hidden">
         <figure><img src="static/assets/logo.svg" alt="logo"></figure>
-        <li class="hover:text-amber-900 font-bold"><a href="{{url_for("index")}}">Home</a></li>
-        <li class="hover:text-amber-900 font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
+        <li class="hover:text-amber-900 font-bold"><a href="{{url_for("landing.index")}}">Home</a></li>
+        <li class="hover:text-amber-900 font-bold"><a href="{{ url_for("landing.equipe") }}">Quem Somos?</a></li>
         
     </ul>
     <div class="flex flex-row items-center space-x-6">
@@ -16,7 +16,7 @@
 
         <div class="border-l-2 border-white h-12 mx-4"></div>
 
-        <a href="{{url_for("login")}}" class="hover:text-yellow-700 hover:border-yellow-500 font-bold border px-4 py-2 rounded-lg max-md:hidden">Já possui uma Conta?</a>
+        <a href="{{url_for("landing.login")}}" class="hover:text-yellow-700 hover:border-yellow-500 font-bold border px-4 py-2 rounded-lg max-md:hidden">Já possui uma Conta?</a>
 
         <div class="md:hidden">
             <button id="menubutton" type="button" class="inline-flex rounded-sm p-2" aria-label="Menu" aria-expanded="false">
@@ -29,7 +29,7 @@
 <nav id="menu" class="hidden text-gray-600 m-auto container flex-col space-x-10 py-1">
     <ul class="flex flex-col items-center">
         <li class="hover:text-[#A45A49] font-bold"><a href="">Home</a></li>
-        <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("equipe") }}">Quem Somos?</a></li>
-        <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for("login")}}">Log in</a></li>
+        <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("landing.equipe") }}">Quem Somos?</a></li>
+        <li class="hover:text-[#A45A49] font-bold"><a href="{{url_for("landing.login")}}">Log in</a></li>
     </ul>
 </nav>

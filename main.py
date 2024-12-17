@@ -2,74 +2,21 @@ from flask import Flask, render_template, request, flash, redirect, session
 import mysql.connector
 import createDataBase
 import funcoes
+from views.landingRoutes import *
+from views.cadastroRoutes import *
+from controllers.pesquisarController import *
 
 app = Flask(__name__)
 app.secret_key = 'felipe'
 createDataBase.criarBD()
 # LandingPage
-@app.route('/')
-def index():
-    return render_template('landingPage/index.html')
 
-@app.route('/Equipe')
-def equipe():
-    return render_template('landingPage/Equipe.html')
-
-@app.route('/login')
-def login():
-    return render_template('landingPage/login.html')
-
-@app.route('/loginDono')
-def loginDono():
-    return render_template('restaurante/LoginDono.html')
-
-@app.route('/modelos')
-def modelos():
-    return render_template('landingPage/modelos.html')
-
-@app.route('/requisitos')
-def requisitos():
-    return render_template('landingPage/requisitos.html')
-
-@app.route('/cadastroRestaurante')
-def cadastroRestaurante():
-    return render_template('restaurante/CadastrarDono.html')
+app.register_blueprint(landing_bp)
+app.register_blueprint(cadastro_bp)
 
 # Barra de pesquisa
-@app.route('/pesquisar', methods=['GET'])
-def pesquisa():
-    restaurante_pesquisado = request.args.get('query')
-    connectBD = mysql.connector.connect(
-        host=createDataBase.DBhost,
-        database=createDataBase.DBname,
-        user=createDataBase.DBuser,
-        password=createDataBase.DBpassword
-    )
-    restaurantes = []
-    resultados_pesquisa = []
+app.register_blueprint(pesquisar_bp)
 
-    if connectBD.is_connected():
-        cursor = connectBD.cursor()
-
-        # Buscar todos os restaurantes para as seções 'em alta' e 'disponíveis'
-        cursor.execute("SELECT id_restaurante, nome, descricao, dono FROM restaurante;")
-        restaurantes = cursor.fetchall()
-
-        # Caso exista o termo de pesquisa, buscar apenas restaurantes que correspondem ao termo
-        if restaurante_pesquisado:
-            query = """
-                SELECT id_restaurante, nome, descricao, dono
-                FROM restaurante 
-                WHERE nome LIKE %s OR descricao LIKE %s
-            """
-            termo_sql = f"%{restaurante_pesquisado}%"
-            cursor.execute(query, (termo_sql, termo_sql))
-            resultados_pesquisa = cursor.fetchall()
-
-        cursor.close()
-        connectBD.close()
-
-    return render_template('cliente/home.html', restaurantes=restaurantes, resultados_pesquisa=resultados_pesquisa, query=restaurante_pesquisado)
 # Restaurantes
 
 @app.route('/registrarRestaurante')
