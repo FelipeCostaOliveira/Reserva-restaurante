@@ -7,106 +7,33 @@ from views.cadastroRoutes import *
 from views.registrarRestController import *
 from controllers.pesquisarController import *
 from controllers.cadastrarRestController import *
+from controllers.editarRest import *
+from controllers.atualizarRest import *
 
 app = Flask(__name__)
 app.secret_key = 'felipe'
 createDataBase.criarBD()
 # LandingPage
-
 app.register_blueprint(landing_bp)
+
 # cadastro do gerente
 app.register_blueprint(cadastro_bp)
+
 # Barra de pesquisa
 app.register_blueprint(pesquisa_bp)
+
 #cadastrar restaurante
     #front
 app.register_blueprint(registrarRestaurante_bp)
     #back
 app.register_blueprint(cadastrarRestaurante_bp)
-# Restaurantes
 
-
-@app.route('/editarRestaurante')
-def editarRestaurante():
-    if 'user_id' not in session:
-        flash('Você precisa estar logado para acessar esta página.')
-        return redirect('/loginDono')
-    dono_id = session['user_id']
-    connectBD = mysql.connector.connect(
-        host=createDataBase.DBhost,
-        database=createDataBase.DBname,
-        user=createDataBase.DBuser,
-        password=createDataBase.DBpassword
-    )
+#editar restaurante
+app.register_blueprint(editarRestaurante_bp)
     
-    if connectBD.is_connected():
-        cursor = connectBD.cursor()
-        query = "SELECT * FROM restaurante WHERE id_usuario_restaurante = %s"
-        cursor.execute(query, (dono_id,))
-        restaurante = cursor.fetchone()
-        cursor.close()
-        connectBD.close
-    if restaurante:
-        return render_template('restaurante/EditarRestaurante.html', restaurante=restaurante)
-    else: 
-        flash('Nenhum restaurante encontrado para este dono.')
-        return redirect('/loginDono')
-    
-@app.route('/atualizarRestaurante', methods=['POST'])
-def atualizarRestaurante():
-    if 'user_id' not in session:
-        flash('Você precisa estar logado para acessar esta página.')
-        return redirect('/loginDono')
-    dono_id = session['user_id']
-    nome = request.form.get('nome')
-    dono = request.form.get('dono')
-    descricao = request.form.get('descricao')
-    rua = request.form.get('rua')
-    bairro = request.form.get('bairro')
-    numero = request.form.get('numero')
-    email = request.form.get('email')
-    telefone = request.form.get('telefone')
-    connectBD = mysql.connector.connect(
-        host=createDataBase.DBhost,
-        database=createDataBase.DBname,
-        user=createDataBase.DBuser,
-        password=createDataBase.DBpassword
-    )
-    if connectBD.is_connected():
-        cursor = connectBD.cursor()
-        query = """
-            UPDATE restaurante
-            SET nome = %s,dono = %s, descricao = %s, rua = %s, bairro = %s, numero = %s, email = %s, telefone = %s WHERE id_usuario_restaurante = %s
-        """
-        cursor.execute(query,(nome, dono, descricao, rua, bairro, numero, email, telefone, dono_id))
-        connectBD.commit()
-        cursor.close()
-        connectBD.close() 
-        flash("Restaurante atualizado")
-        return redirect('/editarRestaurante')
-    
-@app.route('/deletarRestaurante', methods=['GET'])
-def deletarRestaurante():
-    restaurante_id = request.args.get('restaurante_id')
-    connectBD = mysql.connector.connect(
-        host=createDataBase.DBhost,
-        database=createDataBase.DBname,
-        user=createDataBase.DBuser,
-        password=createDataBase.DBpassword
-    )
+#atualizar restaurante
+app.register_blueprint(atualizarRestaurante_bp)
 
-    if connectBD.is_connected():
-        cursor = connectBD.cursor()
-        cursor.execute("DELETE FROM restaurante WHERE id_restaurante = %s", (restaurante_id,))
-        connectBD.commit()
-        cursor.close()
-        connectBD.close()
-        
-        flash('Restaurante deletado com sucesso!')
-        return redirect('/loginDono')
-
-    flash('Erro ao conectar ao banco de dados.')
-    return redirect('/home')
 # Clientes
 
 @app.route('/novidades')

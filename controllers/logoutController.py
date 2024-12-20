@@ -7,4 +7,4 @@ def logout():
     session.pop('user_id', None)
     session.pop('user_email', None)
     flash('Você foi desconectado com sucesso.')
-    return redirect('/login')
+    return redirect('/login') 
