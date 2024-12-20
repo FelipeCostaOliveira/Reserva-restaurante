@@ -1,10 +1,10 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint,request, render_template
 import mysql.connector
 import createDataBase
 
-pesquisar_bp = Blueprint('pesquisa', __name__)
+pesquisa_bp = Blueprint('pesquisa', __name__)
 
-pesquisar_bp.route('/pesquisar', methods=['GET'])
+@pesquisa_bp.route('/pesquisar', methods=['GET'])
 def pesquisa():
     restaurante_pesquisado = request.args.get('query')
     connectBD = mysql.connector.connect(

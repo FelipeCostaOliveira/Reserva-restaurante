@@ -4,7 +4,9 @@ import createDataBase
 import funcoes
 from views.landingRoutes import *
 from views.cadastroRoutes import *
+from views.registrarRestController import *
 from controllers.pesquisarController import *
+from controllers.cadastrarRestController import *
 
 app = Flask(__name__)
 app.secret_key = 'felipe'
@@ -12,58 +14,17 @@ createDataBase.criarBD()
 # LandingPage
 
 app.register_blueprint(landing_bp)
+# cadastro do gerente
 app.register_blueprint(cadastro_bp)
-
 # Barra de pesquisa
-app.register_blueprint(pesquisar_bp)
-
+app.register_blueprint(pesquisa_bp)
+#cadastrar restaurante
+    #front
+app.register_blueprint(registrarRestaurante_bp)
+    #back
+app.register_blueprint(cadastrarRestaurante_bp)
 # Restaurantes
 
-@app.route('/registrarRestaurante')
-def registrarRestaurante():
-    if 'user_id' not in session:
-        flash('Você precisa estar logado para acessar esta página.')
-        return redirect('/loginDono')
-    return render_template('restaurante/RegistrarRestaurante.html')
-
-@app.route('/cadastrarRestaurante', methods=['POST'])
-def cadastrarRestaurante():
-    nome = request.form.get('nome')
-    dono = request.form.get('dono')
-    descricao = request.form.get('descricao')
-    rua = request.form.get('rua')
-    bairro = request.form.get('bairro')
-    numero = request.form.get('numero')
-    email = request.form.get('email')
-    telefone = request.form.get('telefone')
-    id_usuario_restaurante = session['user_id']
-    print(id_usuario_restaurante)
-    dados = nome, dono, descricao, rua, bairro, numero, email, telefone, id_usuario_restaurante
-    connectBD = mysql.connector.connect(
-        host=createDataBase.DBhost,
-        database=createDataBase.DBname,
-        user=createDataBase.DBuser,
-        password=createDataBase.DBpassword
-    )
-    if 'user_id' not in session:
-        flash('Você precisa estar logado para acessar esta página.')
-        return redirect('/login')
-    if connectBD.is_connected():
-        cursor = connectBD.cursor()
-        cursor.execute("SELECT * FROM restaurante WHERE nome = %s", (nome,))
-        restaurante = cursor.fetchone()
-        if restaurante:
-            flash('Restaurante já cadastrado')
-            return redirect('/registrarRestaurante')
-        else:
-            query = "INSERT INTO restaurante (nome, dono, descricao, rua, bairro, numero, email, telefone, id_usuario_restaurante) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);"
-            cursor.execute(query, dados)
-            connectBD.commit()
-            return redirect('/editarRestaurante')
-
-    if connectBD.is_connected():
-        cursor.close()
-        connectBD.close()
 
 @app.route('/editarRestaurante')
 def editarRestaurante():
