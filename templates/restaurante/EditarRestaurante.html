@@ -13,6 +13,9 @@
 </head>
 
 <body>
+    <header>
+        {% include 'componentes/navbarRestaurante.html' %}
+    </header>
     <form action="/atualizarRestaurante" method="POST" class="flex min-h-screen justify-center items-center flex-col ">
         <div class="flex flex-row justify-between bg-gray-200 w-4/5 xl:w-3/5 p-2 rounded-t-lg">
             <h1 class="ml-2 font-bold text-gray-700 text-base">Editar restaurante</h1>
