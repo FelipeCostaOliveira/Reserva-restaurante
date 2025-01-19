@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserva</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="static/scripts/Avaliacao.js"></script>
     <script>
         function openInGoogleMaps() {
 
@@ -62,7 +65,17 @@
                                 </ul>
                             </div>
                         </div>
+                        <ul id="star-rating" class="flex gap-2 text-gray-400">
+                            <li class="star cursor-pointer text-2xl" data-value="1">★</li>
+                            <li class="star cursor-pointer text-2xl" data-value="2">★</li>
+                            <li class="star cursor-pointer text-2xl" data-value="3">★</li>
+                            <li class="star cursor-pointer text-2xl" data-value="4">★</li>
+                            <li class="star cursor-pointer text-2xl" data-value="5">★</li>
+                        </ul>
+                          <div class="mt-2 text-sm" id="rating-result">Avaliação: 0</div>
+                    
                     </div>
+                   
                     <div class="flex flex-col flex-1 mt-4 md:mt-0 md:ml-8">
                         <div class="flex items-start mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6 text-orange-500">
@@ -98,4 +111,5 @@
         </div>           
     </div>
 </body>
+
 </html>
