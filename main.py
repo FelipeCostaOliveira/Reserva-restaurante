@@ -422,5 +422,44 @@ def voltar():
         return redirect(referer)
 
     return redirect('/')
+
+@app.route('/cadastrarAvaliacao', methods=['GET','POST'])
+def cadastrarAvaliacao():
+    # Obtendo dados do formulário
+    restaurante_id = request.form.get('restaurante_id')  # ID do restaurante avaliado
+    rating = request.form.get('rating')  # Nota da avaliação
+    
+    # Validando os dados
+    if not restaurante_id or not rating:
+        flash('ID do restaurante e nota são obrigatórios.')
+        return redirect('/reserva')  # Substituir por uma página adequada
+    
+    # Conectando ao banco
+    connectBD = mysql.connector.connect(
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
+    )
+    
+    try:
+        if connectBD.is_connected():
+            cursor = connectBD.cursor()
+            query = """
+                INSERT INTO avaliacoes (rating, id_restaurante)
+                VALUES (%s, %s)
+            """
+            cursor.execute(query, (rating, restaurante_id))
+            connectBD.commit()
+            flash('Avaliação cadastrada com sucesso!')
+            return redirect('/')  # Substituir por uma página adequada
+    except Exception as e:
+        flash(f'Erro ao cadastrar avaliação: {e}')
+        return redirect('/')
+    finally:
+        if connectBD.is_connected():
+            cursor.close()
+            connectBD.close()
+
 if __name__ in "__main__":
     app.run(debug=True, port=5001)

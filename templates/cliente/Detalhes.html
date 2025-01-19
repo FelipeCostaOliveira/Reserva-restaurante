@@ -65,14 +65,30 @@
                                 </ul>
                             </div>
                         </div>
-                        <ul id="star-rating" class="flex gap-2 text-gray-400">
-                            <li class="star cursor-pointer text-2xl" data-value="1">★</li>
-                            <li class="star cursor-pointer text-2xl" data-value="2">★</li>
-                            <li class="star cursor-pointer text-2xl" data-value="3">★</li>
-                            <li class="star cursor-pointer text-2xl" data-value="4">★</li>
-                            <li class="star cursor-pointer text-2xl" data-value="5">★</li>
-                        </ul>
-                          <div class="mt-2 text-sm" id="rating-result">Avaliação: 0</div>
+                        <form action="/cadastrarAvaliacao" method="POST" class="text-center">
+                            <input type="hidden" name="restaurante_id" value="{{restaurante[0]}}">
+                            <div class="flex justify-center space-x-1 flex-row-reverse">
+                                <input type="radio" id="star5" name="rating" value="5" class="hidden peer" required/>
+                                <label for="star5" class="text-gray-300 text-3xl cursor-pointer peer-checked:text-yellow-500 hover:text-yellow-400 peer-hover:text-yellow-400">★</label>
+
+                                <input type="radio" id="star4" name="rating" value="4" class="hidden peer" />
+                                <label for="star4" class="text-gray-300 text-3xl cursor-pointer peer-checked:text-yellow-500 hover:text-yellow-400 peer-hover:text-yellow-400">★</label>
+
+                                <input type="radio" id="star3" name="rating" value="3" class="hidden peer" required/>
+                                <label for="star3" class="text-gray-300 text-3xl cursor-pointer peer-checked:text-yellow-500 hover:text-yellow-400 peer-hover:text-yellow-400">★</label>
+
+                                <input type="radio" id="star2" name="rating" value="2" class="hidden peer" required/>
+                                <label for="star2" class="text-gray-300 text-3xl cursor-pointer peer-checked:text-yellow-500 hover:text-yellow-400 peer-hover:text-yellow-400">★</label>
+
+                                <input type="radio" id="star1" name="rating" value="1" class="hidden peer" required/>
+                                <label for="star1" class="text-gray-300 text-3xl cursor-pointer peer-checked:text-yellow-500 hover:text-yellow-400 peer-hover:text-yellow-400">★</label>
+
+                            </div>
+                            <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                Enviar Avaliação
+                            </button>
+
+                        </form>
                     
                     </div>
                    
