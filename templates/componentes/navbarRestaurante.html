@@ -2,9 +2,8 @@
             
     <ul class="flex flex-row items-center space-x-10 max-md:hidden">
         <figure><img src="static/assets/logo.svg" alt="logo"></figure>
-        <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("home")}}">Home</a></li>
-        <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
-        <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("visualizarResevas") }}">Reservas realizadas</a></li>
+        <li class=" hover:text-[#A45A49] font-bold"><a href="{{url_for("editarRestaurante")}}">Editar restaurante</a></li>
+        <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("reservasCadastradas") }}">Reservas feitas</a></li>
         
     </ul>
     <a href="{{url_for("logout")}}" class="hover:text-[#A45A49] font-bold border px-2 rounded-lg max-md:hidden">Sair</a> 
@@ -20,7 +19,5 @@
     <ul class="flex flex-col items-center">
         <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("home") }}">home</a></li>
         <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("novidades") }}">Novidades</a></li>
-        <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("visualizarResevas") }}">Reservas realizadas</a></li>
-
         <li class="hover:text-[#A45A49] font-bold"><a href="{{ url_for("logout") }}">Sair</a></li>
 </nav>

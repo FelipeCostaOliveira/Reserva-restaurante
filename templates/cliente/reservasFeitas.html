@@ -14,12 +14,12 @@
 
 <body>
     <header>
-        {% include 'componentes/navbarRestaurante.html' %}
+        {% include 'componentes/navbar.html' %}
     </header>
     <div class="flex min-h-screen flex-col">
         <div class="flex flex-col px-4 sm:px-6 lg:px-8 mt-20">
             <div class="border-dashed border-b border-gray-600 pb-4">
-                <h1 class="text-2xl text-gray-700 font-medium">Aqui estão as reservas de seus clientes</h1>
+                <h1 class="text-2xl text-gray-700 font-medium">Aqui estão suas reservas realizadas</h1>
             </div>
             <div class="flex flex-wrap gap-4 mt-4 xl:justify-start md:justify-center justify-between">
                 {% for reserva in reservas %}

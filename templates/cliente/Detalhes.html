@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserva</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="static/scripts/Avaliacao.js"></script>
     <script>
         function openInGoogleMaps() {
 
@@ -62,7 +65,33 @@
                                 </ul>
                             </div>
                         </div>
+                        <form action="/cadastrarAvaliacao" method="POST" class="text-center">
+                            <input type="hidden" name="restaurante_id" value="{{restaurante[0]}}">
+                            <div class="flex justify-center space-x-1 flex-row-reverse">
+                                <input type="radio" id="star5" name="rating" value="5" class="hidden peer" required/>
+                                <label for="star5" class="text-gray-300 text-3xl cursor-pointer peer-checked:text-yellow-500 hover:text-yellow-400 peer-hover:text-yellow-400">★</label>
+
+                                <input type="radio" id="star4" name="rating" value="4" class="hidden peer" />
+                                <label for="star4" class="text-gray-300 text-3xl cursor-pointer peer-checked:text-yellow-500 hover:text-yellow-400 peer-hover:text-yellow-400">★</label>
+
+                                <input type="radio" id="star3" name="rating" value="3" class="hidden peer" required/>
+                                <label for="star3" class="text-gray-300 text-3xl cursor-pointer peer-checked:text-yellow-500 hover:text-yellow-400 peer-hover:text-yellow-400">★</label>
+
+                                <input type="radio" id="star2" name="rating" value="2" class="hidden peer" required/>
+                                <label for="star2" class="text-gray-300 text-3xl cursor-pointer peer-checked:text-yellow-500 hover:text-yellow-400 peer-hover:text-yellow-400">★</label>
+
+                                <input type="radio" id="star1" name="rating" value="1" class="hidden peer" required/>
+                                <label for="star1" class="text-gray-300 text-3xl cursor-pointer peer-checked:text-yellow-500 hover:text-yellow-400 peer-hover:text-yellow-400">★</label>
+
+                            </div>
+                            <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                Enviar Avaliação
+                            </button>
+
+                        </form>
+                    
                     </div>
+                   
                     <div class="flex flex-col flex-1 mt-4 md:mt-0 md:ml-8">
                         <div class="flex items-start mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6 text-orange-500">
@@ -98,4 +127,5 @@
         </div>           
     </div>
 </body>
+
 </html>

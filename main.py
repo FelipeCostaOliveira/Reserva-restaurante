@@ -295,6 +295,7 @@ def formularioReserva():
 
 @app.route('/cadastrarReserva', methods=['POST'])
 def cadastrarReserva():
+    cliente_id = session['user_id']
     restaurante_id = request.form.get('restaurante_id')
     data = request.form.get('data')
     hora = request.form.get('horario')
@@ -315,10 +316,10 @@ def cadastrarReserva():
     if connectBD.is_connected():
         cursor = connectBD.cursor()
         query = """
-        INSERT INTO reserva (id_restaurante, data, horario, nome_cli, tel_cliente, num_pessoas)
-        VALUES (%s, %s, %s, %s, %s, %s);
+        INSERT INTO reserva (id_cliente, id_restaurante, data, horario, nome_cli, tel_cliente, num_pessoas)
+        VALUES (%s, %s, %s, %s, %s, %s, %s);
         """
-        cursor.execute(query, (restaurante_id, data, hora, nome_cliente, tel_cliente, numero_pessoas))
+        cursor.execute(query, (cliente_id, restaurante_id, data, hora, nome_cliente, tel_cliente, numero_pessoas))
         connectBD.commit()
         flash('Reserva cadastrada com sucesso!')
         return redirect('/home')
@@ -326,8 +327,37 @@ def cadastrarReserva():
     if connectBD.is_connected():
         cursor.close()
         connectBD.close()
+#tela p/o cliente ver sua reserva
+@app.route('/visualizarReservas', methods=['GET', 'POST'])
+def visualizarResevas():
+    if 'user_id' not in session:
+        flash('Você precisa estar logado para acessar esta página.')
+        return redirect('/loginDono')
 
-# Exibindo reservas
+    cliente_id = session['user_id']
+    connectBD = mysql.connector.connect(
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
+    )
+    reservas = []
+
+    if connectBD.is_connected():
+        cursor = connectBD.cursor(dictionary=True)  # Retorna resultados como dicionários
+        query = """
+        SELECT data, horario, num_pessoas, nome_cli, tel_cliente
+        FROM reserva r
+        INNER JOIN usuario_cliente cli ON r.id_cliente = cli.id_usuario_cliente
+        WHERE cli.id_usuario_cliente = %s
+        """
+        cursor.execute(query, (cliente_id,))
+        reservas = cursor.fetchall()
+        cursor.close()
+        connectBD.close()
+    return render_template('cliente/reservasFeitas.html', reservas=reservas)
+
+# Exibindo reservas"
 @app.route('/reservasCadastradas', methods=['GET', 'POST'])
 def reservasCadastradas():
     if 'user_id' not in session:
@@ -376,7 +406,7 @@ def cadastrarGerente():
 @app.route('/autenticarGerente', methods=['POST'])
 def autenticarGerente():
     funcoes.autenticarUsuario("usuario_restaurante")
-    return redirect("/registrarRestaurante")
+    return redirect("/editarRestaurante")
 
 @app.route('/logout')
 def logout():
@@ -392,5 +422,44 @@ def voltar():
         return redirect(referer)
 
     return redirect('/')
+
+@app.route('/cadastrarAvaliacao', methods=['GET','POST'])
+def cadastrarAvaliacao():
+    # Obtendo dados do formulário
+    restaurante_id = request.form.get('restaurante_id')  # ID do restaurante avaliado
+    rating = request.form.get('rating')  # Nota da avaliação
+    
+    # Validando os dados
+    if not restaurante_id or not rating:
+        flash('ID do restaurante e nota são obrigatórios.')
+        return redirect('/reserva')  # Substituir por uma página adequada
+    
+    # Conectando ao banco
+    connectBD = mysql.connector.connect(
+        host=createDataBase.DBhost,
+        database=createDataBase.DBname,
+        user=createDataBase.DBuser,
+        password=createDataBase.DBpassword
+    )
+    
+    try:
+        if connectBD.is_connected():
+            cursor = connectBD.cursor()
+            query = """
+                INSERT INTO avaliacoes (rating, id_restaurante)
+                VALUES (%s, %s)
+            """
+            cursor.execute(query, (rating, restaurante_id))
+            connectBD.commit()
+            flash('Avaliação cadastrada com sucesso!')
+            return redirect('/')  # Substituir por uma página adequada
+    except Exception as e:
+        flash(f'Erro ao cadastrar avaliação: {e}')
+        return redirect('/')
+    finally:
+        if connectBD.is_connected():
+            cursor.close()
+            connectBD.close()
+
 if __name__ in "__main__":
     app.run(debug=True, port=5001)

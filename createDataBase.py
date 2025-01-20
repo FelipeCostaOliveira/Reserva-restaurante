@@ -3,7 +3,7 @@ import database
 DBhost = 'localhost' 
 DBname = 'SistemaReservas'
 DBuser = 'root'
-DBpassword = 'alunoifro'
+DBpassword = 'root'
 
 def criarBD():
     # CRIAR TABELA DE BANCO DE DADOS
@@ -63,6 +63,7 @@ def criarBD():
     query3 = f"""
     CREATE TABLE {NameTabela3} 
     (id_reserva INT NOT NULL AUTO_INCREMENT,
+    id_cliente INT NOT NULL,
     id_restaurante INT NOT NULL,
     nome_cli VARCHAR(100) NOT NULL,
     tel_cliente VARCHAR(45) NOT NULL,
@@ -75,3 +76,18 @@ def criarBD():
     """
     new_connection3 = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
     database.create_table(new_connection3, NameTabela3, query3)
+    
+    NameTabela4 = 'avaliacoes'
+    query4 = f"""
+        CREATE TABLE {NameTabela4} 
+        (id_avaliacao INT AUTO_INCREMENT,
+        id_restaurante INT NOT NULL,
+        FOREIGN KEY (id_restaurante) REFERENCES restaurante(id_restaurante) ON DELETE CASCADE,
+        PRIMARY KEY(id_avaliacao),
+        rating TINYINT UNSIGNED NOT NULL CHECK (rating BETWEEN 1 AND 5),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)
+    """
+    new_connection4 = database.create_new_server_connection(DBhost, DBuser, DBname, DBpassword)
+    database.create_table(new_connection4, NameTabela4, query4)
+ 
+   
