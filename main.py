@@ -265,11 +265,13 @@ def reserva():
         cursor = connectBD.cursor()
         cursor.execute(f"SELECT * FROM restaurante WHERE id_restaurante ={id_restaurante}")
         restaurante = cursor.fetchone()
+        cursor.execute(f"SELECT {id_restaurante}, AVG(rating) AS media_estrelas FROM avaliacoes GROUP BY {id_restaurante}")
+        media = cursor.fetchone()
         cursor.close()
         connectBD.close()
         print(restaurante)
     
-    return render_template('cliente/Detalhes.html', restaurante=restaurante)
+    return render_template('cliente/Detalhes.html', restaurante=restaurante, media=media)
 
 # Leva os dados do restaurante p/fazer a reserva
 @app.route('/formularioReserva', methods=["POST"])
