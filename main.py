@@ -345,7 +345,7 @@ def cadastrarReserva():
         connectBD.close()
 #tela p/o cliente ver sua reserva
 @app.route('/visualizarReservas', methods=['GET', 'POST'])
-def visualizarResevas():
+def visualizarReservas():
     if 'user_id' not in session:
         flash('Você precisa estar logado para acessar esta página.')
         return redirect('/loginDono')
@@ -362,15 +362,18 @@ def visualizarResevas():
     if connectBD.is_connected():
         cursor = connectBD.cursor(dictionary=True)  # Retorna resultados como dicionários
         query = """
-        SELECT data, horario, num_pessoas, nome_cli, tel_cliente
+        SELECT id_reserva, r.id_restaurante, r.data, r.horario, r.num_pessoas, r.nome_cli, r.tel_cliente, res.nome AS restaurante_nome
         FROM reserva r
         INNER JOIN usuario_cliente cli ON r.id_cliente = cli.id_usuario_cliente
+        INNER JOIN restaurante res ON r.id_restaurante = res.id_restaurante
         WHERE cli.id_usuario_cliente = %s
         """
         cursor.execute(query, (cliente_id,))
         reservas = cursor.fetchall()
+
         cursor.close()
         connectBD.close()
+
     return render_template('cliente/reservasFeitas.html', reservas=reservas)
 
 # Exibindo reservas"
@@ -444,7 +447,7 @@ def cadastrarAvaliacao():
     # Obtendo dados do formulário
     restaurante_id = request.form.get('restaurante_id')  # ID do restaurante avaliado
     rating = request.form.get('rating')  # Nota da avaliação
-    
+    print(f"Avaliação: {rating, restaurante_id}")
     # Validando os dados
     if not restaurante_id or not rating:
         flash('ID do restaurante e nota são obrigatórios.')
@@ -466,9 +469,11 @@ def cadastrarAvaliacao():
                 VALUES (%s, %s)
             """
             cursor.execute(query, (rating, restaurante_id))
+            
             connectBD.commit()
             flash('Avaliação cadastrada com sucesso!')
-            return redirect('/')  # Substituir por uma página adequada
+            
+            return redirect('/home')  # Substituir por uma página adequada
     except Exception as e:
         flash(f'Erro ao cadastrar avaliação: {e}')
         return redirect('/')

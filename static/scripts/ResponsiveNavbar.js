@@ -21,10 +21,9 @@ $(document).ready(function() {
     $('ul li a').each(function() {
         // Obtém o caminho do href do link
         var linkPath = $(this).attr('href');
-        console.log(linkPath);
-        
-        // Verifica se o caminho do href corresponde ao caminho atual
-        if (currentPath === linkPath) {
+
+        // Se o href do link começa com o caminho atual (útil para evitar problemas com subcaminhos)
+        if (currentPath.startsWith(linkPath)) {
             $(this).parent().addClass('text-yellow-400');
         }
     });
