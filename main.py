@@ -251,9 +251,8 @@ def home():
 
 # Tela de detalhamento dos restaurantes
 
-@app.route('/reserva', methods=["GET","POST"])
+@app.route('/reserva', methods=["GET", "POST"])
 def reserva():
-    
     id_restaurante = request.form.get("detalhes")
     connectBD = mysql.connector.connect(
         host=createDataBase.DBhost,
@@ -263,15 +262,30 @@ def reserva():
     )
     if connectBD.is_connected():
         cursor = connectBD.cursor()
-        cursor.execute(f"SELECT * FROM restaurante WHERE id_restaurante ={id_restaurante}")
+        
+        # Consulta para buscar o restaurante
+        cursor.execute(f"SELECT * FROM restaurante WHERE id_restaurante = {id_restaurante}")
         restaurante = cursor.fetchone()
-        cursor.execute(f"SELECT {id_restaurante}, AVG(rating) AS media_estrelas FROM avaliacoes GROUP BY {id_restaurante}")
+        
+        # Consulta para calcular a média de estrelas
+        cursor.execute(f"""
+            SELECT AVG(rating) AS media_estrelas 
+            FROM avaliacoes 
+            WHERE id_restaurante = {id_restaurante}
+        """)
         media = cursor.fetchone()
+
         cursor.close()
         connectBD.close()
-        print(restaurante)
-    
-    return render_template('cliente/Detalhes.html', restaurante=restaurante, media=media)
+
+    # Se não houver avaliações, `media` será None
+    if media and media[0] is not None:
+        media_valor = media[0]
+    else:
+        media_valor = None
+
+    # Renderizar template
+    return render_template('cliente/Detalhes.html', restaurante=restaurante, media=media_valor)
 
 # Leva os dados do restaurante p/fazer a reserva
 @app.route('/formularioReserva', methods=["POST"])
