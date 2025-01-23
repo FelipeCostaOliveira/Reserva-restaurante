@@ -41,30 +41,10 @@
             </div>
 
             <!-- Substituir pela busca de reservas canceladas, quando estiver pronta. -->
-            <div class="border-dashed border-b border-gray-600 pb-4 mt-4">
-                <h1 class="text-2xl text-gray-700 font-medium">Reservas canceladas</h1>
-            </div>
-            <div class="flex flex-wrap gap-4 mt-4 xl:justify-start md:justify-center justify-between">
-                {% for reserva in reservas %}
-                <div class="flex flex-row justify-between items-center gap-2 lg:w-80 md:w-2/5 w-full border border-gray-300 bg-gray-50 rounded-md p-4">
-                    <div class="flex flex-col w-full">
-                        <div class="flex flex-row gap-4 text-orange-500 font-medium">
-                            <h1>Data: {{ reserva.data }}</h1>
-                            <h1>Hora: {{ reserva.horario }}</h1>
-                        </div>
-                        <h1>Nome do cliente: {{ reserva.nome_cli }}</h1>
-                        <h1>Telefone do cliente: {{ reserva.tel_cliente }}</h1>
-                        <h1>Número de pessoas: {{ reserva.num_pessoas }}</h1>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="size-6 text-red-500">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                      
-                </div>
-                {% endfor %}
-            </div>
+            
         </div>
     </div>
+    <script src="static/scripts/ResponsiveNavbar.js"></script>
 </body>
 
 </html>
