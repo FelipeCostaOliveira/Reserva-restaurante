@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Restaurante</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="static/scripts/ExcluirRestaurante.js"></script>
 </head>
 
@@ -16,7 +14,8 @@
     <header>
         {% include 'componentes/navbarRestaurante.html' %}
     </header>
-    <form action="/atualizarRestaurante" method="POST" class="flex min-h-screen justify-center items-center flex-col ">
+    {% for restaurante in restaurantes  %}
+    <form id="results" action="/atualizarRestaurante" method="POST" class="flex min-h-screen justify-center items-center flex-col ">
         <div class="flex flex-row justify-between bg-gray-200 w-4/5 xl:w-3/5 p-2 rounded-t-lg">
             <h1 class="ml-2 font-bold text-gray-700 text-base">Editar restaurante</h1>
             
@@ -133,6 +132,23 @@
                 tudo</button>
         </div>
     </form>
+    {% endfor %}
+    <div class="flex justify-center items-center mt-4 gap-2">
+        {% if pagina > 1 %}
+        <a href="?pagina={{ pagina - 1 }}" class="px-4 py-2 bg-gray-300 rounded-md">Anterior</a>
+        {% endif %}
+
+        {% for p in range(1, total_paginas + 1) %}
+        <a href="?pagina={{ p }}" class="px-4 py-2 rounded-md {% if p == pagina %}bg-orange-400 text-white{% else %}bg-gray-300{% endif %}">
+            {{ p }}
+        </a>
+        {% endfor %}
+
+        {% if pagina < total_paginas %}
+        <a href="?pagina={{ pagina + 1 }}" class="px-4 py-2 bg-gray-300 rounded-md">Próximo</a>
+        {% endif %}
+    </div>
+    <script src="static/scripts/ResponsiveNavbar.js"></script>
 </body>
 
 </html>

@@ -140,14 +140,24 @@ def editarRestaurante():
         cursor = connectBD.cursor()
         query = "SELECT * FROM restaurante WHERE id_usuario_restaurante = %s"
         cursor.execute(query, (dono_id,))
-        restaurante = cursor.fetchone()
+        restaurante = cursor.fetchall()
         cursor.close()
         connectBD.close
+        
+    pagina = int(request.args.get('pagina', 1))  # Página atual (default: 1)
+    itens_por_pagina = 1  # Quantidade de itens por página
+    inicio = (pagina - 1) * itens_por_pagina
+    fim = inicio + itens_por_pagina
+
+    total_paginas = (len(restaurante) + itens_por_pagina - 1) // itens_por_pagina
+    restaurantes_pagina = restaurante[inicio:fim]
     if restaurante:
-        return render_template('restaurante/EditarRestaurante.html', restaurante=restaurante)
+        return render_template('restaurante/EditarRestaurante.html', restaurante=restaurante, restaurantes=restaurantes_pagina, 
+        pagina=pagina, 
+        total_paginas=total_paginas)
     else: 
         flash('Nenhum restaurante encontrado para este dono.')
-        return redirect('/loginDono')
+        return redirect('/registrarRestaurante')
     
 @app.route('/atualizarRestaurante', methods=['POST'])
 def atualizarRestaurante():
